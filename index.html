@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- Head Element -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +11,70 @@
 
     <title>Lucky 21 Blackjack</title>
 </head>
-<body>
 
+<!-- Body Element -->
+<body>
+    <div class="game-page-wrapper">
+        <!-- Header Element -->
+        <header>
+            <a class="logo" href="index.html">
+                <div class="logo-image">
+                    <img src="assets/images/cards-icon.png" alt="Icon: Two cards, one heart and one spade ">
+                </div> 
+                <div class="logo-content">
+                    <h1>Lucky 21 Blackjack</h1>
+                </div>
+                
+            </a>   
+            <p>Game Rules</p>     
+        </header>
+
+        <!-- Main webpage content -->
+        <main class="game-container">
+
+            <!-- Dealer section -->
+            <section class="dealer-container">
+                <div class="cards-image">
+                    <img src="assets/images/cards-icon.png" alt="Icon: Two cards, one heart and one spade ">
+                </div> 
+                <h2>Dealer's Hand</h2>
+                <div class="dealers-card">
+                    <img src="assets/images/card-back.webp" alt="Image of the back of a playing card, it is red.">
+                </div>
+                <div class="hand-count"><span id="dealer-hand-value">0</span></div>
+            </section>
+
+            <!-- Game controls section -->
+            <section class="game-controls-container">
+                <button id="hit-button">Hit</button>
+                <div class="results-message"></div>
+                <button id="stand-button">Stand</button>
+            </section>
+
+            <!-- Player section -->
+            <section class="player-container">
+                <div class="cards-image">
+                    <img src="assets/images/cards-icon.png" alt="Icon: Two cards, one heart and one spade ">
+                </div> 
+                <h2>Player's Hand</h2>
+                <div class="players-card"></div>
+                <div class="hand-count"><span id="player-hand-value">0</span></div>
+            </section>
+
+            <p>Player Chip Count € <span id="chip-count">0</span></p>
+
+            <!-- Betting section -->
+            <section class="betting-container">
+                <p>Bet Amount</p>
+                <input id="player-bet"  type="number">
+                <button id="place-bet-button">Place Bet</button>
+
+            </section>
+
+        </main>
+    </div>
+    
+    <!-- local script -->
     <script src="assets/js/script.js"></script>
 </body>
 </html>
