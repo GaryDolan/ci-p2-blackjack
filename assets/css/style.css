@@ -40,6 +40,15 @@ a {
     text-decoration: none;
 }
 
+/************************* GAME PAGE ***********************/
+.game-page-wrapper{
+    max-width: 162.5rem;
+    height: 100vh;
+    background:url(../images/background.webp) no-repeat center top;
+    background-size: cover;
+    background-color: #01441b; /*added incase image fails to load*/
+}
+
 /*************************** HEADER *************************/
 header {
     display: flex;
