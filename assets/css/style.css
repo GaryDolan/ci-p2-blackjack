@@ -40,4 +40,39 @@ a {
     text-decoration: none;
 }
 
+/*************************** HEADER *************************/
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
 
+/* Logo */
+.logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.logo-image {
+    margin-right: 0.5rem;   
+}
+
+.logo-image img {
+    width: 3.94rem;
+    height: 4rem;
+}
+
+.logo-content {
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+} 
+
+/* Game rules pop up */
+header p {
+    margin-right: 1.5rem;
+    text-decoration: underline;
+    text-decoration-thickness: 0.15rem;
+}
