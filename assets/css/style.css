@@ -1,0 +1,43 @@
+/* Import google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Raleway:wght@400;500;600;700;800;900&display=swap');
+
+/*********************** GLOBAL  ****************************/
+html {
+    max-width: 162.5rem;
+    width: 100%;
+    margin: 0 auto;
+    height: 100%;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+/* Body */
+body{
+    font-family: Raleway, sans-serif;
+    font-weight: 500;
+    color: white;
+}
+
+/* Headings */
+h1, h2, h3 {
+    font-family: Raleway, sans-serif;
+    color: white;
+    font-weight: 700;
+}
+
+/* Paragraphs */
+p {
+    font-size: 1.4rem;
+}
+
+/* Links */
+a {
+    text-decoration: none;
+}
+
+
