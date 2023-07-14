@@ -59,7 +59,7 @@ button {
     border: 0.2rem solid black;
 }
 
-button:hover, .button-style:hover {
+button:hover {
     color: white;
     background-color: #01441b;
     border: 0.2rem solid white;
