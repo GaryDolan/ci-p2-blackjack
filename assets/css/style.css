@@ -187,3 +187,8 @@ header p {
 .betting-input p {
     margin-right: 1rem;
 }
+.betting-input input {
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
