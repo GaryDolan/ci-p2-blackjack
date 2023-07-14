@@ -18,7 +18,7 @@
     <div class="game-page-wrapper">
         <!-- Header Element -->
         <header>
-            <a class="logo" href="index.html">
+            <a class="logo" href="index.html" aria-label="Return home">
                 <div class="logo-image">
                     <img src="assets/images/cards-icon.png" alt="Icon: Two cards, one heart and one spade ">
                 </div> 
@@ -40,7 +40,7 @@
                         <img src="assets/images/cards-icon.png" alt="Icon: Two cards, one heart and one spade ">
                     </div> 
                     
-                    <h2>Dealer's Hand <span class="hand-count" id="dealer-hand-value">0</span></h2>
+                    <h2>Dealer's Hand <span class="hand-count" id="dealer-hand-value" title="Dealer's hand value">0</span></h2>
                 </div>   
 
                 <div class="dealers-cards">
@@ -51,9 +51,9 @@
 
             <!-- Game controls section -->
             <section class="game-controls-container">
-                <button id="hit-button">Hit</button>
+                <button id="hit-button" aria-label="Hit button" title="Press to recieve an additional card">Hit</button>
                 <div class="results-message"></div>
-                <button id="stand-button">Stand</button>
+                <button id="stand-button" aria-label="Stand button" title="Press to finalise your cards and allow dealer to play">Stand</button>
             </section>
 
             <!-- Player section -->
@@ -62,7 +62,7 @@
                     <div class="cards-image">
                         <img src="assets/images/cards-icon.png" alt="Icon: Two cards, one heart and one spade ">
                     </div> 
-                    <h2>Player's Hand <span class="hand-count" id="player-hand-value">0</span></h2>
+                    <h2>Player's Hand <span class="hand-count" id="player-hand-value" title="Player's hand value">0</span></h2>
                 </div>    
                 <div class="players-cards">
                     <img src="assets/images/card-back.webp" alt="Image of the back of a playing card, it is red.">
@@ -80,7 +80,7 @@
                     <input id="player-bet"  type="number" placeholder="Enter your bet" title="Please enter a bet in €25 increments or use arrows to increase/decrease bet" min="25" step="25">
                 </div>
 
-                <button id="place-bet-button">Place Bet</button>
+                <button id="place-bet-button" aria-label="Pleace bet button" title="Press to place bet">Place Bet</button>
 
             </section>
 
