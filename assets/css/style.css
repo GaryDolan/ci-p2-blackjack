@@ -37,6 +37,7 @@ h2 {
 /* Paragraphs */
 p {
     font-size: 1.4rem;
+    font-weight: 600;
 }
 
 /* Links */
@@ -139,10 +140,7 @@ header p {
 
 /* holds dealer & players current count */
 .hand-count {
-    /* margin-left: 1rem; */
     font-size: 2.5rem;
-    /* text-align: center; */
-    /* padding-bottom: 0.6rem; */
 }
 
 /******************* GAME CONTROLS SECTION *****************/
@@ -166,4 +164,26 @@ header p {
     width: 18.75rem;
 }
 
+/********************** BETTING SECTION ********************/
+.betting-container {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+.player-chip-count  {
+    margin: 1rem 0 1rem 0;
+    text-decoration: underline;
+    text-decoration-thickness: 0.15rem;
+    text-underline-offset: 0.3rem;
+}
+
+.betting-input {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.betting-input p {
+    margin-right: 1rem;
+}
