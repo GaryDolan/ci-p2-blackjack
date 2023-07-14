@@ -30,6 +30,10 @@ h1, h2, h3 {
     font-weight: 700;
 }
 
+h2 {
+     font-size: 1.8rem; 
+}
+
 /* Paragraphs */
 p {
     font-size: 1.4rem;
@@ -88,8 +92,8 @@ header {
 }
 
 .logo-image img {
-    width: 3.94rem;
-    height: 4rem;
+    width: 2.95rem;
+    height: 3rem;
 }
 
 .logo-content {
@@ -132,12 +136,34 @@ header p {
     height: 2rem;
     margin-right: 0.25rem;
 }
+
 /* holds dealer & players current count */
 .hand-count {
     margin-left: 1rem;
     font-size: 3rem;
     text-align: center;
     padding-bottom: 0.6rem;
+}
+
+/******************* GAME CONTROLS SECTION *****************/
+.game-controls-container {
+    width: 40%;
+    height: 6rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.game-controls-container button {
+    width: 10rem ;
+    height: 5rem;
+    border-radius: 1.5rem/1.5rem;
+}
+
+/* .game-controls-container div{ */
+.results-message {
+    height: 100%;
+    width: 18.75rem;
 }
 
 
