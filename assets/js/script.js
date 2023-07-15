@@ -37,14 +37,19 @@ class Dealer extends Player {
             for (let value of values) {
                 for (let suit of suits) {
                     card = value + suit;
-                    console.log(card);
                     this.deck.push(card);
                 }
             }
         }
 
         shuffleDeck() {
-            //logic to shuffle deck
+            //The Fisher Yates Method is used here to shuffle the deck
+            for (let i = this.deck.length -1; i > 0; i--) {
+                let j = Math.floor(Math.random() * (i+1));
+                let k = this.deck[i];
+                this.deck[i] = this.deck[j];
+                this.deck[j] = k;
+              }
         }
         
         dealCard(player) {
@@ -87,6 +92,7 @@ function initialiseGame() {
     //initial logic only run once, at the start of a new game 
     const dealer = new Dealer();
     dealer.newDeck();
+    dealer.shuffleDeck();
 }
 
 function startGame() {
