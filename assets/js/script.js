@@ -1,7 +1,10 @@
 // CLASS DEFINITIONS
 class Player {
     constructor(){
-        
+        this.hand = [];
+        this.handCount = 0;
+        this.stand = false;
+        this.isBust = false;
     }
     
     calculateHandCount() {
@@ -22,10 +25,22 @@ class Player {
 class Dealer extends Player {
     constructor() {
         super();
-    
+        this.deck = [];
+	    this.noOfCardsInDeck = 52;
     }   
         newDeck() {
             //logic to build a new deck, may add in building from multiple decks at a later stage
+            const suits = ['c', 'd', 'h', 's'];
+            const values = ['2','3','4','5','6','7','8','9','10','j','q','','a']
+            let card = '';
+
+            for (let value of values) {
+                for (let suit of suits) {
+                    card = value + suit;
+                    console.log(card);
+                    this.deck.push(card);
+                }
+            }
         }
 
         shuffleDeck() {
@@ -69,7 +84,9 @@ class HumanPlayer extends Player {
 //FUNCTION DEFINITIONS
 
 function initialiseGame() {
-    //initial logic only run at the start of a new game 
+    //initial logic only run once, at the start of a new game 
+    const dealer = new Dealer();
+    dealer.newDeck();
 }
 
 function startGame() {
@@ -94,6 +111,9 @@ function endGame () {
 }
 
 //GAMEPLAY
-
+//Wait for DOM to load before initialising the game 
+document.addEventListener("DOMContentLoaded", function() {
+    initialiseGame();
+})
 
 //EVENT LISTENERS
