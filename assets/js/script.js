@@ -40,6 +40,7 @@ class Dealer extends Player {
                     this.deck.push(card);
                 }
             }
+            //console.log(this.deck);
         }
 
         shuffleDeck() {
@@ -50,10 +51,13 @@ class Dealer extends Player {
                 this.deck[i] = this.deck[j];
                 this.deck[j] = k;
               }
+              console.log(this.deck);
         }
         
         dealCard(player) {
             //deal card to specified player
+            let card = this.deck.pop();
+            player.hand.push(card)
         }
 
         checkStand () {
@@ -91,13 +95,24 @@ class HumanPlayer extends Player {
 function initialiseGame() {
     //initial logic only run once, at the start of a new game 
     const dealer = new Dealer();
+    const humanPlayer = new HumanPlayer();
     dealer.newDeck();
     dealer.shuffleDeck();
+    startGame(dealer, humanPlayer);
 }
 
-function startGame() {
-    //logic to run game 
+function startGame(dealer, humanPlayer) {
+    //deal 2 cards to each player, one at a time.
+    const players = [dealer, humanPlayer];
+    const cardsPerPlayer = 2;
+    for (let i = 0; i < cardsPerPlayer; i++) {
+        for (let player of players) {
+            dealer.dealCard (player);
+        }
+    }
 }
+
+
 
 function checkWinner() {
     //logic to check the players hand coundt and determin the winner, displayed winner message and if player won add bet to chip count 1:1 game
