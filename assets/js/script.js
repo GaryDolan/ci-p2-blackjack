@@ -7,7 +7,7 @@ class Player {
         this.isBust = false;
     }
     
-    displayHand (elementId) {
+    displayHand (elementId, hideFirstCard = false) {
         //target the div that we will display cards in 
         const cardContainer = document.getElementById(elementId);
         
@@ -15,10 +15,10 @@ class Player {
         cardContainer.innerHTML = "";
         
         //create and append the image based on hand values
-        for (let card of this.hand) {
+        for (let i = 0; i< this.hand.length; i++) {
             const cardImg = document.createElement('img');
-            cardImg.src = `../../assets/images/playing-card-images/${card}.webp`;
-            cardImg.alt = `Image of a playing card, value ${card}`;
+            cardImg.src = `../../assets/images/playing-card-images/${hideFirstCard && i===0 ? "card-back" : this.hand[i]}.webp`;
+            cardImg.alt = `Image of a playing card, value ${this.hand [i]}`;
 
             //append the card image to element
             cardContainer.appendChild(cardImg);  
@@ -133,7 +133,7 @@ function startGame(dealer, humanPlayer) {
 
     //Display dealer and players cards 
     humanPlayer.displayHand("players-cards");
-    dealer.displayHand("dealers-cards");
+    dealer.displayHand("dealers-cards", true);
 }
 
 

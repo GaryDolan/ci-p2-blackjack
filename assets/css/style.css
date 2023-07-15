@@ -56,13 +56,13 @@ button {
     align-items: center;
     text-align: center;
     cursor: pointer;
-    border: 0.2rem solid black;
+    border: 0.25rem solid black;
 }
 
 button:hover {
     color: white;
     background-color: #01441b;
-    border: 0.2rem solid white;
+    border: 0.25rem solid white;
 }
 
 /************************* GAME PAGE ***********************/
@@ -129,6 +129,7 @@ header p {
 .dealer-info, .player-info{
     display: flex;
     align-items: center;
+    margin-bottom: 0.25rem;
 }
 
 /* cards icon in dealer info section */
@@ -145,6 +146,8 @@ header p {
 
 #dealers-cards img, #players-cards img {
     margin-right: 0.25rem;
+    border: solid black 0.25rem;
+    border-radius: 0.5rem/0.5rem;
 }
 
 /******************* GAME CONTROLS SECTION *****************/
