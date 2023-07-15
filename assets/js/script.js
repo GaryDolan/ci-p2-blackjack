@@ -7,6 +7,24 @@ class Player {
         this.isBust = false;
     }
     
+    displayHand (elementId) {
+        //target the div that we will display cards in 
+        const cardContainer = document.getElementById(elementId);
+        
+        //clear out any placeholder images
+        cardContainer.innerHTML = "";
+        
+        //create and append the image based on hand values
+        for (let card of this.hand) {
+            const cardImg = document.createElement('img');
+            cardImg.src = `../../assets/images/playing-card-images/${card}.webp`;
+            cardImg.alt = `Image of a playing card, value ${card}`;
+
+            //append the card image to element
+            cardContainer.appendChild(cardImg);  
+        }        
+    }
+
     calculateHandCount() {
     
     }
@@ -31,11 +49,11 @@ class Dealer extends Player {
         newDeck() {
             //logic to build a new deck, may add in building from multiple decks at a later stage
             const suits = ['c', 'd', 'h', 's'];
-            const values = ['2','3','4','5','6','7','8','9','10','j','q','','a']
+            const values = ['2','3','4','5','6','7','8','9','10','j','q','k','a']
             let card = '';
 
-            for (let value of values) {
-                for (let suit of suits) {
+            for (let suit of suits) {
+                for (let value of values) {
                     card = value + suit;
                     this.deck.push(card);
                 }
@@ -93,7 +111,7 @@ class HumanPlayer extends Player {
 //FUNCTION DEFINITIONS
 
 function initialiseGame() {
-    //initial logic only run once, at the start of a new game 
+    //initial logic only run once, at the start of a new game. 
     const dealer = new Dealer();
     const humanPlayer = new HumanPlayer();
     dealer.newDeck();
@@ -110,6 +128,12 @@ function startGame(dealer, humanPlayer) {
             dealer.dealCard (player);
         }
     }
+    console.log(dealer.hand);
+    console.log(humanPlayer.hand);
+
+    //Display dealer and players cards 
+    humanPlayer.displayHand("players-cards");
+    dealer.displayHand("dealers-cards");
 }
 
 
@@ -131,7 +155,7 @@ function endGame () {
     //can be used if player chip count reaches 0
 }
 
-//GAMEPLAY
+//BEGIN GAMEPLAY
 //Wait for DOM to load before initialising the game 
 document.addEventListener("DOMContentLoaded", function() {
     initialiseGame();
