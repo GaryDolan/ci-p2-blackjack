@@ -135,16 +135,30 @@ class HumanPlayer extends Player {
         document.getElementById("chip-count").textContent = this.chipCount;
     }
 
+    setMaxBet() {
+        document.getElementById("player-bet-input").max = this.chipCount;
+    }
+
     placeBet() {
         //get bet amount 
         this.betAmount = parseInt(document.getElementById("player-bet-input").value);
         
-        //adjust chip count 
-        this.chipCount -= this.betAmount;
-        this.displayChipCount();
+        //validate user input and place bet 
+        console.log(this.betAmount);
+        if(isNaN(this.betAmount) || this.betAmount % 25 != 0 ) {
+            alert ("Please enter a valid betting mount in €25 increments, €25, €50, €75, etc. or use the arrows to select a betting amount");
+        } else {
+            if (this.betAmount > this.chipCount) {
+                alert(`The Bet you placed exceeded your chip count, your bet has been place at your chip count €${this.chipCount}`);
+                this.betAmount = this.chipCount;
+            }
+            //adjust chip count 
+            this.chipCount -= this.betAmount;
+            this.displayChipCount();
 
-        //disable betting button and input 
-        this.disableBetting();
+            //disable betting button and input 
+            this.disableBetting();
+        }
     }
 
     disableBetting(){
@@ -183,6 +197,9 @@ function initialiseGame() {
 }
 
 function startGame(dealer, humanPlayer) {
+    //update max bet allowed
+    humanPlayer.setMaxBet();
+    
     //deal 2 cards to each player, one at a time.
     const players = [dealer, humanPlayer];
     const cardsPerPlayer = 2;
