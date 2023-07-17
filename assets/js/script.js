@@ -160,8 +160,8 @@ class HumanPlayer extends Player {
             this.displayChipCount();
 
             //enable hit and stand buttons
-            document.getElementById("hit-button").disabled = false;
-            document.getElementById("stand-button").disabled = false;
+            enableHitButton();
+            enableStandButton();
 
             //disable betting button and input 
             this.disableBetting();
@@ -170,9 +170,9 @@ class HumanPlayer extends Player {
 
     disableBetting(){
         //lock input and button and return bet to min amount
-        document.getElementById("place-bet-button").disabled = true;
-        document.getElementById("player-bet-input").disabled = true;
-        document.getElementById("player-bet-input").value = 25;
+        disableBetButton();
+        disableBetInput();
+        resetBetAmount();
     }
     
     enableBetting() {
@@ -185,6 +185,8 @@ class HumanPlayer extends Player {
         this.calculateHandValue();
         this.displayHandValue("player-hand-value");
         if (this.checkBust()) {
+            //disable hit button
+            disableHitButton();
             setTimeout(() => {
                 alert("You are bust, Better luck next time");
             }, 1000);
@@ -203,10 +205,6 @@ function initialiseGame() {
     //move focus to bet
     document.getElementById("player-bet-input").focus();
 
-    //block hit and stand buttons
-    document.getElementById("hit-button").disabled = true;
-    document.getElementById("stand-button").disabled = true;
-
     //initial logic only run once, at the start of a new game. 
     const dealer = new Dealer();
     const humanPlayer = new HumanPlayer();
@@ -223,9 +221,7 @@ function initialiseGame() {
     //hit button
     const hitButton = document.getElementById("hit-button");
     hitButton.addEventListener("click", function() {
-        humanPlayer.hit(dealer);
-        //dealer.playerHit(humanPlayer);
-        //humanPlayer.displayHand("players-cards");  
+        humanPlayer.hit(dealer); 
     });
 
     //begin gameplay 
@@ -233,7 +229,11 @@ function initialiseGame() {
 }
 
 function startGame(dealer, humanPlayer) {
-    //update max bet allowed
+    //block hit and stand buttons
+    disableHitButton();
+    disableStandButton();
+    
+        //update max bet allowed
     humanPlayer.setMaxBet();
     
     //deal 2 cards to each player, one at a time.
@@ -262,8 +262,45 @@ function startGame(dealer, humanPlayer) {
     humanPlayer.displayChipCount();
 }
 
+//container functions
+function disableHitButton() {
+    document.getElementById("hit-button").disabled = true;
+}
+
+function enableHitButton() {
+    document.getElementById("hit-button").disabled = false;
+}
+
+function disableBetButton() {
+    document.getElementById("place-bet-button").disabled = true;
+}
+
+function enableBetButton() {
+    document.getElementById("place-bet-button").disabled = false;
+}
+
+function disableStandButton() {
+    document.getElementById("stand-button").disabled = true;
+}
+
+function enableStandButton() {
+    document.getElementById("stand-button").disabled = false;
+}
+
+function disableBetInput() {
+    document.getElementById("player-bet-input").disabled = true;
+}
+
+function enableBetInput() {
+    document.getElementById("player-bet-input").disabled = false;
+}
+
+function resetBetAmount() {
+    document.getElementById("player-bet-input").value = 25;
+}
 
 
+//Regular functions
 function checkWinner() {
     //logic to check the players hand coundt and determin the winner, displayed winner message and if player won add bet to chip count 1:1 game
 }
