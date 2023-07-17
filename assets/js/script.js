@@ -2,12 +2,21 @@
 class Player {
     constructor(){
         this.hand = [];
-        this.handCount = 0;
+        this.handValue = 0;
         this.stand = false;
         this.isBust = false;
+        this.hideFirstCard = false;
     }
     
-    displayHand (elementId, hideFirstCard = false) {
+    setHideFirstCard() {
+        this.hideFirstCard = true;
+    }
+
+    resetHideFirstCard() {
+        this.hideFirstCard = flase;
+    }
+
+    displayHand (elementId) {
         //target the div that we will display cards in 
         const cardContainer = document.getElementById(elementId);
         
@@ -15,9 +24,9 @@ class Player {
         cardContainer.innerHTML = "";
         
         //create and append the image based on hand values
-        for (let i = 0; i< this.hand.length; i++) {
+        for (let i = 0; i < this.hand.length; i++) {
             const cardImg = document.createElement('img');
-            cardImg.src = `../../assets/images/playing-card-images/${hideFirstCard && i===0 ? "card-back" : this.hand[i]}.webp`;
+            cardImg.src = `../../assets/images/playing-card-images/${this.hideFirstCard && i===0 ? "card-back" : this.hand[i]}.webp`;
             cardImg.alt = `Image of a playing card, value ${this.hand [i]}`;
 
             //append the card image to element
@@ -25,8 +34,37 @@ class Player {
         }        
     }
 
-    calculateHandCount() {
-    
+    calculateHandValue() {
+        this.handValue = 0; //reset to clear any prev value
+        const faceCards = ['j','q','k'];
+        let numAces = 0;
+
+        for (let i = 0; i < this.hand.length; i++) {
+            if (this.hideFirstCard && i===0) {
+                //dont add value for dealer hidden card
+            } else if (faceCards.some(faceCard => this.hand[i].includes(faceCard))){ //do we have a face card
+                this.handValue += 10;    
+            } else if (this.hand[i].includes ('a')) {
+                //check if we have aces and keep count
+                numAces ++;
+            } else {
+                //add value for norm cards
+                this.handValue += parseInt(this.hand[i].slice(0, this.hand[i].length - 1));
+            }
+        }
+        
+        //add value for aces card based on not busting player
+        for (let i = 0; i < numAces; i++) {
+            if (this.handValue + 11 > 21) {
+                this.handValue += 1;
+            } else {
+                this.handValue += 11;
+            }
+        }
+    }
+
+    displayHandValue() {
+
     }
 
     getValueOfCard(card) {
@@ -132,8 +170,14 @@ function startGame(dealer, humanPlayer) {
     console.log(humanPlayer.hand);
 
     //Display dealer and players cards 
+    dealer.setHideFirstCard();
+    dealer.displayHand("dealers-cards");
     humanPlayer.displayHand("players-cards");
-    dealer.displayHand("dealers-cards", true);
+
+    //calculate hand counts
+    dealer.calculateHandValue();
+    humanPlayer.calculateHandValue();
+    
 }
 
 
