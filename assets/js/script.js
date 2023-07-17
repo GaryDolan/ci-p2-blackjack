@@ -79,8 +79,25 @@ class Player {
         return this.handValue > 21;
     }
 
-    clearHand() {
+    resetHand(elementId) {
+        //clear card values from hand 
         this.hand = [];
+        
+        //target the div that we will display empty cards in 
+        const cardContainer = document.getElementById(elementId);
+        
+        //clear out any placeholder images
+        cardContainer.innerHTML = "";
+        
+        //create and append the image based on hand values
+        for (let i = 0; i < 2; i++) {
+            const cardImg = document.createElement('img');
+            cardImg.src = "../../assets/images/playing-card-images/card-back.webp";
+            cardImg.alt = "Image of the back of a playing card, it is red.";
+
+            //append the card image to element
+            cardContainer.appendChild(cardImg);  
+        }        
     }
 }
 
@@ -122,6 +139,7 @@ class Dealer extends Player {
         let card = this.deck.pop();
         player.hand.push(card)
     }
+
     checkStand () {
         
     }
@@ -151,7 +169,6 @@ class HumanPlayer extends Player {
         this.betAmount = parseInt(document.getElementById("player-bet-input").value);
         
         //validate user input and place bet 
-        console.log(this.betAmount);
         if(isNaN(this.betAmount) || this.betAmount % 25 != 0 ) {
             alert ("Please enter a valid betting mount in €25 increments, €25, €50, €75, etc. or use the arrows to select a betting amount");
         } else {
@@ -183,7 +200,8 @@ class HumanPlayer extends Player {
     }
     
     enableBetting() {
-        //set betting back up 
+        enableBetButton();
+        enableBetInput();
     }
 
     hit(dealer){
@@ -191,13 +209,12 @@ class HumanPlayer extends Player {
         this.displayHand("players-cards");
         this.calculateHandValue();
         this.displayHandValue("player-hand-value");
-        if (this.checkBust()) {
-            //disable hit button
+        if (this.checkBust()) { 
             disableHitButton();
-            setTimeout(() => {
-                alert("You are bust, Better luck next time");
-            }, 1000);
-            
+            //after half a second let them know their bust 
+            setTimeout(() => {alert("You are bust, Better luck next time");}, 500);
+            //after 4 seconds restart the game 
+            setTimeout(() => {startGame(dealer, this);}, 4000) 
         }
     }
 
@@ -233,6 +250,9 @@ function initialiseGame() {
 }
 
 function startGame(dealer, humanPlayer) {
+    //enable betting
+    humanPlayer.enableBetting()
+
     //move focus to bet
     document.getElementById("player-bet-input").focus();
         
@@ -245,16 +265,16 @@ function startGame(dealer, humanPlayer) {
      
     //display player chip count
     humanPlayer.displayChipCount();
+
+    //clear old cards and display card backs 
+    dealer.resetHand("dealers-cards")
+    humanPlayer.resetHand("players-cards");
 }
 
 function startDeal(dealer, humanPlayer) {
     //deal 2 cards to each player, one at a time.
     const players = [dealer, humanPlayer];
     const cardsPerPlayer = 2;
-
-    //clear old cards if any 
-    dealer.clearHand();
-    humanPlayer.clearHand();
 
     //deal cards
     for (let i = 0; i < cardsPerPlayer; i++) {
