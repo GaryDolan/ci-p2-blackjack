@@ -67,12 +67,16 @@ class Player {
         document.getElementById(elementId).textContent = this.handValue;
     }
 
+    hit(dealer){
+
+    }
+
     getValueOfCard(card) {
     
     }
 
     checkBust() {
-    
+        return this.handValue > 21;
     }
 }
 
@@ -114,7 +118,6 @@ class Dealer extends Player {
         let card = this.deck.pop();
         player.hand.push(card)
     }
-
     checkStand () {
         
     }
@@ -156,6 +159,10 @@ class HumanPlayer extends Player {
             this.chipCount -= this.betAmount;
             this.displayChipCount();
 
+            //enable hit and stand buttons
+            document.getElementById("hit-button").disabled = false;
+            document.getElementById("stand-button").disabled = false;
+
             //disable betting button and input 
             this.disableBetting();
         }
@@ -172,6 +179,19 @@ class HumanPlayer extends Player {
         //set betting back up 
     }
 
+    hit(dealer){
+        dealer.dealCard(this);
+        this.displayHand("players-cards");
+        this.calculateHandValue();
+        this.displayHandValue("player-hand-value");
+        if (this.checkBust()) {
+            setTimeout(() => {
+                alert("You are bust, Better luck next time");
+            }, 1000);
+
+        }
+    }
+
     setStand() {
         
     }
@@ -180,16 +200,32 @@ class HumanPlayer extends Player {
 //FUNCTION DEFINITIONS
 
 function initialiseGame() {
+    //move focus to bet
+    document.getElementById("player-bet-input").focus();
+
+    //block hit and stand buttons
+    document.getElementById("hit-button").disabled = true;
+    document.getElementById("stand-button").disabled = true;
+
     //initial logic only run once, at the start of a new game. 
     const dealer = new Dealer();
     const humanPlayer = new HumanPlayer();
     dealer.newDeck();
     dealer.shuffleDeck();
 
-    //Add even listener to place bet button (located here as it needs access to humanPlayer method)
+    //Add even listeners to buttons (located here as it needs access to Player methods)
+    //place bet button 
     const placeBetButton = document.getElementById("place-bet-button");
     placeBetButton.addEventListener("click", function() {
         humanPlayer.placeBet();    
+    });
+
+    //hit button
+    const hitButton = document.getElementById("hit-button");
+    hitButton.addEventListener("click", function() {
+        humanPlayer.hit(dealer);
+        //dealer.playerHit(humanPlayer);
+        //humanPlayer.displayHand("players-cards");  
     });
 
     //begin gameplay 
