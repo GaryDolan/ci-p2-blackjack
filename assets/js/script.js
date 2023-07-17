@@ -78,6 +78,10 @@ class Player {
     checkBust() {
         return this.handValue > 21;
     }
+
+    clearHand() {
+        this.hand = [];
+    }
 }
 
 class Dealer extends Player {
@@ -233,12 +237,18 @@ function startGame(dealer, humanPlayer) {
     disableHitButton();
     disableStandButton();
     
-        //update max bet allowed
+    //update max bet allowed
     humanPlayer.setMaxBet();
     
     //deal 2 cards to each player, one at a time.
     const players = [dealer, humanPlayer];
     const cardsPerPlayer = 2;
+
+    //clear old cards if any 
+    dealer.clearHand();
+    humanPlayer.clearHand();
+
+    //deal cards
     for (let i = 0; i < cardsPerPlayer; i++) {
         for (let player of players) {
             dealer.dealCard (player);
