@@ -146,7 +146,7 @@ class HumanPlayer extends Player {
         document.getElementById("player-bet-input").max = this.chipCount;
     }
 
-    placeBet() {
+    placeBet(dealer) {
         //get bet amount 
         this.betAmount = parseInt(document.getElementById("player-bet-input").value);
         
@@ -169,6 +169,9 @@ class HumanPlayer extends Player {
 
             //disable betting button and input 
             this.disableBetting();
+
+            //deal the cards
+            startDeal(dealer, this);
         }
     }
 
@@ -194,7 +197,7 @@ class HumanPlayer extends Player {
             setTimeout(() => {
                 alert("You are bust, Better luck next time");
             }, 1000);
-
+            
         }
     }
 
@@ -206,9 +209,6 @@ class HumanPlayer extends Player {
 //FUNCTION DEFINITIONS
 
 function initialiseGame() {
-    //move focus to bet
-    document.getElementById("player-bet-input").focus();
-
     //initial logic only run once, at the start of a new game. 
     const dealer = new Dealer();
     const humanPlayer = new HumanPlayer();
@@ -219,7 +219,7 @@ function initialiseGame() {
     //place bet button 
     const placeBetButton = document.getElementById("place-bet-button");
     placeBetButton.addEventListener("click", function() {
-        humanPlayer.placeBet();    
+        humanPlayer.placeBet(dealer);    
     });
 
     //hit button
@@ -233,13 +233,21 @@ function initialiseGame() {
 }
 
 function startGame(dealer, humanPlayer) {
+    //move focus to bet
+    document.getElementById("player-bet-input").focus();
+        
     //block hit and stand buttons
     disableHitButton();
     disableStandButton();
     
     //update max bet allowed
     humanPlayer.setMaxBet();
-    
+     
+    //display player chip count
+    humanPlayer.displayChipCount();
+}
+
+function startDeal(dealer, humanPlayer) {
     //deal 2 cards to each player, one at a time.
     const players = [dealer, humanPlayer];
     const cardsPerPlayer = 2;
@@ -267,9 +275,6 @@ function startGame(dealer, humanPlayer) {
     dealer.displayHandValue("dealer-hand-value")
     humanPlayer.calculateHandValue();
     humanPlayer.displayHandValue("player-hand-value")
-    
-    //display player chip count
-    humanPlayer.displayChipCount();
 }
 
 //container functions
