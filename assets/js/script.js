@@ -82,66 +82,85 @@ class Dealer extends Player {
         this.deck = [];
 	    this.noOfCardsInDeck = 52;
     }   
-        newDeck() {
-            //logic to build a new deck, may add in building from multiple decks at a later stage
-            const suits = ['c', 'd', 'h', 's'];
-            const values = ['2','3','4','5','6','7','8','9','10','j','q','k','a']
-            let card = '';
 
-            for (let suit of suits) {
-                for (let value of values) {
-                    card = value + suit;
-                    this.deck.push(card);
-                }
+    newDeck() {
+        //logic to build a new deck, may add in building from multiple decks at a later stage
+        const suits = ['c', 'd', 'h', 's'];
+        const values = ['2','3','4','5','6','7','8','9','10','j','q','k','a']
+        let card = '';
+
+        for (let suit of suits) {
+            for (let value of values) {
+                card = value + suit;
+                this.deck.push(card);
             }
-            //console.log(this.deck);
         }
+        //console.log(this.deck);
+    }
 
-        shuffleDeck() {
-            //The Fisher Yates Method is used here to shuffle the deck
-            for (let i = this.deck.length -1; i > 0; i--) {
-                let j = Math.floor(Math.random() * (i+1));
-                let k = this.deck[i];
-                this.deck[i] = this.deck[j];
-                this.deck[j] = k;
-              }
-              console.log(this.deck);
-        }
+    shuffleDeck() {
+        //The Fisher Yates Method is used here to shuffle the deck
+        for (let i = this.deck.length -1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i+1));
+            let k = this.deck[i];
+            this.deck[i] = this.deck[j];
+            this.deck[j] = k;
+            }
+            console.log(this.deck);
+    }
+    
+    dealCard(player) {
+        //deal card to specified player
+        let card = this.deck.pop();
+        player.hand.push(card)
+    }
+
+    checkStand () {
         
-        dealCard(player) {
-            //deal card to specified player
-            let card = this.deck.pop();
-            player.hand.push(card)
-        }
-
-        checkStand () {
-            
-        }
+    }
 }
 
 class HumanPlayer extends Player {
     constructor() {
         super();
         this.chipCount = 1000;
+        this.betAmount = 0;
     }
-        setChipCount(count) {
-            
-        }
+        
+    adjustChipCount(count) {
+        this.chipCount = count;            
+    }
 
-        displayChipCount() {
-            document.getElementById("chip-count").textContent = this.chipCount;
-        }
+    displayChipCount() {
+        document.getElementById("chip-count").textContent = this.chipCount;
+    }
 
-        placeBet(amount) {
-            //set bet amount
-            //adjust chip count setChipCount
-            //display new count
-        }
+    placeBet() {
+        //get bet amount 
+        this.betAmount = parseInt(document.getElementById("player-bet-input").value);
+        
+        //adjust chip count 
+        this.chipCount -= this.betAmount;
+        this.displayChipCount();
 
-        setStand() {
-            
-        }
+        //disable betting button and input 
+        this.disableBetting();
+    }
+
+    disableBetting(){
+        //lock input and button and return bet to min amount
+        document.getElementById("place-bet-button").disabled = true;
+        document.getElementById("player-bet-input").disabled = true;
+        document.getElementById("player-bet-input").value = 25;
+    }
     
+    enableBetting() {
+        //set betting back up 
+    }
+
+    setStand() {
+        
+    }
 }
 
 //FUNCTION DEFINITIONS
@@ -152,6 +171,14 @@ function initialiseGame() {
     const humanPlayer = new HumanPlayer();
     dealer.newDeck();
     dealer.shuffleDeck();
+
+    //Add even listener to place bet button (located here as it needs access to humanPlayer method)
+    const placeBetButton = document.getElementById("place-bet-button");
+    placeBetButton.addEventListener("click", function() {
+        humanPlayer.placeBet();    
+    });
+
+    //begin gameplay 
     startGame(dealer, humanPlayer);
 }
 
@@ -201,10 +228,13 @@ function endGame () {
     //can be used if player chip count reaches 0
 }
 
-//BEGIN GAMEPLAY
+
 //Wait for DOM to load before initialising the game 
 document.addEventListener("DOMContentLoaded", function() {
+    //add event listeners
+    
+    //begin game set up
     initialiseGame();
 })
 
-//EVENT LISTENERS
+

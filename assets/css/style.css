@@ -65,6 +65,12 @@ button:hover {
     border: 0.25rem solid white;
 }
 
+button:disabled, button[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
 /************************* GAME PAGE ***********************/
 .game-page-wrapper{
     max-width: 162.5rem;
@@ -154,7 +160,7 @@ header p {
 /******************* GAME CONTROLS SECTION *****************/
 .game-controls-container {
     width: 40%;
-    height: 6rem;
+    height: 5rem;
     display: flex;
     justify-content: space-around;
     align-items: center;
