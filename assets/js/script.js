@@ -74,8 +74,6 @@ class Player {
     checkBust() {
     
     }
-
-    
 }
 
 class Dealer extends Player {
@@ -124,14 +122,14 @@ class Dealer extends Player {
 class HumanPlayer extends Player {
     constructor() {
         super();
-    
+        this.chipCount = 1000;
     }
         setChipCount(count) {
             
         }
 
-        getChipCount() {
-            
+        displayChipCount() {
+            document.getElementById("chip-count").textContent = this.chipCount;
         }
 
         placeBet(amount) {
@@ -180,6 +178,8 @@ function startGame(dealer, humanPlayer) {
     humanPlayer.calculateHandValue();
     humanPlayer.displayHandValue("player-hand-value")
     
+    //display player chip count
+    humanPlayer.displayChipCount();
 }
 
 

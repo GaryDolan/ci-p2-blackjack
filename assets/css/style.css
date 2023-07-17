@@ -187,6 +187,10 @@ header p {
     text-underline-offset: 0.3rem;
 }
 
+#chip-count {
+    font-family: sans-serif;
+}
+
 .betting-input {
     display: flex;
     margin-bottom: 1rem;
