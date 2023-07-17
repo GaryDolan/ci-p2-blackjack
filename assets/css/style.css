@@ -139,9 +139,10 @@ header p {
     margin-right: 0.25rem;
 }
 
-/* holds dealer & players current count */
-.hand-count {
+/* holds dealer & players current value */
+.hand-value {
     font-size: 2.5rem;
+    font-family: sans-serif;
 }
 
 #dealers-cards img, #players-cards img {

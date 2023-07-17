@@ -63,8 +63,8 @@ class Player {
         }
     }
 
-    displayHandValue() {
-
+    displayHandValue(elementId) {
+        document.getElementById(elementId).textContent = this.handValue;
     }
 
     getValueOfCard(card) {
@@ -174,9 +174,11 @@ function startGame(dealer, humanPlayer) {
     dealer.displayHand("dealers-cards");
     humanPlayer.displayHand("players-cards");
 
-    //calculate hand counts
+    //calculate and display hand counts
     dealer.calculateHandValue();
+    dealer.displayHandValue("dealer-hand-value")
     humanPlayer.calculateHandValue();
+    humanPlayer.displayHandValue("player-hand-value")
     
 }
 
