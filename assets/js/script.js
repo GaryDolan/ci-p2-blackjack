@@ -18,7 +18,6 @@ class Player {
 
         //append the card image to element
         cardContainer.appendChild(cardImg);  
-
     }
 
     calculateHandValue() {
@@ -124,24 +123,6 @@ class Dealer extends Player {
             this.deck[j] = k;
             }
             console.log(this.deck);
-    }
-
-    dealInitialHand(humanPlayer) {
-        //clear both hands
-        this.clearCards ("dealers-cards");
-        humanPlayer.clearCards ("players-cards");
-        
-        //dealth one by one so that we can hide the first card and add delays/animation later
-        this.dealCard(this);
-        this.addCardToDisplay("dealers-cards", true);
-        this.dealCard(humanPlayer);
-        humanPlayer.addCardToDisplay("players-cards");
-
-        this.dealCard(this);
-        this.addCardToDisplay("dealers-cards");
-        this.dealCard(humanPlayer);
-        humanPlayer.addCardToDisplay("players-cards");
-  
     }
     
     dealCard(player) {
@@ -281,9 +262,26 @@ function startGame(dealer, humanPlayer) {
     humanPlayer.resetHand("players-cards");
 }
 
-function startDeal(dealer, humanPlayer) {
-    //deal first 2 cards to each player
-    dealer.dealInitialHand(humanPlayer);
+async function startDeal(dealer, humanPlayer) {
+    //dealth one by one so that we can hide the first card and add delays/animation
+    
+    //Dealer 1st card no delay (remove card backs)
+    dealer.dealCard(dealer);
+    dealer.clearCards ("dealers-cards");
+    dealer.addCardToDisplay("dealers-cards", true);
+
+    await delay(1000);
+    dealer.dealCard(humanPlayer);
+    humanPlayer.clearCards ("players-cards");
+    humanPlayer.addCardToDisplay("players-cards");
+
+    await delay(1000);
+    dealer.dealCard(dealer);
+    dealer.addCardToDisplay("dealers-cards");
+
+    await delay(1000);
+    dealer.dealCard(humanPlayer);
+    humanPlayer.addCardToDisplay("players-cards");
     
     console.log(dealer.hand);
     console.log(humanPlayer.hand);
@@ -351,6 +349,10 @@ function endGame () {
     //can be used if player chip count reaches 0
 }
 
+//delay function for use in async functions, as learned from geeksforgeeks.org
+function delay(millisec) {
+    return new Promise(resolve => {setTimeout(() => {resolve ('')}, millisec);} )
+}
 
 //Wait for DOM to load before initialising the game 
 document.addEventListener("DOMContentLoaded", function() {
