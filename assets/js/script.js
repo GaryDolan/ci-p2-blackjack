@@ -171,10 +171,6 @@ class HumanPlayer extends Player {
             this.chipCount -= this.betAmount;
             this.displayChipCount();
 
-            //enable hit and stand buttons
-            enableHitButton();
-            enableStandButton();
-
             //disable betting button and input 
             this.disableBetting();
 
@@ -202,10 +198,11 @@ class HumanPlayer extends Player {
         this.displayHandValue("player-hand-value");
         if (this.checkBust()) { 
             disableHitButton();
+            disableStandButton();
             //after half a second let them know their bust 
             setTimeout(() => {alert("You are bust, Better luck next time");}, 500);
-            //after 4 seconds restart the game 
-            setTimeout(() => {startGame(dealer, this);}, 4000) 
+            //after 3 seconds restart the game 
+            setTimeout(() => {startGame(dealer, this);}, 3000) 
         }
     }
 
@@ -291,6 +288,10 @@ async function startDeal(dealer, humanPlayer) {
     dealer.displayHandValue("dealer-hand-value")
     humanPlayer.calculateHandValue();
     humanPlayer.displayHandValue("player-hand-value")
+
+    //enable hit and stand buttons
+    enableHitButton();
+    enableStandButton();
 }
 
 //container functions
