@@ -5,33 +5,20 @@ class Player {
         this.handValue = 0;
         this.stand = false;
         this.isBust = false;
-        this.hideFirstCard = false;
     }
     
-    setHideFirstCard() {
-        this.hideFirstCard = true;
-    }
-
-    resetHideFirstCard() {
-        this.hideFirstCard = flase;
-    }
-
-    displayHand (elementId) {
+    addCardToDisplay(elementId, hideFirstCard = false) {
         //target the div that we will display cards in 
         const cardContainer = document.getElementById(elementId);
         
-        //clear out any placeholder images
-        cardContainer.innerHTML = "";
-        
-        //create and append the image based on hand values
-        for (let i = 0; i < this.hand.length; i++) {
-            const cardImg = document.createElement('img');
-            cardImg.src = `../../assets/images/playing-card-images/${this.hideFirstCard && i===0 ? "card-back" : this.hand[i]}.webp`;
-            cardImg.alt = `Image of a playing card, value ${this.hand [i]}`;
+        //create and append the image based on last card added to the hand
+        const cardImg = document.createElement('img'); 
+        cardImg.src = `../../assets/images/playing-card-images/${hideFirstCard ? "card-back" : this.hand[this.hand.length - 1]}.webp`;
+        cardImg.alt = `Image of a playing card, value ${this.hand[this.hand.length - 1]}`;
 
-            //append the card image to element
-            cardContainer.appendChild(cardImg);  
-        }        
+        //append the card image to element
+        cardContainer.appendChild(cardImg);  
+
     }
 
     calculateHandValue() {
@@ -71,10 +58,6 @@ class Player {
 
     }
 
-    getValueOfCard(card) {
-    
-    }
-
     checkBust() {
         return this.handValue > 21;
     }
@@ -82,14 +65,14 @@ class Player {
     resetHand(elementId) {
         //clear card values from hand 
         this.hand = [];
-        
+
         //target the div that we will display empty cards in 
         const cardContainer = document.getElementById(elementId);
         
         //clear out any placeholder images
         cardContainer.innerHTML = "";
         
-        //create and append the image based on hand values
+        //create and append the image of card backs
         for (let i = 0; i < 2; i++) {
             const cardImg = document.createElement('img');
             cardImg.src = "../../assets/images/playing-card-images/card-back.webp";
@@ -98,6 +81,15 @@ class Player {
             //append the card image to element
             cardContainer.appendChild(cardImg);  
         }        
+    }
+
+    clearCards(elementId)
+    {
+        //target the div that we will display empty cards in 
+        const cardContainer = document.getElementById(elementId);
+
+        //clear out any placeholder images
+        cardContainer.innerHTML = "";
     }
 }
 
@@ -132,6 +124,24 @@ class Dealer extends Player {
             this.deck[j] = k;
             }
             console.log(this.deck);
+    }
+
+    dealInitialHand(humanPlayer) {
+        //clear both hands
+        this.clearCards ("dealers-cards");
+        humanPlayer.clearCards ("players-cards");
+        
+        //dealth one by one so that we can hide the first card and add delays/animation later
+        this.dealCard(this);
+        this.addCardToDisplay("dealers-cards", true);
+        this.dealCard(humanPlayer);
+        humanPlayer.addCardToDisplay("players-cards");
+
+        this.dealCard(this);
+        this.addCardToDisplay("dealers-cards");
+        this.dealCard(humanPlayer);
+        humanPlayer.addCardToDisplay("players-cards");
+  
     }
     
     dealCard(player) {
@@ -206,7 +216,7 @@ class HumanPlayer extends Player {
 
     hit(dealer){
         dealer.dealCard(this);
-        this.displayHand("players-cards");
+        this.addCardToDisplay("players-cards");
         this.calculateHandValue();
         this.displayHandValue("player-hand-value");
         if (this.checkBust()) { 
@@ -272,23 +282,11 @@ function startGame(dealer, humanPlayer) {
 }
 
 function startDeal(dealer, humanPlayer) {
-    //deal 2 cards to each player, one at a time.
-    const players = [dealer, humanPlayer];
-    const cardsPerPlayer = 2;
-
-    //deal cards
-    for (let i = 0; i < cardsPerPlayer; i++) {
-        for (let player of players) {
-            dealer.dealCard (player);
-        }
-    }
+    //deal first 2 cards to each player
+    dealer.dealInitialHand(humanPlayer);
+    
     console.log(dealer.hand);
     console.log(humanPlayer.hand);
-
-    //Display dealer and players cards 
-    dealer.setHideFirstCard();
-    dealer.displayHand("dealers-cards");
-    humanPlayer.displayHand("players-cards");
 
     //calculate and display hand counts
     dealer.calculateHandValue();
