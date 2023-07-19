@@ -7,17 +7,28 @@ class Player {
         this.isBust = false;
     }
     
-    addCardToDisplay(elementId, hideFirstCard = false) {
+    addCardToDisplay(elementId, hideFirstCard = false, position = "last") {
         //target the div that we will display cards in 
         const cardContainer = document.getElementById(elementId);
         
-        //create and append the image based on last card added to the hand
-        const cardImg = document.createElement('img'); 
-        cardImg.src = `../../assets/images/playing-card-images/${hideFirstCard ? "card-back" : this.hand[this.hand.length - 1]}.webp`;
-        cardImg.alt = `Image of a playing card, value ${this.hand[this.hand.length - 1]}`;
+        //create and append the image based on the position passed in 
+        const cardImg = document.createElement('img');
+        if (position === "last") {
+            cardImg.src = `../../assets/images/playing-card-images/${hideFirstCard ? "card-back" : this.hand[this.hand.length - 1]}.webp`;
+            cardImg.alt = `Image of a playing card, value ${this.hand[this.hand.length - 1]}`;
+            
+            //append the card image to element
+            cardContainer.appendChild(cardImg);  
+        } else {
+            //target the first child image
+            const firstChild = cardContainer.firstChild;
+            cardImg.src = `../../assets/images/playing-card-images/${hideFirstCard ? "card-back" : this.hand[0]}.webp`;
+            cardImg.alt = `Image of a playing card, value ${this.hand[0]}`;
 
-        //append the card image to element
-        cardContainer.appendChild(cardImg);  
+            //delete first card and insert new
+            cardContainer.insertBefore(cardImg, firstChild);
+            cardContainer.removeChild(firstChild);
+        } 
     }
 
     calculateHandValue() {
@@ -138,6 +149,10 @@ class Dealer extends Player {
         //deal card to specified player
         let card = this.deck.pop();
         player.hand.push(card)
+    }
+
+    displayHoleCard() {
+
     }
 
     checkStand () {
@@ -267,6 +282,12 @@ function initialiseGame() {
         startAdditionalGame(dealer, humanPlayer);
     });
 
+    //Stand button
+    const standButton = document.getElementById("stand-button");
+    standButton.addEventListener("click", function() {
+        dealersPlay(dealer); 
+    });
+
     //begin gameplay 
     startGame(dealer, humanPlayer);
 }
@@ -346,6 +367,22 @@ async function startDeal(dealer, humanPlayer) {
 }
 
 //logic run once player stands()
+function dealersPlay(dealer) {
+    disableHitButton();
+    disableStandButton();
+
+    //display dealers first card
+    dealer.addCardToDisplay("dealers-cards", false, "first");
+    //hit until 17 or bust
+    //logic if bust
+    //logic if 17
+    //logic if stand and we need to decide a winnder
+    //start new game
+
+}
+    
+
+
 
 
 //container functions
