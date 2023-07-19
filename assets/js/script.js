@@ -37,7 +37,7 @@ class Player {
         let numAces = 0;
 
         for (let i = 0; i < this.hand.length; i++) {
-            if (this.hideFirstCard && i===0) {
+            if (this.hideFirstCardValue && i===0) {
                 //dont add value for dealer hidden card
             } else if (faceCards.some(faceCard => this.hand[i].includes(faceCard))){ //do we have a face card
                 this.handValue += 10;    
@@ -110,6 +110,10 @@ class Player {
     stand () {
 
     }
+
+    checkHandValue(){
+        return this.handValue;
+    }
 }
 
 class Dealer extends Player {
@@ -117,6 +121,7 @@ class Dealer extends Player {
         super();
         this.deck = [];
 	    this.noOfCardsInDeck = 52;
+        this.hideFirstCardValue = true;
     }   
 
     newDeck() {
@@ -151,8 +156,12 @@ class Dealer extends Player {
         player.hand.push(card)
     }
 
-    displayHoleCard() {
+    hideHoleCardValue () {
+        this.hideFirstCardValue = true;
+    }
 
+    showHoleCardValue () {
+        this.hideFirstCardValue = false;
     }
 
     checkStand () {
@@ -332,15 +341,18 @@ async function startDeal(dealer, humanPlayer) {
     dealer.clearCards ("dealers-cards");
     dealer.addCardToDisplay("dealers-cards", true);
 
+    //1 sec then player card 1
     await delay(1000);
     dealer.dealCard(humanPlayer);
     humanPlayer.clearCards ("players-cards");
     humanPlayer.addCardToDisplay("players-cards");
 
+    //1 sec then dealer card 2
     await delay(1000);
     dealer.dealCard(dealer);
     dealer.addCardToDisplay("dealers-cards");
-
+    
+    //1 sec then player card 2
     await delay(1000);
     dealer.dealCard(humanPlayer);
     humanPlayer.addCardToDisplay("players-cards");
@@ -366,24 +378,32 @@ async function startDeal(dealer, humanPlayer) {
     enableStandButton();
 }
 
-//logic run once player stands()
-function dealersPlay(dealer) {
+//logic run once player stands
+async function dealersPlay(dealer) {
+    //no more player activity
     disableHitButton();
     disableStandButton();
 
     //display dealers first card
     dealer.addCardToDisplay("dealers-cards", false, "first");
-    //hit until 17 or bust
-    //logic if bust
-    //logic if 17
-    //logic if stand and we need to decide a winnder
-    //start new game
 
+    //show dealers real hand value 
+    dealer.showHoleCardValue();
+    dealer.calculateHandValue();
+    dealer.displayHandValue("dealer-hand-value");
+    await delay(1000);
+
+    //Dealer takes cards until above 17 
+    while (dealer.checkHandValue() < 17) {
+        dealer.dealCard(dealer);
+        dealer.addCardToDisplay("dealers-cards");
+        dealer.calculateHandValue();
+        dealer.displayHandValue("dealer-hand-value");
+        await delay(1000);
+    }    
+    checkWinner();
 }
     
-
-
-
 
 //container functions
 function disableHitButton() {
@@ -425,7 +445,10 @@ function resetBetAmount() {
 
 //Regular functions
 function checkWinner() {
-    //logic to check the players hand coundt and determin the winner, displayed winner message and if player won add bet to chip count 1:1 game
+    
+    console.log ("got here")//logic if bust dealer bust
+    //compare dealer and user hand values declare a winner
+    //start new game
 }
 
 function resetGame() {
