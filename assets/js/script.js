@@ -59,7 +59,7 @@ class Player {
 
     resetHand(cardContainerId, handValueContainerId) {
         //clear handValue and display
-        this.handValue = 0
+        this.handValue = 0;
         this.displayHandValue(handValueContainerId);
         
         //clear card values from hand 
@@ -164,6 +164,10 @@ class HumanPlayer extends Player {
         document.getElementById("player-bet-input").max = this.chipCount;
     }
 
+    hasMinBetAmount() {
+        return this.chipCount > 10;
+    }
+
     placeBet(dealer) {
         //get bet amount 
         this.betAmount = parseInt(document.getElementById("player-bet-input").value);
@@ -245,16 +249,22 @@ function initialiseGame() {
 
     //Add even listeners to buttons (located here as it needs access to Player methods)
     
-    //place bet button 
+    //Place bet button 
     const placeBetButton = document.getElementById("place-bet-button");
     placeBetButton.addEventListener("click", function() {
         humanPlayer.placeBet(dealer);    
     });
 
-    //hit button
+    //Hit button
     const hitButton = document.getElementById("hit-button");
     hitButton.addEventListener("click", function() {
         humanPlayer.hit(dealer); 
+    });
+
+    //Play again button
+    const playAgainButton = document.getElementById("play-again-button");
+    playAgainButton.addEventListener("click", function() {
+        startAdditionalGame(dealer, humanPlayer);
     });
 
     //begin gameplay 
@@ -265,9 +275,6 @@ function initialiseGame() {
 function startGame(dealer, humanPlayer) {
     //clear old bet 
     humanPlayer.clearBet();
-
-    //enable betting
-    humanPlayer.enableBetting()
 
     //move focus to bet
     document.getElementById("player-bet-input").focus();
@@ -285,6 +292,14 @@ function startGame(dealer, humanPlayer) {
     //clear old cards and display card backs 
     dealer.resetHand("dealers-cards", "dealer-hand-value")
     humanPlayer.resetHand("players-cards", "player-hand-value");
+    
+    if (humanPlayer.hasMinBetAmount()) {
+        //enable betting
+        humanPlayer.enableBetting()
+    }else {
+        alert("You do not have enought chips to place a minimum bet, Thank you for playing, please use the Play Again to start a new game");
+        displayPlayAgainButton();//, when pressed it will run a function to clear the button and start init game
+    }
 }
 
 //logic run once the placer places their bet
@@ -420,6 +435,49 @@ function displayGameResultsMsg (result, dealer, player) {
     }
     //after 3 seconds restart the game 
     setTimeout(() => {startGame(dealer, player);}, 3000) 
+}
+
+function displayPlayAgainButton() {
+    //Hide player chip count 
+    const chipCountContainer = document.getElementsByClassName("player-chip-count");
+    chipCountContainer[0].style.display = "none";
+
+    //Hide butting input 
+    const bettingInput = document.getElementsByClassName("betting-input");
+    bettingInput[0].style.display = "none";
+
+    //Hide place bet button
+    const betButton = document.getElementById("place-bet-button");
+    betButton.style.display = "none";
+
+    //Display play again button  
+    const newGameButton = document.getElementById("play-again-button");
+    newGameButton.style.display = "block";
+}
+
+function startAdditionalGame(dealer, humanPlayer) {
+    //Display player chip count 
+    const chipCountContainer = document.getElementsByClassName("player-chip-count");
+    chipCountContainer[0].style.display = "block";
+
+    //Display butting input 
+    const bettingInput = document.getElementsByClassName("betting-input");
+    bettingInput[0].style.display = "flex";
+
+    //Display place bet button
+    const betButton = document.getElementById("place-bet-button");
+    betButton.style.display = "block";
+
+    //Hide play again button  
+    const newGameButton = document.getElementById("play-again-button");
+    newGameButton.style.display = "none";
+
+    //Give the players some chips
+    humanPlayer.adjustChipCount(1000);
+
+    //call start game
+    startGame(dealer, humanPlayer);
+
 }
 
 //Wait for DOM to load before initialising the game 
