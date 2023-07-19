@@ -53,20 +53,20 @@ class Player {
         document.getElementById(elementId).textContent = this.handValue;
     }
 
-    hit(dealer){
-
-    }
-
     checkBust() {
         return this.handValue > 21;
     }
 
-    resetHand(elementId) {
+    resetHand(cardContainerId, handValueContainerId) {
+        //clear handValue and display
+        this.handValue = 0
+        this.displayHandValue(handValueContainerId);
+        
         //clear card values from hand 
         this.hand = [];
-
+        
         //target the div that we will display empty cards in 
-        const cardContainer = document.getElementById(elementId);
+        const cardContainer = document.getElementById(cardContainerId);
         
         //clear out any placeholder images
         cardContainer.innerHTML = "";
@@ -89,6 +89,15 @@ class Player {
 
         //clear out any placeholder images
         cardContainer.innerHTML = "";
+    }
+ 
+    //These functions are overridden in the derived classes (dealer, humanPlayer)
+    hit(){
+
+    }
+
+    stand () {
+
     }
 }
 
@@ -160,8 +169,8 @@ class HumanPlayer extends Player {
         this.betAmount = parseInt(document.getElementById("player-bet-input").value);
         
         //validate user input and place bet 
-        if(isNaN(this.betAmount) || this.betAmount % 25 != 0 ) {
-            alert ("Please enter a valid betting mount in €25 increments, €25, €50, €75, etc. or use the arrows to select a betting amount");
+        if(isNaN(this.betAmount) || this.betAmount % 10 != 0 ) {
+            alert ("Please enter a valid betting mount in €10 increments, €10, €20, €30, etc. or use the arrows to select a betting amount");
         } else {
             if (this.betAmount > this.chipCount) {
                 alert(`The Bet you placed exceeded your chip count, your bet has been place at your chip count €${this.chipCount}`);
@@ -179,7 +188,11 @@ class HumanPlayer extends Player {
         }
     }
 
-    disableBetting(){
+    clearBet() {
+        this.betAmount = 0;
+    }
+
+    disableBetting() {
         //lock input and button and return bet to min amount
         disableBetButton();
         disableBetInput();
@@ -191,7 +204,7 @@ class HumanPlayer extends Player {
         enableBetInput();
     }
 
-    hit(dealer){
+    hit(dealer) {
         dealer.dealCard(this);
         this.addCardToDisplay("players-cards");
         this.calculateHandValue();
@@ -206,21 +219,32 @@ class HumanPlayer extends Player {
         }
     }
 
-    setStand() {
-        
+    checkForBlackjack(){
+        return this.handValue === 21;
+    }
+
+    collectWinnings(typeOfWin)
+    {
+        if (typeOfWin === "blackjack"){
+            this.chipCount += this.betAmount + this.betAmount * 1.5; //3:2 odds
+        }else {
+            this.chipCount += this.betAmount * 2; // 1:1 odds
+        }  
+        this.displayChipCount();
     }
 }
 
 //FUNCTION DEFINITIONS
 
+//initial logic only run once, at the start of a new game. 
 function initialiseGame() {
-    //initial logic only run once, at the start of a new game. 
     const dealer = new Dealer();
     const humanPlayer = new HumanPlayer();
     dealer.newDeck();
     dealer.shuffleDeck();
 
     //Add even listeners to buttons (located here as it needs access to Player methods)
+    
     //place bet button 
     const placeBetButton = document.getElementById("place-bet-button");
     placeBetButton.addEventListener("click", function() {
@@ -237,7 +261,11 @@ function initialiseGame() {
     startGame(dealer, humanPlayer);
 }
 
+//logic needed at the start of every game
 function startGame(dealer, humanPlayer) {
+    //clear old bet 
+    humanPlayer.clearBet();
+
     //enable betting
     humanPlayer.enableBetting()
 
@@ -255,10 +283,11 @@ function startGame(dealer, humanPlayer) {
     humanPlayer.displayChipCount();
 
     //clear old cards and display card backs 
-    dealer.resetHand("dealers-cards")
-    humanPlayer.resetHand("players-cards");
+    dealer.resetHand("dealers-cards", "dealer-hand-value")
+    humanPlayer.resetHand("players-cards", "player-hand-value");
 }
 
+//logic run once the placer places their bet
 async function startDeal(dealer, humanPlayer) {
     //dealth one by one so that we can hide the first card and add delays/animation
     
@@ -289,10 +318,20 @@ async function startDeal(dealer, humanPlayer) {
     humanPlayer.calculateHandValue();
     humanPlayer.displayHandValue("player-hand-value")
 
+    //Check for blackJack (auto win)
+    if (humanPlayer.checkForBlackjack()) {
+        displayGameResultsMsg("blackjack", dealer, humanPlayer);
+        humanPlayer.collectWinnings("blackjack");
+        return; //Exit function and do not enable buttons below 
+    }
+
     //enable hit and stand buttons
     enableHitButton();
     enableStandButton();
 }
+
+//logic run once player stands()
+
 
 //container functions
 function disableHitButton() {
@@ -328,17 +367,13 @@ function enableBetInput() {
 }
 
 function resetBetAmount() {
-    document.getElementById("player-bet-input").value = 25;
+    document.getElementById("player-bet-input").value = 10;
 }
 
 
 //Regular functions
 function checkWinner() {
     //logic to check the players hand coundt and determin the winner, displayed winner message and if player won add bet to chip count 1:1 game
-}
-
-function displayWinnerMessage() {
-    //display who won in div results message for a few seconds and then start a new hand or use a styled alert
 }
 
 function resetGame() {
@@ -353,6 +388,38 @@ function endGame () {
 //delay function for use in async functions, as learned from geeksforgeeks.org
 function delay(millisec) {
     return new Promise(resolve => {setTimeout(() => {resolve ('')}, millisec);} )
+}
+
+function displayGameResultsMsg (result, dealer, player) {
+    switch (result) {
+        case "win":
+            //after half a second let them know their bust 
+            setTimeout(() => {alert("You win, Congratulations");}, 500);
+            break;
+        case "lose":
+            //after half a second let them know their bust 
+            setTimeout(() => {alert("Dealer wins, Better luck next time");}, 500);
+            break;
+        case "bust":
+            //after half a second let them know their bust 
+            setTimeout(() => {alert("BUST, You went over 21. Dealer wins, Better luck next time");}, 500);
+            break;
+        case "blackjack":
+            //after half a second let them know their bust 
+            setTimeout(() => {alert("BLACKJACK! you have 21, You win, Congratulations");}, 500);
+            break;
+
+        case "push":
+            //after half a second let them know their bust 
+            setTimeout(() => {alert("PUSH, It's a draw with the dealer");}, 500);
+            break;
+    
+        default:
+            console.log("invalid result")
+            break;
+    }
+    //after 3 seconds restart the game 
+    setTimeout(() => {startGame(dealer, player);}, 3000) 
 }
 
 //Wait for DOM to load before initialising the game 
