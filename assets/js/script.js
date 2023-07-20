@@ -125,7 +125,8 @@ class Dealer extends Player {
     }   
 
     newDeck() {
-        //logic to build a new deck, may add in building from multiple decks at a later stage
+        //logic to build a new deck
+        this.deck = []; //clear deck for when we create a new deck mid game
         const suits = ['c', 'd', 'h', 's'];
         const values = ['2','3','4','5','6','7','8','9','10','j','q','k','a'];
         let card = '';
@@ -163,8 +164,8 @@ class Dealer extends Player {
         this.hideFirstCardValue = false;
     }
 
-    checkStand () {
-        
+    getNumOfCardInDeck() {
+        return this.deck.length;   
     }
 }
 
@@ -337,8 +338,15 @@ function startGame(dealer, humanPlayer) {
     }
 }
 
-//logic run once the placer places their bet
+//logic run once the player places their bet
 async function startDeal(dealer, humanPlayer) {
+    //check if we need a new deck
+    if (dealer.getNumOfCardInDeck() < 20) {
+        //build and shuffle a new deck
+        dealer.newDeck();
+        dealer.shuffleDeck();
+    }
+    
     //dealth one by one so that we can hide the first card and add delays/animation
     
     //Dealer 1st card no delay (remove card backs)
@@ -448,7 +456,6 @@ function resetBetAmount() {
 
 
 //Regular functions
-
 
 //delay function for use in async functions, as learned from geeksforgeeks.org
 function delay(millisec) {
