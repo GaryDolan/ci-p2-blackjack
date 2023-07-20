@@ -59,10 +59,22 @@ button {
     border: 0.25rem solid black;
 }
 
-button:hover {
+button:hover, .button-style:hover {
     color: white;
     background-color: #01441b;
     border: 0.25rem solid white;
+}
+
+.button-style {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 13rem ;
+    height: 3rem;
+    border-radius: 1.5rem/1.5rem;
+    color: white;
+    background-color: #B85C00;
+    font: 700 1.5rem Raleway, sans-serif;
 }
 
 button:disabled, button[disabled] {
@@ -72,7 +84,7 @@ button:disabled, button[disabled] {
 }
 
 /************************* GAME PAGE ***********************/
-.game-page-wrapper{
+.game-page-wrapper, .page-wrapper{
     max-width: 162.5rem;
     height: 100vh;
     background:url(../images/background.webp) no-repeat center top;
@@ -117,7 +129,7 @@ header p {
 }
 
 /*********************** GAME CONTAINER *********************/
-.game-container {
+.game-container{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -217,4 +229,28 @@ header p {
     width:20rem;
     font-size: 2rem;
     display: none;
+}
+
+/************************* 404 PAGE ***********************/
+.four-zero-four {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.four-zero-four  h2 {
+    font-size: 2rem;
+    margin: 1rem 0 1rem 0;
+}
+
+.four-zero-four h3 {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+}
+
+.four-zero-four strong{
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
 }
