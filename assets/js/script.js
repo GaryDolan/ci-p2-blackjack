@@ -14,7 +14,7 @@ class Player {
         //create and append the image based on the position passed in 
         const cardImg = document.createElement('img');
         if (position === "last") {
-            cardImg.src = `../../assets/images/playing-card-images/${hideFirstCard ? "card-back" : this.hand[this.hand.length - 1]}.webp`;
+            cardImg.src = `assets/images/playing-card-images/${hideFirstCard ? "card-back" : this.hand[this.hand.length - 1]}.webp`;
             cardImg.alt = `Image of a playing card, value ${this.hand[this.hand.length - 1]}`;
             
             //append the card image to element
@@ -22,7 +22,7 @@ class Player {
         } else {
             //target the first child image
             const firstChild = cardContainer.firstChild;
-            cardImg.src = `../../assets/images/playing-card-images/${hideFirstCard ? "card-back" : this.hand[0]}.webp`;
+            cardImg.src = `assets/images/playing-card-images/${hideFirstCard ? "card-back" : this.hand[0]}.webp`;
             cardImg.alt = `Image of a playing card, value ${this.hand[0]}`;
 
             //delete first card and insert new
@@ -85,7 +85,7 @@ class Player {
         //create and append the image of card backs
         for (let i = 0; i < 2; i++) {
             const cardImg = document.createElement('img');
-            cardImg.src = "../../assets/images/playing-card-images/card-back.webp";
+            cardImg.src = "assets/images/playing-card-images/card-back.webp";
             cardImg.alt = "Image of the back of a playing card, it is red.";
 
             //append the card image to element
@@ -102,15 +102,6 @@ class Player {
         cardContainer.innerHTML = "";
     }
  
-    //These functions are overridden in the derived classes (dealer, humanPlayer)
-    hit(){
-
-    }
-
-    stand () {
-
-    }
-
     getHandValue(){
         return this.handValue;
     }
