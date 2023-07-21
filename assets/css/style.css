@@ -121,11 +121,19 @@ header {
     align-items: center;
 } 
 
+.logo-content h1:hover {
+    color: #CACBD8;
+}
+
 /* Game rules pop up */
-header p {
+#game-rules {
     margin-right: 1.5rem;
     text-decoration: underline;
     text-decoration-thickness: 0.15rem;
+}
+
+#game-rules:hover {
+    color: #CACBD8;
 }
 
 /*********************** GAME CONTAINER *********************/
@@ -223,6 +231,7 @@ header p {
     font-weight: 600;
 }
 
+/********************** PLAY AGAIN BUTTON *******************/
 /* Play again button - hidden by default */
 #play-again-button {
     height: 8rem;
@@ -253,4 +262,52 @@ header p {
 .four-zero-four strong{
     font-size: 1.3rem;
     margin-bottom: 2rem;
+}
+
+/************************** MODAL ************************/
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1; /*Sit on top*/
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    /* overflow: auto; scroll if needed */
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.modal-content {
+    background-color: #01441b;
+    color: white;
+    margin: 5% 10%;
+    padding: 1.5rem;
+    border: 0.25rem;
+    width: 80%;
+    text-align: center;
+}
+
+/*P is added when we modify the inner HTML of modal message in JS*/
+#modal-message {  
+    text-align: left;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+#modal-message p {  
+    text-align: center;
+    font-size: 1.5rem;
+    text-decoration: underline;
+}
+
+.close {
+    color: white;
+    float: right;
+    font-size: 4rem;
+}
+
+.close:hover, .close:focus {
+    color: #CACBD8;
+    text-decoration: none;
+    cursor: pointer;
 }

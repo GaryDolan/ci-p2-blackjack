@@ -299,6 +299,13 @@ function initialiseGame() {
         dealersPlay(dealer, humanPlayer); 
     });
 
+    //Game Rules
+    const gameRules = document.getElementById("game-rules");
+    gameRules.addEventListener("click", function() {
+        displayModal("game-rules"); 
+    });
+
+
     //begin gameplay 
     startGame(dealer, humanPlayer);
 }
@@ -559,6 +566,83 @@ function startAdditionalGame(dealer, humanPlayer) {
 
     //call start game
     startGame(dealer, humanPlayer);
+
+}
+
+//Modal 
+function displayModal (messageType) {
+    const modalContainer = document.getElementById("modal-container");
+    const modalMesssage = document.getElementById("modal-message");
+    const modalButton = document.getElementById("modal-button");
+
+    switch (messageType) {
+        case "game-rules":
+            modalMesssage.innerHTML = `<p>Blackjack Rules:</p> <br><br>
+            
+            Goal: To have a hand value closer to 21 than the dealer's hand, without exceeding 21. <br><br>
+            
+            Card Values: Number cards (2-10) are worth their face value. Face cards (Jack, Queen, King) are worth 10. Aces can be worth 1 or 11, whichever is better for the hand. <br><br>
+            
+            1. The player places a bet using the betting input and place bet button. Betting odds are 1:1 for a win or 3:2 for a blackjack. <br><br>
+            
+            2. The Deal: The dealer deals two cards to the player and themselves. One dealer card is face up, and the other is face down.<br><br>
+            
+            3. Player's Turn: The player goes first. They can choose to "Hit" and receive another card or "Stand" and keep their current hand.<br><br>
+
+            4. Blackjack: If a player's first two cards are an Ace and a 10-value card, they have a Blackjack and automatically win.<br><br>
+
+            5. Bust: If the player's hand value exceeds 21, they bust and lose the round.<br><br>
+            
+            6. Dealer's Turn: Once the player stands, it's the dealer's turn. The dealer reveals their face-down card.<br><br>
+            
+            7. Dealer's Actions: The dealer must hit until their hand value is 17 or more. If the dealer busts, the player wins.<br><br>
+            
+            8. Winning: The player wins if their hand value is closer to 21 than the dealer's hand without exceeding 21. If both have the same value, it's a push (tie), and the player's bet is returned.<br><br>
+            
+            <p>Remember, the goal is to have fun and enjoy the game. Good luck and have a great time playing Blackjack!</p>`;
+
+            break;
+
+        case value:
+            modalMessssage.textContent = ""
+            break;
+
+        case value:
+            modalMessssage.textContent = ""
+            break;
+
+        case value:
+            modalMessssage.textContent = ""
+            break;
+
+        case value:
+            modalMessssage.textContent = ""
+            break;
+
+        case value:
+            modalMessssage.textContent = ""
+            break;
+
+        case value:
+            modalMessssage.textContent = ""
+            break;
+    
+        default:
+            break;
+    }
+
+    modalContainer.style.display = "block";
+
+    //Close button
+    const closeButton = document.getElementsByClassName("close")[0];
+    closeButton.onclick = function() {
+        modalContainer.style.display = "none";
+    }
+
+   //OK button
+   modalButton.onclick = function() {
+        modalContainer.style.display = "none";    
+   }
 
 }
 
