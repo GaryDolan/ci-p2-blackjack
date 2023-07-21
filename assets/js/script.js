@@ -302,7 +302,7 @@ function initialiseGame() {
     //Game Rules
     const gameRules = document.getElementById("game-rules");
     gameRules.addEventListener("click", function() {
-        displayModal("game-rules"); 
+        displayModal("game-rules", humanPlayer); 
     });
 
 
@@ -489,32 +489,32 @@ function handleGameResults (result, dealer, humanPlayer) {
     switch (result) {
         case "win":
             //after half a second let them know they won 
-            setTimeout(() => {alert(`You won €${bet * 2}, Congratulations`);}, 500);
+            setTimeout(() => {displayModal("win", humanPlayer);}, 500);
             humanPlayer.collectWinnings("standard");
             break;
         case "lose":
             //after half a second let them know they lost 
-            setTimeout(() => {alert("Dealer wins, Better luck next time");}, 500);
+            setTimeout(() => {displayModal("lose", humanPlayer); }, 500);
             break;
         case "bust":
             //after half a second let them know their bust 
-            setTimeout(() => {alert("BUST, You went over 21. Dealer wins, Better luck next time");}, 500);
+            setTimeout(() => {displayModal("bust", humanPlayer); }, 500);
             break;
         case "blackjack":
             //after half a second let them know they got blackjack 
-            setTimeout(() => {alert(`BLACKJACK! you have 21, You won €${bet + bet * 1.5} , Congratulations`);}, 500);
+            setTimeout(() => {displayModal("blackjack", humanPlayer); }, 500);
             humanPlayer.collectWinnings("blackjack");
             break;
 
         case "push":
             //after half a second let them know it was a draw 
-            setTimeout(() => {alert(`PUSH, It's a draw with the dealer, You won €${bet}`);}, 500);
+            setTimeout(() => {displayModal("push", humanPlayer); }, 500);
             humanPlayer.collectWinnings("push");
             break;
         
         case "dealerBust":
             //after half a second let them know they won, dealer bust  
-            setTimeout(() => {alert(`You won €${bet * 2}, dealer bust, Congratulations`);}, 500);
+            setTimeout(() => {displayModal("dealerBust", humanPlayer); }, 500);
             humanPlayer.collectWinnings("standard");
             break;
 
@@ -570,16 +570,17 @@ function startAdditionalGame(dealer, humanPlayer) {
 }
 
 //Modal 
-function displayModal (messageType) {
+function displayModal (messageType, humanPlayer) {
     const modalContainer = document.getElementById("modal-container");
-    const modalMesssage = document.getElementById("modal-message");
+    const modalMessage = document.getElementById("modal-message");
     const modalButton = document.getElementById("modal-button");
+    const bet = humanPlayer.getBetAmount();
 
     switch (messageType) {
         case "game-rules":
-            modalMesssage.innerHTML = `<p>Blackjack Rules:</p> <br><br>
+            modalMessage.innerHTML = `<h2>Blackjack Rules:</h2> <br><br>
             
-            Goal: To have a hand value closer to 21 than the dealer's hand, without exceeding 21. <br><br>
+            <div> Goal: To have a hand value closer to 21 than the dealer's hand, without exceeding 21. <br><br>
             
             Card Values: Number cards (2-10) are worth their face value. Face cards (Jack, Queen, King) are worth 10. Aces can be worth 1 or 11, whichever is better for the hand. <br><br>
             
@@ -597,41 +598,43 @@ function displayModal (messageType) {
             
             7. Dealer's Actions: The dealer must hit until their hand value is 17 or more. If the dealer busts, the player wins.<br><br>
             
-            8. Winning: The player wins if their hand value is closer to 21 than the dealer's hand without exceeding 21. If both have the same value, it's a push (tie), and the player's bet is returned.<br><br>
+            8. Winning: The player wins if their hand value is closer to 21 than the dealer's hand without exceeding 21. If both have the same value, it's a push (tie), and the player's bet is returned.<br><br> </div>
             
-            <p>Remember, the goal is to have fun and enjoy the game. Good luck and have a great time playing Blackjack!</p>`;
+            <h2>Remember, the goal is to have fun. Good luck and have a great time playing Blackjack!</h2>`;
 
             break;
 
-        case value:
-            modalMessssage.textContent = ""
+        case "win":
+            modalMessage.textContent = `You won €${bet * 2}, Congratulations`;
             break;
 
-        case value:
-            modalMessssage.textContent = ""
+        case "lose":
+            modalMessage.textContent = "Dealer wins, Better luck next time";
             break;
 
-        case value:
-            modalMessssage.textContent = ""
+        case "bust":
+            modalMessage.textContent = "BUST, You went over 21. Dealer wins, Better luck next time";
             break;
 
-        case value:
-            modalMessssage.textContent = ""
+        case "blackjack":
+            modalMessage.textContent = `BLACKJACK! you have 21, You won €${bet + bet * 1.5} , Congratulations`;
             break;
 
-        case value:
-            modalMessssage.textContent = ""
+        case "push":
+            modalMessage.textContent = `PUSH, It's a draw with the dealer, You won €${bet}`;
             break;
 
-        case value:
-            modalMessssage.textContent = ""
+        case "dealerBust":
+            modalMessage.textContent = `You won €${bet * 2}, dealer bust, Congratulations`;
             break;
     
         default:
             break;
     }
 
-    modalContainer.style.display = "block";
+    modalContainer.style.display = "flex";
+    modalContainer.style.justifyContent = "center";
+    modalContainer.style.alignItems = "center";
 
     //Close button
     const closeButton = document.getElementsByClassName("close")[0];
