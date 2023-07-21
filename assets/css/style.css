@@ -85,7 +85,7 @@ button:disabled, button[disabled] {
 
 /************************* GAME PAGE ***********************/
 .game-page-wrapper, .page-wrapper{
-    max-width: 162.5rem;
+    max-width: 162.5rem;    /*size of background image*/
     height: 100vh;
     background:url(../images/background.webp) no-repeat center top;
     background-size: cover;
@@ -179,7 +179,7 @@ header {
 
 /******************* GAME CONTROLS SECTION *****************/
 .game-controls-container {
-    width: 40%;
+    width: 60%;
     height: 5rem;
     display: flex;
     justify-content: space-around;
@@ -190,12 +190,6 @@ header {
     width: 10rem ;
     height: 5rem;
     border-radius: 1.5rem/1.5rem;
-}
-
-/* .game-controls-container div{ */
-.results-message {
-    height: 100%;
-    width: 18.75rem;
 }
 
 /********************** BETTING SECTION ********************/
@@ -273,7 +267,7 @@ header {
     top: 0;
     width: 100%;
     height: 100%;
-    /* overflow: auto; scroll if needed */
+    overflow: auto; /*scroll if needed*/
     background-color: rgba(255, 255, 255, 0.7);
 }
 
@@ -315,3 +309,498 @@ header {
     cursor: pointer;
 }
 
+/************************* MEDIA QUERIES ***********************/   
+/* 1600px */
+@media screen and (max-width:100em) {
+/* GAME PAGE */
+    /* respace hit and stand buttons */
+    .game-controls-container {
+        width: 80%;
+    }
+
+/* GAME PAGE - WITH PLAY AGAIN DISPLAYED */
+    /*  */
+    
+    
+    /*  */
+
+/* GAME PAGE - WITH RESULTS DISPLAYED */
+    /*  */
+    
+    
+    /*  */
+
+/* GAME PAGE - WITH GAME RULES DISPLAYED */
+    /*  */
+    
+    
+    /*  */
+
+/* 404 PAGE */
+    /*  */
+    
+    
+    /*  */
+}
+
+/* 1300px */
+
+@media screen and (max-width:81.25em) {
+/* GAME PAGE - WITH PLAY AGAIN DISPLAYED */
+    /*  */
+    
+    
+    /*  */
+
+/* GAME PAGE - WITH RESULTS DISPLAYED */
+    /*  */
+    
+    
+    /*  */
+
+/* GAME PAGE - WITH GAME RULES DISPLAYED */
+    /*  */
+    
+    
+    /*  */
+
+/* 404 PAGE */
+    /*  */
+    
+    
+    /*  */
+
+}
+
+/* 1200px */
+@media screen and (max-width:75em) {
+    /* GAME PAGE */
+        /* respace hit and stand buttons */
+        .game-controls-container {
+            width: 100%;
+        }   
+    
+    /* GAME PAGE - WITH PLAY AGAIN DISPLAYED */
+        /*  */
+        
+        
+        /*  */
+    
+    /* GAME PAGE - WITH RESULTS DISPLAYED */
+        /*  */
+        
+        
+        /*  */
+    
+    /* GAME PAGE - WITH GAME RULES DISPLAYED */
+        /*  */
+        
+        
+        /*  */
+    
+    /* 404 PAGE */
+        /*  */
+        
+        
+        /*  */
+        
+    }
+
+/* 1100px */
+@media screen and (max-width:68.75em) {
+/* GAME PAGE - WITH PLAY AGAIN DISPLAYED */
+    /*  */
+    
+    
+    /*  */
+
+/* GAME PAGE - WITH RESULTS DISPLAYED */
+    /*  */
+    
+    
+    /*  */
+
+/* GAME PAGE - WITH GAME RULES DISPLAYED */
+    /*  */
+    
+    
+    /*  */
+
+/* 404 PAGE */
+    /*  */
+    
+    
+    /*  */
+ 
+}
+
+/* 992px */
+@media screen and (max-width:62em) {
+/* GAME PAGE */
+    /* respace hit and stand buttons */
+    .game-controls-container {
+        justify-content: space-between;
+        width: 80%;
+    }
+    
+    /* Remove card margins */
+    #dealers-cards img, #players-cards img {
+        margin: 0;
+    }
+
+    /* Overlap the cards */
+    #dealers-cards img:nth-child(n+1), #players-cards img:nth-child(n+1) {
+        margin-right: -5rem;
+    }
+
+    /* shift hand to compensate for overlap */
+    #dealers-cards, #players-cards {
+        margin-right: 5rem;
+    }
+
+/* GAME PAGE - WITH PLAY AGAIN DISPLAYED */
+    /*  */
+    
+    
+    /*  */
+
+/* GAME PAGE - WITH RESULTS DISPLAYED */
+    /*  */
+    
+    
+    /*  */
+
+/* GAME PAGE - WITH GAME RULES DISPLAYED */
+    /*  */
+    
+    
+    /*  */
+
+/* 404 PAGE */
+    /*  */
+    
+    
+    /*  */
+}
+
+/* 800px */
+@media screen and (max-width:50em) {
+    /* GAME PAGE - WITH PLAY AGAIN DISPLAYED */
+        /*  */
+        
+        
+        /*  */
+    
+    /* GAME PAGE - WITH RESULTS DISPLAYED */
+        /*  */
+        
+        
+        /*  */
+    
+    /* GAME PAGE - WITH GAME RULES DISPLAYED */
+        /*  */
+        
+        
+        /*  */
+    
+    /* 404 PAGE */
+        /*  */
+        
+        
+        /*  */
+    
+}
+
+/* 850px */
+@media screen and (max-width:53.125em) {
+/* GAME PAGE - WITH PLAY AGAIN DISPLAYED */
+    /*  */
+    
+    
+    /*  */
+
+/* GAME PAGE - WITH RESULTS DISPLAYED */
+    /*  */
+    
+    
+    /*  */
+
+/* GAME PAGE - WITH GAME RULES DISPLAYED */
+    /*  */
+    
+    
+    /*  */
+
+/* 404 PAGE */
+    /*  */
+    
+    
+    /*  */
+
+}
+
+/* 700px */
+@media screen and (max-width:43.75em) {
+/* GAME PAGE */
+    /* respace hit and stand buttons */
+    .game-controls-container {
+        width: 98%;
+        margin-bottom: 0.5rem;
+    }
+
+/* GAME PAGE - WITH PLAY AGAIN DISPLAYED */
+    /*  */
+    
+    
+    /*  */
+
+/* GAME PAGE - WITH RESULTS DISPLAYED */
+    /*  */
+    
+    
+    /*  */
+
+/* GAME PAGE - WITH GAME RULES DISPLAYED */
+    /*  */
+    
+    
+    /*  */
+
+/* 404 PAGE */
+    /*  */
+    
+    
+    /*  */
+
+}
+
+/* 650px */
+@media screen and (max-width:40.625em) { 
+    /* GAME PAGE - WITH PLAY AGAIN DISPLAYED */
+        /*  */
+        
+        
+        /*  */
+    
+    /* GAME PAGE - WITH RESULTS DISPLAYED */
+        /*  */
+        
+        
+        /*  */
+    
+    /* GAME PAGE - WITH GAME RULES DISPLAYED */
+        /*  */
+        
+        
+        /*  */
+    
+    /* 404 PAGE */
+        /*  */
+        
+        
+        /*  */
+}
+
+/* 600px */
+@media screen and (max-width:37.5em) {
+/* GAME PAGE */
+    /* Centre header content */
+    header {
+        flex-direction: column;
+    }
+
+    /* Adjust game rules */
+    #game-rules {
+        margin: 0 0 0.5rem 0;
+        text-decoration: none;
+    }
+   
+    /* resize card images */
+    #dealers-cards img, #players-cards img {
+        width: 7.813rem;
+        height: 11.375rem;
+    } 
+
+    /* Adjust the card overlap */
+    #dealers-cards img:nth-child(n+1), #players-cards img:nth-child(n+1) {
+        margin-right: -6rem;
+    }
+
+    /* shift hand to compensate for overlap */
+    #dealers-cards, #players-cards {
+        margin-right: 6rem;
+    }
+
+    /* Add some space below logo */
+    .logo {
+        margin-bottom: 1rem;
+    }
+
+    /* Underline logo text*/
+    .logo-content h1{
+        text-decoration: underline;
+    } 
+
+    /* Resize hit and stand buttons */
+    .game-controls-container button {
+        width: 8rem ;
+        height: 4rem;
+        border-radius: 1.5rem/1.5rem;
+    }
+
+/* GAME PAGE - WITH PLAY AGAIN DISPLAYED */
+    /*  */
+    
+    
+    /*  */
+
+/* GAME PAGE - WITH RESULTS DISPLAYED */
+    /*  */
+    
+    
+    /*  */
+
+/* GAME PAGE - WITH GAME RULES DISPLAYED */
+    /*  */
+    
+    
+    /*  */
+
+/* 404 PAGE */
+    /*  */
+    
+    
+    /*  */
+
+}
+
+/* 500px */
+@media screen and (max-width:31.25em) {
+/* GAME PAGE - WITH PLAY AGAIN DISPLAYED */
+    /*  */
+    
+    
+    /*  */
+
+/* GAME PAGE - WITH RESULTS DISPLAYED */
+    /*  */
+    
+    
+    /*  */
+
+/* GAME PAGE - WITH GAME RULES DISPLAYED */
+    /*  */
+    
+    
+    /*  */
+
+/* 404 PAGE */
+    /*  */
+    
+    
+    /*  */    
+    
+}
+
+
+/* 450px */
+@media screen and (max-width:28.125em) {
+    /* GAME PAGE - WITH PLAY AGAIN DISPLAYED */
+        /*  */
+        
+        
+        /*  */
+    
+    /* GAME PAGE - WITH RESULTS DISPLAYED */
+        /*  */
+        
+        
+        /*  */
+    
+    /* GAME PAGE - WITH GAME RULES DISPLAYED */
+        /*  */
+        
+        
+        /*  */
+    
+    /* 404 PAGE */
+        /*  */
+        
+        
+        /*  */    
+        
+}
+
+/* 400px */
+@media screen and (max-width:25em) {
+    /* GAME PAGE */
+    /* Remove the logo image */
+    .logo-image img {
+        display: none;  
+    }
+
+    /* Resize logo text size */
+    .logo-content h1{
+        font-size: 1.8rem;
+    } 
+
+    /* Adjust betting input */
+    .betting-input {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* GAME PAGE - WITH PLAY AGAIN DISPLAYED */
+        /*  */
+        
+        
+        /*  */
+    
+    /* GAME PAGE - WITH RESULTS DISPLAYED */
+        /*  */
+        
+        
+        /*  */
+    
+    /* GAME PAGE - WITH GAME RULES DISPLAYED */
+        /*  */
+        
+        
+        /*  */
+    
+    /* 404 PAGE */
+        /*  */
+        
+        
+        /*  */    
+        
+}
+
+
+/* 350px */
+@media screen and (max-width:21.875em) {    
+    /* GAME PAGE - WITH PLAY AGAIN DISPLAYED */
+        /*  */
+        
+        
+        /*  */
+    
+    /* GAME PAGE - WITH RESULTS DISPLAYED */
+        /*  */
+        
+        
+        /*  */
+    
+    /* GAME PAGE - WITH GAME RULES DISPLAYED */
+        /*  */
+        
+        
+        /*  */
+    
+    /* 404 PAGE */
+        /*  */
+        
+        
+        /*  */    
+        
+}
