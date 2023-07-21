@@ -273,6 +273,14 @@ function initialiseGame() {
         humanPlayer.placeBet(dealer);    
     });
 
+    //Betting input box (user pressed enter)
+    document.getElementById("player-bet-input").addEventListener("keydown", function(event) {
+        if (event.key === "Enter")
+        {
+            humanPlayer.placeBet(dealer);
+        }
+    });
+
     //Hit button
     const hitButton = document.getElementById("hit-button");
     hitButton.addEventListener("click", function() {
