@@ -339,7 +339,7 @@ function startGame(dealer, humanPlayer) {
         //enable betting
         humanPlayer.enableBetting()
     }else {
-        alert("You do not have enought chips to place a minimum bet, Thank you for playing, please use the Play Again to start a new game");
+        displayModal("no-chips", humanPlayer);
         displayPlayAgainButton();//, when pressed it will run a function to clear the button and start init game
     }
 }
@@ -626,6 +626,10 @@ function displayModal (messageType, humanPlayer) {
 
         case "dealerBust":
             modalMessage.textContent = `You won €${bet * 2}, dealer bust, Congratulations`;
+            break;
+
+        case "no-chips":
+            modalMessage.textContent = "You do not have enought chips to place a minimum bet, Thank you for playing, please use the Play Again button to start a new game";
             break;
     
         default:
