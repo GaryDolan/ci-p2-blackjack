@@ -86,7 +86,7 @@ button:disabled, button[disabled] {
 /************************* GAME PAGE ***********************/
 .game-page-wrapper, .page-wrapper{
     max-width: 162.5rem;    /*size of background image*/
-    height: 100vh;
+    height: 100%;
     background:url(../images/background.webp) no-repeat center top;
     background-size: cover;
     background-color: #01441b; /*added incase image fails to load*/
