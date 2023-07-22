@@ -318,12 +318,6 @@ header {
         width: 80%;
     }
 
-/* GAME PAGE - WITH PLAY AGAIN DISPLAYED */
-    /*  */
-    
-    
-    /*  */
-
 /* GAME PAGE - WITH RESULTS DISPLAYED */
     /*  */
     
@@ -346,12 +340,6 @@ header {
 /* 1300px */
 
 @media screen and (max-width:81.25em) {
-/* GAME PAGE - WITH PLAY AGAIN DISPLAYED */
-    /*  */
-    
-    
-    /*  */
-
 /* GAME PAGE - WITH RESULTS DISPLAYED */
     /*  */
     
@@ -380,12 +368,6 @@ header {
             width: 100%;
         }   
     
-    /* GAME PAGE - WITH PLAY AGAIN DISPLAYED */
-        /*  */
-        
-        
-        /*  */
-    
     /* GAME PAGE - WITH RESULTS DISPLAYED */
         /*  */
         
@@ -408,12 +390,6 @@ header {
 
 /* 1100px */
 @media screen and (max-width:68.75em) {
-/* GAME PAGE - WITH PLAY AGAIN DISPLAYED */
-    /*  */
-    
-    
-    /*  */
-
 /* GAME PAGE - WITH RESULTS DISPLAYED */
     /*  */
     
@@ -458,12 +434,6 @@ header {
         margin-right: 5rem;
     }
 
-/* GAME PAGE - WITH PLAY AGAIN DISPLAYED */
-    /*  */
-    
-    
-    /*  */
-
 /* GAME PAGE - WITH RESULTS DISPLAYED */
     /*  */
     
@@ -485,12 +455,6 @@ header {
 
 /* 800px */
 @media screen and (max-width:50em) {
-    /* GAME PAGE - WITH PLAY AGAIN DISPLAYED */
-        /*  */
-        
-        
-        /*  */
-    
     /* GAME PAGE - WITH RESULTS DISPLAYED */
         /*  */
         
@@ -513,12 +477,6 @@ header {
 
 /* 850px */
 @media screen and (max-width:53.125em) {
-/* GAME PAGE - WITH PLAY AGAIN DISPLAYED */
-    /*  */
-    
-    
-    /*  */
-
 /* GAME PAGE - WITH RESULTS DISPLAYED */
     /*  */
     
@@ -544,15 +502,9 @@ header {
 /* GAME PAGE */
     /* respace hit and stand buttons */
     .game-controls-container {
-        width: 98%;
+        width: 90%;
         margin-bottom: 0.5rem;
     }
-
-/* GAME PAGE - WITH PLAY AGAIN DISPLAYED */
-    /*  */
-    
-    
-    /*  */
 
 /* GAME PAGE - WITH RESULTS DISPLAYED */
     /*  */
@@ -576,12 +528,6 @@ header {
 
 /* 650px */
 @media screen and (max-width:40.625em) { 
-    /* GAME PAGE - WITH PLAY AGAIN DISPLAYED */
-        /*  */
-        
-        
-        /*  */
-    
     /* GAME PAGE - WITH RESULTS DISPLAYED */
         /*  */
         
@@ -648,12 +594,6 @@ header {
         border-radius: 1.5rem/1.5rem;
     }
 
-/* GAME PAGE - WITH PLAY AGAIN DISPLAYED */
-    /*  */
-    
-    
-    /*  */
-
 /* GAME PAGE - WITH RESULTS DISPLAYED */
     /*  */
     
@@ -676,12 +616,6 @@ header {
 
 /* 500px */
 @media screen and (max-width:31.25em) {
-/* GAME PAGE - WITH PLAY AGAIN DISPLAYED */
-    /*  */
-    
-    
-    /*  */
-
 /* GAME PAGE - WITH RESULTS DISPLAYED */
     /*  */
     
@@ -705,12 +639,6 @@ header {
 
 /* 450px */
 @media screen and (max-width:28.125em) {
-    /* GAME PAGE - WITH PLAY AGAIN DISPLAYED */
-        /*  */
-        
-        
-        /*  */
-    
     /* GAME PAGE - WITH RESULTS DISPLAYED */
         /*  */
         
@@ -751,10 +679,10 @@ header {
     }
 
     /* GAME PAGE - WITH PLAY AGAIN DISPLAYED */
-        /*  */
-        
-        
-        /*  */
+        /* resize the play again button */
+        #play-again-button {
+            width:18rem;
+        }
     
     /* GAME PAGE - WITH RESULTS DISPLAYED */
         /*  */
@@ -779,12 +707,6 @@ header {
 
 /* 350px */
 @media screen and (max-width:21.875em) {    
-    /* GAME PAGE - WITH PLAY AGAIN DISPLAYED */
-        /*  */
-        
-        
-        /*  */
-    
     /* GAME PAGE - WITH RESULTS DISPLAYED */
         /*  */
         
