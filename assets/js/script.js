@@ -189,10 +189,10 @@ class HumanPlayer extends Player {
         
         //validate user input and place bet 
         if(isNaN(this.betAmount) || this.betAmount % 10 != 0 ) {
-            alert ("Please enter a valid betting mount in €10 increments, €10, €20, €30, etc. or use the arrows to select a betting amount");
+            displayModal("invalidBet", this); 
         } else {
             if (this.betAmount > this.chipCount) {
-                alert(`The Bet you placed exceeded your chip count, your bet has been place at your chip count €${this.chipCount}`);
+                displayModal("betExceedsChips", this); 
                 this.betAmount = this.chipCount;
             }
             //adjust chip count 
@@ -302,7 +302,7 @@ function initialiseGame() {
     //Game Rules
     const gameRules = document.getElementById("game-rules");
     gameRules.addEventListener("click", function() {
-        displayModal("game-rules", humanPlayer); 
+        displayModal("gameRules", humanPlayer); 
     });
 
 
@@ -339,7 +339,7 @@ function startGame(dealer, humanPlayer) {
         //enable betting
         humanPlayer.enableBetting()
     }else {
-        displayModal("no-chips", humanPlayer);
+        displayModal("noChips", humanPlayer);
         displayPlayAgainButton();//, when pressed it will run a function to clear the button and start init game
     }
 }
@@ -577,7 +577,7 @@ function displayModal (messageType, humanPlayer) {
     const bet = humanPlayer.getBetAmount();
 
     switch (messageType) {
-        case "game-rules":
+        case "gameRules":
             modalMessage.innerHTML = `<h2>Blackjack Rules:</h2> <br><br>
             
             <div> Goal: To have a hand value closer to 21 than the dealer's hand, without exceeding 21. <br><br>
@@ -628,8 +628,16 @@ function displayModal (messageType, humanPlayer) {
             modalMessage.textContent = `You won €${bet * 2}, dealer bust, Congratulations`;
             break;
 
-        case "no-chips":
+        case "noChips":
             modalMessage.textContent = "You do not have enought chips to place a minimum bet, Thank you for playing, please use the Play Again button to start a new game";
+            break;
+
+        case "invalidBet":
+            modalMessage.textContent = "Please enter a valid betting amount in €10 increments, €10, €20, €30, etc. or use the arrows to select a betting amount";
+            break;
+
+        case "betExceedsChips":
+            modalMessage.textContent = `The Bet you placed exceeded your chip count, your bet has been place at your chip count €${humanPlayer.chipCount}`;
             break;
     
         default:
