@@ -138,7 +138,6 @@ class Dealer extends Player {
             this.deck[i] = this.deck[j];
             this.deck[j] = k;
             }
-            console.log(this.deck);
     }
     
     dealCard(player) {
@@ -375,9 +374,6 @@ async function startDeal(dealer, humanPlayer) {
     await delay(1000);
     dealer.dealCard(humanPlayer);
     humanPlayer.addCardToDisplay("players-cards");
-    
-    console.log(dealer.hand);
-    console.log(humanPlayer.hand);
 
     //calculate and display hand counts
     dealer.calculateHandValue();
@@ -519,7 +515,6 @@ function handleGameResults (result, dealer, humanPlayer) {
             break;
 
         default:
-            console.log("invalid result")
             break;
     }
     //after 3 seconds restart the game 

@@ -73,7 +73,7 @@ button:hover, .button-style:hover {
     height: 3rem;
     border-radius: 1.5rem/1.5rem;
     color: white;
-    background-color: #B85C00;
+    background-color: #FF8205;
     font: 700 1.5rem Raleway, sans-serif;
 }
 
@@ -279,6 +279,7 @@ header {
     min-width: 30%;
     max-width: 90%;
     text-align: center;
+    overflow: auto;
 }
 
 /*message added when we modify the inner HTML or text content of modal message in JS*/
@@ -317,47 +318,6 @@ header {
     .game-controls-container {
         width: 80%;
     }
-
-/* GAME PAGE - WITH RESULTS DISPLAYED */
-    /*  */
-    
-    
-    /*  */
-
-/* GAME PAGE - WITH GAME RULES DISPLAYED */
-    /*  */
-    
-    
-    /*  */
-
-/* 404 PAGE */
-    /*  */
-    
-    
-    /*  */
-}
-
-/* 1300px */
-
-@media screen and (max-width:81.25em) {
-/* GAME PAGE - WITH RESULTS DISPLAYED */
-    /*  */
-    
-    
-    /*  */
-
-/* GAME PAGE - WITH GAME RULES DISPLAYED */
-    /*  */
-    
-    
-    /*  */
-
-/* 404 PAGE */
-    /*  */
-    
-    
-    /*  */
-
 }
 
 /* 1200px */
@@ -366,48 +326,7 @@ header {
         /* respace hit and stand buttons */
         .game-controls-container {
             width: 100%;
-        }   
-    
-    /* GAME PAGE - WITH RESULTS DISPLAYED */
-        /*  */
-        
-        
-        /*  */
-    
-    /* GAME PAGE - WITH GAME RULES DISPLAYED */
-        /*  */
-        
-        
-        /*  */
-    
-    /* 404 PAGE */
-        /*  */
-        
-        
-        /*  */
-        
-    }
-
-/* 1100px */
-@media screen and (max-width:68.75em) {
-/* GAME PAGE - WITH RESULTS DISPLAYED */
-    /*  */
-    
-    
-    /*  */
-
-/* GAME PAGE - WITH GAME RULES DISPLAYED */
-    /*  */
-    
-    
-    /*  */
-
-/* 404 PAGE */
-    /*  */
-    
-    
-    /*  */
- 
+        }        
 }
 
 /* 992px */
@@ -434,67 +353,11 @@ header {
         margin-right: 5rem;
     }
 
-/* GAME PAGE - WITH RESULTS DISPLAYED */
-    /*  */
-    
-    
-    /*  */
-
 /* GAME PAGE - WITH GAME RULES DISPLAYED */
-    /*  */
-    
-    
-    /*  */
-
-/* 404 PAGE */
-    /*  */
-    
-    
-    /*  */
-}
-
-/* 800px */
-@media screen and (max-width:50em) {
-    /* GAME PAGE - WITH RESULTS DISPLAYED */
-        /*  */
-        
-        
-        /*  */
-    
-    /* GAME PAGE - WITH GAME RULES DISPLAYED */
-        /*  */
-        
-        
-        /*  */
-    
-    /* 404 PAGE */
-        /*  */
-        
-        
-        /*  */
-    
-}
-
-/* 850px */
-@media screen and (max-width:53.125em) {
-/* GAME PAGE - WITH RESULTS DISPLAYED */
-    /*  */
-    
-    
-    /*  */
-
-/* GAME PAGE - WITH GAME RULES DISPLAYED */
-    /*  */
-    
-    
-    /*  */
-
-/* 404 PAGE */
-    /*  */
-    
-    
-    /*  */
-
+    /* adjust alignment so screens dont lose the text */
+    .modal {
+        align-items: stretch !important; /* needed to override JS */
+    }
 }
 
 /* 700px */
@@ -505,46 +368,6 @@ header {
         width: 90%;
         margin-bottom: 0.5rem;
     }
-
-/* GAME PAGE - WITH RESULTS DISPLAYED */
-    /*  */
-    
-    
-    /*  */
-
-/* GAME PAGE - WITH GAME RULES DISPLAYED */
-    /*  */
-    
-    
-    /*  */
-
-/* 404 PAGE */
-    /*  */
-    
-    
-    /*  */
-
-}
-
-/* 650px */
-@media screen and (max-width:40.625em) { 
-    /* GAME PAGE - WITH RESULTS DISPLAYED */
-        /*  */
-        
-        
-        /*  */
-    
-    /* GAME PAGE - WITH GAME RULES DISPLAYED */
-        /*  */
-        
-        
-        /*  */
-    
-    /* 404 PAGE */
-        /*  */
-        
-        
-        /*  */
 }
 
 /* 600px */
@@ -593,70 +416,6 @@ header {
         height: 4rem;
         border-radius: 1.5rem/1.5rem;
     }
-
-/* GAME PAGE - WITH RESULTS DISPLAYED */
-    /*  */
-    
-    
-    /*  */
-
-/* GAME PAGE - WITH GAME RULES DISPLAYED */
-    /*  */
-    
-    
-    /*  */
-
-/* 404 PAGE */
-    /*  */
-    
-    
-    /*  */
-
-}
-
-/* 500px */
-@media screen and (max-width:31.25em) {
-/* GAME PAGE - WITH RESULTS DISPLAYED */
-    /*  */
-    
-    
-    /*  */
-
-/* GAME PAGE - WITH GAME RULES DISPLAYED */
-    /*  */
-    
-    
-    /*  */
-
-/* 404 PAGE */
-    /*  */
-    
-    
-    /*  */    
-    
-}
-
-
-/* 450px */
-@media screen and (max-width:28.125em) {
-    /* GAME PAGE - WITH RESULTS DISPLAYED */
-        /*  */
-        
-        
-        /*  */
-    
-    /* GAME PAGE - WITH GAME RULES DISPLAYED */
-        /*  */
-        
-        
-        /*  */
-    
-    /* 404 PAGE */
-        /*  */
-        
-        
-        /*  */    
-        
 }
 
 /* 400px */
@@ -682,47 +441,5 @@ header {
         /* resize the play again button */
         #play-again-button {
             width:18rem;
-        }
-    
-    /* GAME PAGE - WITH RESULTS DISPLAYED */
-        /*  */
-        
-        
-        /*  */
-    
-    /* GAME PAGE - WITH GAME RULES DISPLAYED */
-        /*  */
-        
-        
-        /*  */
-    
-    /* 404 PAGE */
-        /*  */
-        
-        
-        /*  */    
-        
-}
-
-
-/* 350px */
-@media screen and (max-width:21.875em) {    
-    /* GAME PAGE - WITH RESULTS DISPLAYED */
-        /*  */
-        
-        
-        /*  */
-    
-    /* GAME PAGE - WITH GAME RULES DISPLAYED */
-        /*  */
-        
-        
-        /*  */
-    
-    /* 404 PAGE */
-        /*  */
-        
-        
-        /*  */    
-        
+        }  
 }
