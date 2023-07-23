@@ -323,10 +323,10 @@ header {
 /* 1200px */
 @media screen and (max-width:75em) {
     /* GAME PAGE */
-        /* respace hit and stand buttons */
-        .game-controls-container {
-            width: 100%;
-        }        
+    /* respace hit and stand buttons */
+    .game-controls-container {
+        width: 100%;
+    }        
 }
 
 /* 992px */
@@ -343,14 +343,19 @@ header {
         margin: 0;
     }
 
+    /* resize card borders */
+    #dealers-cards img, #players-cards img {
+        border: solid black 0.1rem;
+    } 
+
     /* Overlap the cards */
     #dealers-cards img:nth-child(n+1), #players-cards img:nth-child(n+1) {
-        margin-right: -5rem;
+        margin-right: -3.5rem;
     }
 
     /* shift hand to compensate for overlap */
     #dealers-cards, #players-cards {
-        margin-right: 5rem;
+        margin-right: 3.5rem;
     }
 
 /* GAME PAGE - WITH GAME RULES DISPLAYED */
@@ -388,16 +393,17 @@ header {
     #dealers-cards img, #players-cards img {
         width: 7.813rem;
         height: 11.375rem;
+        border: solid black 0.1rem;
     } 
 
     /* Adjust the card overlap */
     #dealers-cards img:nth-child(n+1), #players-cards img:nth-child(n+1) {
-        margin-right: -6rem;
+        margin-right: -3.9rem;
     }
 
     /* shift hand to compensate for overlap */
     #dealers-cards, #players-cards {
-        margin-right: 6rem;
+        margin-right: 3.9rem;
     }
 
     /* Add some space below logo */
@@ -414,7 +420,6 @@ header {
     .game-controls-container button {
         width: 8rem ;
         height: 4rem;
-        border-radius: 1.5rem/1.5rem;
     }
 }
 
@@ -438,17 +443,153 @@ header {
     }
 
     /* GAME PAGE - WITH PLAY AGAIN DISPLAYED */
-        /* resize the play again button */
-        #play-again-button {
-            width:18rem;
-        }  
+    /* resize the play again button */
+    #play-again-button {
+        width:18rem;
+    }  
 }
 
 /********************* MEDIA QUERIES - HEIGHT *******************/
-/* 880 px */
-@media screen and (max-height:55rem) {
+/* 890 px */
+@media screen and (max-height:55.625em) {
+    /* Resize controls container */
+    .game-controls-container {
+        height: 3rem;
+    }
+
+    /* Resize hit and stand buttons */
+    .game-controls-container button {
+        width: 8rem ;
+        height: 3rem;
+    }
+
+    /* Resize chip count margins */
+    .player-chip-count  {
+        margin: 0;
+    }
+}
+
+/* 825 px */
+@media screen and (max-height:51.563em) {
+    /* Remove header padding */
+    header {
+        padding: 0;
+    }
+
+    /* Resize logo image and content */
+    .logo-image img {
+        width: 1.97rem;
+        height: 2rem;
+    }
+
+    .logo-content h1 {
+        font-size: 1.4rem;
+    }
+
+    /* Resize dealer & Player info */
+    .dealer-info h2 , .player-info h2 {
+        font-size: 1.4rem;
+    }
+
+    .hand-value {
+        font-size: 1.4rem;
+
+    }
+}
+
+/* 755 px */
+@media screen and (max-height:47.188em) {
+    /* remove margins from betting input */
+    .betting-input {
+        margin-bottom: 0.5rem;
+    }
+
+    /* resize card images */
+    #dealers-cards img, #players-cards img {
+        width: 6.25rem;
+        height: 9.063rem;
+    }  
+}
+
+/* 685 px */
+@media screen and (max-height:42.813em) {
+    /* Resize controls container */
+    .game-controls-container {
+        height: 1.9rem;
+        margin-bottom: 0.25rem;
+    }
+    
+    /* Resize hit and stand buttons */
+    .game-controls-container button {
+        width: 8rem ;
+        height: 1.9rem;
+        font-size: 1.2rem;
+    }
+    /* resize player chipcount */
+    .player-chip-count p {
+        font-size: 1.2rem;
+    }
+
+    .player-chip-count {
+        text-decoration-thickness: 0rem;
+        text-underline-offset: 0.1rem;  
+    }
+    /* resize betting section amount*/
+    .betting-container {
+        margin-top: 0.25rem;
+    }
+     
+    .betting-input {
+        margin-bottom: 0.25rem;
+    }
+    
+    .betting-input p {
+        margin-right: 1rem;
+        font-size: 1.1rem;
+    }
+
+    .betting-input input {
+        font-size: 0.8rem;
+        font-weight: 500;
+    }
+
+    /* resize place bet button */
+    #place-bet-button {
+        width: 8rem ;
+        height: 1.9rem;
+        font-size: 1.2rem;
+    }
+
+    /* GAME PAGE - WITH PLAY AGAIN DISPLAYED */
+    /* resize the play again button */
+    #play-again-button {
+        width:14rem;
+        height: 5.5rem;
+    }  
+}
+
+/* 602 px */
+@media screen and (max-height:37.625em) {
+    /* resize card images */
+    #dealers-cards img, #players-cards img {
+        width: 4.688rem;
+        height: 6.813rem;
+    } 
+}
+
+
+/* 472 px */
+@media screen and (max-height:29.5em) { 
+    /* Background image scales to smaller screen heights */
     .game-page-wrapper, .page-wrapper{
         height: 100%;   /*ensures full vertical coverage on zoom in */
     }
+
+
+
 }
+
+
+
+
 
