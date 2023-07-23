@@ -197,7 +197,6 @@ class Dealer extends Player {
      * @param {Player} player - The player that the cards will be dealt to (dealer or humanPlayer). 
      */
     dealCard(player) {
-        //Deal card to specified player
         let card = this.deck.pop();
         player.hand.push(card)
     }
@@ -489,7 +488,7 @@ async function startDeal(dealer, humanPlayer) {
     
     //Dealt one by one so that we can hide the first card and add delays
     
-    //Dealer 1st card no delay (remove card backs)
+    //Dealer 1st card no delay
     dealer.dealCard(dealer);
     dealer.clearCards ("dealers-cards");
     dealer.addCardToDisplay("dealers-cards", true);
@@ -538,10 +537,10 @@ async function dealersPlay(dealer, humanPlayer) {
     disableHitButton();
     disableStandButton();
 
-    //Display dealers first card
+    //Display dealers hole card
     dealer.addCardToDisplay("dealers-cards", false, "first");
 
-    //Show dealers real hand value 
+    //Show dealers hand value including hole card 
     dealer.showHoleCardValue();
     dealer.calculateHandValue();
     dealer.displayHandValue("dealer-hand-value");
