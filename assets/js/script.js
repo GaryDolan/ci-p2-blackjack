@@ -6,7 +6,7 @@
 class Player {
     /**
      * Creates a new player instance.
-     * Initialises the player's hand, handValue and isBust stauts.
+     * Initialises the player's hand, handValue and isBust status.
      */
     constructor(){
         this.hand = [];
@@ -55,7 +55,7 @@ class Player {
 
         for (let i = 0; i < this.hand.length; i++) {
             if (this.hideFirstCardValue && i===0) {
-                //Dont add value for dealer hidden card
+                //Don't add value for dealer hidden card
             } else if (faceCards.some(faceCard => this.hand[i].includes(faceCard))){ //do we have a face card
                 this.handValue += 10;    
             } else if (this.hand[i].includes ('a')) {
@@ -124,7 +124,7 @@ class Player {
     }
 
     /**
-     * Clears Pleayer's cards (used to clear face down cards).
+     * Clears Player's cards (used to clear face down cards).
      * @param {string} elementId - The ID of the HTML element that holds the player's cards.
      */
     clearCards(elementId)
@@ -146,7 +146,7 @@ class Player {
 }
 
 /**
- * Represents the dealer in the game, inherriting from Player class.
+ * Represents the dealer in the game, inheriting from Player class.
  * @class
  * @extends Player
  */
@@ -194,7 +194,7 @@ class Dealer extends Player {
 
     /**
      * Deals a card to a specific player
-     * @param {Player} player - The player that the cards will be dealth to (dealer or humanPlayer). 
+     * @param {Player} player - The player that the cards will be dealt to (dealer or humanPlayer). 
      */
     dealCard(player) {
         //Deal card to specified player
@@ -226,7 +226,7 @@ class Dealer extends Player {
 }
 
 /**
- * Represents a human player in the game, inherriting from Player class
+ * Represents a human player in the game, inheriting from Player class
  * @class
  * @extends Player
  */
@@ -468,7 +468,7 @@ function startGame(dealer, humanPlayer) {
         humanPlayer.enableBetting()
     }else {
         displayModal("noChips", humanPlayer);
-        displayPlayAgainButton();//When pressed it will run a function to clear the button and start init game
+        displayPlayAgainButton();
     }
 }
 
@@ -487,7 +487,7 @@ async function startDeal(dealer, humanPlayer) {
         dealer.shuffleDeck();
     }
     
-    //Dealth one by one so that we can hide the first card and add delays
+    //Dealt one by one so that we can hide the first card and add delays
     
     //Dealer 1st card no delay (remove card backs)
     dealer.dealCard(dealer);
@@ -516,7 +516,7 @@ async function startDeal(dealer, humanPlayer) {
     humanPlayer.calculateHandValue();
     humanPlayer.displayHandValue("player-hand-value")
 
-    //Check for blackJack (auto win)
+    //Check for blackjack (auto win)
     if (humanPlayer.checkForBlackjack()) {
         handleGameResults("blackjack", dealer, humanPlayer);
         return; //Exit function and do not enable buttons below 
@@ -700,7 +700,7 @@ function displayPlayAgainButton() {
 }
 
 /**
- * Restarts the game (Play again button pressed) and gives playe chips.
+ * Restarts the game (Play again button pressed) and gives player chips.
  * Hides the play again button and displays elements in its place.
  * Elements displayed are chip count, betting input and place bet button. 
  *  
@@ -733,7 +733,7 @@ function startAdditionalGame(dealer, humanPlayer) {
 
 //MODAL FUNCTIONS 
 /**
- * Displays a modal popp with a specified message.
+ * Displays a modal pop up with a specified message.
  * @param {string} messageType - Type of message to be displayed in the modal.
  * @param {HumanPlayer} humanPlayer - The human player object in the game. 
  */
@@ -802,7 +802,7 @@ function displayModal (messageType, humanPlayer) {
             break;
 
         case "noChips":
-            modalMessage.textContent = "You do not have enought chips to place a minimum bet, Thank you for playing, please use the Play Again button to start a new game";
+            modalMessage.textContent = "You do not have enough chips to place a minimum bet, Thank you for playing, please use the Play Again button to start a new game";
             styleSmallModal(modalContainer);
             break;
 

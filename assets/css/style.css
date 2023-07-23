@@ -89,7 +89,7 @@ button:disabled, button[disabled] {
     height: 100vh;  /*ensures full vertical coverage on zoom out */
     background:url(../images/background.webp) no-repeat center top;
     background-size: cover;
-    background-color: #01441b; /*added incase image fails to load*/
+    background-color: #01441b; /*added in case image fails to load*/
 }
 
 /*************************** HEADER *************************/
@@ -523,7 +523,7 @@ header {
         font-size: 1.2rem;
     }
 
-    /* resize player chipcount */
+    /* resize player chip count */
     .player-chip-count p {
         font-size: 1.2rem;
     }
