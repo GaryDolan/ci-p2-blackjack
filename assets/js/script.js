@@ -596,52 +596,57 @@ function displayModal (messageType, humanPlayer) {
             8. Winning: The player wins if their hand value is closer to 21 than the dealer's hand without exceeding 21. If both have the same value, it's a push (tie), and the player's bet is returned.<br><br> </div>
             
             <h2>Remember, the goal is to have fun. Good luck and have a great time playing Blackjack!</h2>`;
-
+            styleLargeModal(modalContainer);
             break;
 
         case "win":
             modalMessage.textContent = `You won €${bet * 2}, Congratulations`;
+            styleSmallModal(modalContainer);
             break;
 
         case "lose":
             modalMessage.textContent = "Dealer wins, Better luck next time";
+            styleSmallModal(modalContainer);
             break;
 
         case "bust":
             modalMessage.textContent = "BUST, You went over 21. Dealer wins, Better luck next time";
+            styleSmallModal(modalContainer);
             break;
 
         case "blackjack":
             modalMessage.textContent = `BLACKJACK! you have 21, You won €${bet + bet * 1.5} , Congratulations`;
+            styleSmallModal(modalContainer);
             break;
 
         case "push":
             modalMessage.textContent = `PUSH, It's a draw with the dealer, You won €${bet}`;
+            styleSmallModal(modalContainer);
             break;
 
         case "dealerBust":
             modalMessage.textContent = `You won €${bet * 2}, dealer bust, Congratulations`;
+            styleSmallModal(modalContainer);
             break;
 
         case "noChips":
             modalMessage.textContent = "You do not have enought chips to place a minimum bet, Thank you for playing, please use the Play Again button to start a new game";
+            styleSmallModal(modalContainer);
             break;
 
         case "invalidBet":
             modalMessage.textContent = "Please enter a valid betting amount in €10 increments, €10, €20, €30, etc. or use the arrows to select a betting amount";
+            styleSmallModal(modalContainer);
             break;
 
         case "betExceedsChips":
             modalMessage.textContent = `The Bet you placed exceeded your chip count, your bet has been place at your chip count €${humanPlayer.chipCount}`;
+            styleSmallModal(modalContainer);
             break;
     
         default:
             break;
     }
-
-    modalContainer.style.display = "flex";
-    modalContainer.style.justifyContent = "center";
-    modalContainer.style.alignItems = "center";
 
     //Close button
     const closeButton = document.getElementsByClassName("close")[0];
@@ -654,6 +659,19 @@ function displayModal (messageType, humanPlayer) {
         modalContainer.style.display = "none";    
    }
 
+}
+
+
+function styleSmallModal(modalContainer) {
+    modalContainer.style.display = "flex";
+    modalContainer.style.justifyContent = "center";
+    modalContainer.style.alignItems = "center";
+}
+
+function styleLargeModal(modalContainer) {
+    modalContainer.style.display = "flex";
+    modalContainer.style.justifyContent = "center";
+    modalContainer.style.alignItems = "stretch";
 }
 
 //Wait for DOM to load before initialising the game 
