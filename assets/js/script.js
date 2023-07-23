@@ -1,36 +1,53 @@
-// CLASS DEFINITIONS
+//////////////////////////////// CLASSES //////////////////////////////
+/**
+ * Represents a player in the game.
+ * @class
+ */
 class Player {
+    /**
+     * Creates a new player instance.
+     * Initialises the player's hand, handValue and isBust stauts.
+     */
     constructor(){
         this.hand = [];
         this.handValue = 0;
-        this.stand = false;
         this.isBust = false;
     }
     
+    /**
+     * Adds a card to he display of a player's hand. 
+     * @param {string} elementId - The ID of the HTML element which hold the card image.
+     * @param {boolean} hideFirstCard - Flag to hide the dealers hole card.
+     * @param {string} position - Position to add card image, used to show dealers hole card.
+     */
     addCardToDisplay(elementId, hideFirstCard = false, position = "last") {
-        //target the div that we will display cards in 
+        //Target the div that we will display cards in 
         const cardContainer = document.getElementById(elementId);
         
-        //create and append the image based on the position passed in 
+        //Create and append the image based on the position passed in 
         const cardImg = document.createElement('img');
         if (position === "last") {
             cardImg.src = `assets/images/playing-card-images/${hideFirstCard ? "card-back" : this.hand[this.hand.length - 1]}.webp`;
             cardImg.alt = `Image of a playing card, value ${this.hand[this.hand.length - 1]}`;
             
-            //append the card image to element
+            //Append the card image to element
             cardContainer.appendChild(cardImg);  
         } else {
-            //target the first child image
+            //Target the first child image
             const firstChild = cardContainer.firstChild;
             cardImg.src = `assets/images/playing-card-images/${hideFirstCard ? "card-back" : this.hand[0]}.webp`;
             cardImg.alt = `Image of a playing card, value ${this.hand[0]}`;
 
-            //delete first card and insert new
+            //Delete first card and insert new
             cardContainer.insertBefore(cardImg, firstChild);
             cardContainer.removeChild(firstChild);
         } 
     }
 
+    /**
+     * Calculates the value of a players hand.
+     * Updates the players handValue property.
+     */
     calculateHandValue() {
         this.handValue = 0; //reset to clear any prev value
         const faceCards = ['j','q','k'];
@@ -38,19 +55,19 @@ class Player {
 
         for (let i = 0; i < this.hand.length; i++) {
             if (this.hideFirstCardValue && i===0) {
-                //dont add value for dealer hidden card
+                //Dont add value for dealer hidden card
             } else if (faceCards.some(faceCard => this.hand[i].includes(faceCard))){ //do we have a face card
                 this.handValue += 10;    
             } else if (this.hand[i].includes ('a')) {
-                //check if we have aces and keep count
+                //Check if we have aces and keep count
                 numAces ++;
             } else {
-                //add value for norm cards
+                //Add value for norm cards
                 this.handValue += parseInt(this.hand[i].slice(0, this.hand[i].length - 1));
             }
         }
         
-        //add value for aces card based on not busting player
+        //Add value for aces card based on not busting player
         for (let i = 0; i < numAces; i++) {
             if (this.handValue + 11 > 21) {
                 this.handValue += 1;
@@ -60,29 +77,42 @@ class Player {
         }
     }
 
+    /**
+     * Displays the player's hand value.
+     * @param {string} elementId - The ID of the HTML element that will display the hand value.
+     */
     displayHandValue(elementId) {
         document.getElementById(elementId).textContent = this.handValue;
     }
 
+    /**
+     * Checks if the player's hand value is bust (greater than 21). 
+     * @returns 
+     */
     checkBust() {
         return this.handValue > 21;
     }
 
+    /**
+     * Resets player's handValue and hand for the next round.
+     * @param {string} cardContainerId - ID of the HTML element that holds player's cards. 
+     * @param {string} handValueContainerId - ID of the HTML element that displays the hand value.
+     */
     resetHand(cardContainerId, handValueContainerId) {
-        //clear handValue and display
+        //Clear handValue and display
         this.handValue = 0;
         this.displayHandValue(handValueContainerId);
         
-        //clear card values from hand 
+        //Clear card values from hand 
         this.hand = [];
         
-        //target the div that we will display empty cards in 
+        //Target the div that we will display empty cards in 
         const cardContainer = document.getElementById(cardContainerId);
         
-        //clear out any placeholder images
+        //Clear out any placeholder images
         cardContainer.innerHTML = "";
         
-        //create and append the image of card backs
+        //Create and append the image of card backs
         for (let i = 0; i < 2; i++) {
             const cardImg = document.createElement('img');
             cardImg.src = "assets/images/playing-card-images/card-back.webp";
@@ -93,21 +123,38 @@ class Player {
         }        
     }
 
+    /**
+     * Clears Pleayer's cards (used to clear face down cards).
+     * @param {string} elementId - The ID of the HTML element that holds the player's cards.
+     */
     clearCards(elementId)
     {
-        //target the div that we will display empty cards in 
+        //Target the div that we will display empty cards in 
         const cardContainer = document.getElementById(elementId);
 
-        //clear out any placeholder images
+        //Clear out any placeholder images
         cardContainer.innerHTML = "";
     }
- 
+
+    /**
+     * Gets the value of the player's hand.
+     * @returns {number} The current value of the player's hand.
+     */
     getHandValue(){
         return this.handValue;
     }
 }
 
+/**
+ * Represents the dealer in the game, inherriting from Player class.
+ * @class
+ * @extends Player
+ */
 class Dealer extends Player {
+    /**
+     * Creates a new Dealer instance.
+     * Initialises the dealer's deck, number of cards in the deck and hideFirstCardValue flag.
+     */
     constructor() {
         super();
         this.deck = [];
@@ -115,9 +162,12 @@ class Dealer extends Player {
         this.hideFirstCardValue = true;
     }   
 
+    /**
+     * Creates a new set of cards in the dealer's deck. 
+     */
     newDeck() {
-        //logic to build a new deck
-        this.deck = []; //clear deck for when we create a new deck mid game
+        //Logic to build a new deck
+        this.deck = []; //Clear deck for when we create a new deck mid game
         const suits = ['c', 'd', 'h', 's'];
         const values = ['2','3','4','5','6','7','8','9','10','j','q','k','a'];
         let card = '';
@@ -130,63 +180,107 @@ class Dealer extends Player {
         }
     }
 
+    /**
+     * Shuffles the dealer's deck using the Fisher yates method.
+     */
     shuffleDeck() {
-        //The Fisher Yates Method is used here to shuffle the deck
         for (let i = this.deck.length -1; i > 0; i--) {
             let j = Math.floor(Math.random() * (i+1));
             let k = this.deck[i];
             this.deck[i] = this.deck[j];
             this.deck[j] = k;
-            }
+        }
     }
-    
+
+    /**
+     * Deals a card to a specific player
+     * @param {Player} player - The player that the cards will be dealth to (dealer or humanPlayer). 
+     */
     dealCard(player) {
-        //deal card to specified player
+        //Deal card to specified player
         let card = this.deck.pop();
         player.hand.push(card)
     }
 
-    hideHoleCardValue () {
+    /**
+     * Hides the value of the dealers hole (first) card.
+     */
+    hideHoleCardValue() {
         this.hideFirstCardValue = true;
     }
 
-    showHoleCardValue () {
+    /**
+     * Shows the value of the dealers hole (first) card.
+     */
+    showHoleCardValue() {
         this.hideFirstCardValue = false;
     }
 
+    /**
+     * Get the number of cards remaining in dealer's deck.
+     * @returns {number} - Represents current number of cards in dealer's deck. 
+     */
     getNumOfCardInDeck() {
         return this.deck.length;   
     }
 }
 
+/**
+ * Represents a human player in the game, inherriting from Player class
+ * @class
+ * @extends Player
+ */
 class HumanPlayer extends Player {
+    /**
+     * Creates a new HumanPlayer instance.
+     * Initialises the human player's chip count and bet amount.
+     */
     constructor() {
         super();
         this.chipCount = 1000;
         this.betAmount = 0;
     }
-        
+
+    /**
+     * Adjusts the human player's chip count.
+     * @param {number} count - The new human player chip count.
+     */
     adjustChipCount(count) {
         this.chipCount = count;            
     }
 
+    /**
+     * Displays the human player's chip count.
+     */
     displayChipCount() {
         document.getElementById("chip-count").textContent = this.chipCount;
     }
 
+    /**
+     * Sets the maximum bet allowed in the betting input (base on human player chip count).
+     */
     setMaxBet() {
         document.getElementById("player-bet-input").max = this.chipCount;
     }
 
+    /**
+     * Check that the human player had the minimum amount to place a bet.
+     * @returns {boolean} - True if player has enough chips to bet, false if not.
+     */
     hasMinBetAmount() {
-        return this.chipCount > 10;
+        return this.chipCount >= 10;
     }
 
+    /**
+     * Places human player's bet based on betting input value.
+     * Validates bet, if valid Dealer then deals cards.
+     * @param {Dealer} dealer - The dealer object that will deal the cards.
+     */
     placeBet(dealer) {
-        //get bet amount 
+        //Get bet amount 
         this.betAmount = parseInt(document.getElementById("player-bet-input").value);
         
-        //validate user input and place bet 
+        //Validate user input and place bet 
         if(isNaN(this.betAmount) || this.betAmount % 10 != 0 || this.betAmount === 0) {
             displayModal("invalidBet", this); 
         } else {
@@ -194,34 +288,47 @@ class HumanPlayer extends Player {
                 displayModal("betExceedsChips", this); 
                 this.betAmount = this.chipCount;
             }
-            //adjust chip count 
+            //Adjust chip count 
             this.chipCount -= this.betAmount;
             this.displayChipCount();
 
-            //disable betting button and input 
+            //Disable betting button and input 
             this.disableBetting();
 
-            //deal the cards
+            //Deal the cards
             startDeal(dealer, this);
         }
     }
 
+    /**
+     * Clears the bet amount, ready for a new game.
+     */
     clearBet() {
         this.betAmount = 0;
     }
 
+    /**
+     * Disables the betting input and button after a human player places a bet.
+     */
     disableBetting() {
-        //lock input and button and return bet to min amount
+        //Lock input and button and return bet to min amount
         disableBetButton();
         disableBetInput();
         resetBetAmount();
     }
-    
+ 
+    /**
+     * Enabled the betting input and button, allowing human player to place bets again.
+     */
     enableBetting() {
         enableBetButton();
         enableBetInput();
     }
 
+    /**
+     * Deals a new cards to the player and updates displayed cards (triggered by hit button).
+     * @param {Dealer} dealer - The dealer object that deals the card to the human player. 
+     */
     hit(dealer) {
         dealer.dealCard(this);
         this.addCardToDisplay("players-cards");
@@ -234,30 +341,47 @@ class HumanPlayer extends Player {
         }
     }
 
+    /**
+     * Checks if the player achieves a hand value of 21 (blackjack). Only checked on his first two cards. 
+     * @returns {boolean} - True if the player has blackjack, false if not.
+     */
     checkForBlackjack(){
         return this.handValue === 21;
     }
 
-    collectWinnings(typeOfWin)
-    {
+    /**
+     * Collects the human players winnings based on the type of win.
+     * Updates human players chip count to include winnings.
+     * @param {string} typeOfWin - Specifies how the player won (blackjack, push or standard).
+     */
+    collectWinnings(typeOfWin){
         if (typeOfWin === "blackjack"){
             this.chipCount += this.betAmount + this.betAmount * 1.5; //3:2 odds
         } else if (typeOfWin === "push") {
-            this.chipCount += this.betAmount;   //bet returned
+            this.chipCount += this.betAmount;   //Bet returned
         } else {
-            this.chipCount += this.betAmount * 2; // 1:1 odds
+            this.chipCount += this.betAmount * 2; //1:1 odds
         }  
         this.displayChipCount();
     }
 
+    /**
+     * Gets the human players current betting amount 
+     * @returns {number} - The players current betting amount
+     */
     getBetAmount() {
         return this.betAmount;
     }
 }
 
-//FUNCTION DEFINITIONS
+////////////////////////////// FUNCTIONS ////////////////////////////
 
-//initial logic only run once, at the start of a new game. 
+//GAME CONTROL FUNCTIONS
+/**
+ * Initial logic only run once, at the start of a new game. 
+ * It creates new dealer and human player objects, 
+ * sets up event listeners and starts the gameplay.
+ */
 function initialiseGame() {
     const dealer = new Dealer();
     const humanPlayer = new HumanPlayer();
@@ -304,55 +428,66 @@ function initialiseGame() {
         displayModal("gameRules", humanPlayer); 
     });
 
-
-    //begin gameplay 
+    //Begin gameplay 
     startGame(dealer, humanPlayer);
 }
 
-//logic needed at the start of every game
+/**
+ * Logic needed at the start of every game to reset the game state,
+ * enable betting, display card back and display players chip count.
+ * 
+ * @param {Dealer} dealer - The dealer object in the game.
+ * @param {HumanPlayer} humanPlayer - The human player object in the game.
+ */
 function startGame(dealer, humanPlayer) {
     //Ensure dealers first card value is hidden
     dealer.hideHoleCardValue (); 
     
-    //clear old bet 
+    //Clear old bet 
     humanPlayer.clearBet();
 
-    //move focus to bet
+    //Move focus to bet
     document.getElementById("player-bet-input").focus();
         
-    //block hit and stand buttons
+    //Block hit and stand buttons
     disableHitButton();
     disableStandButton();
     
-    //update max bet allowed
+    //Update max bet allowed
     humanPlayer.setMaxBet();
      
-    //display player chip count
+    //Display player chip count
     humanPlayer.displayChipCount();
 
-    //clear old cards and display card backs 
+    //Clear old cards and display card backs 
     dealer.resetHand("dealers-cards", "dealer-hand-value")
     humanPlayer.resetHand("players-cards", "player-hand-value");
     
     if (humanPlayer.hasMinBetAmount()) {
-        //enable betting
+        //Enable betting
         humanPlayer.enableBetting()
     }else {
         displayModal("noChips", humanPlayer);
-        displayPlayAgainButton();//, when pressed it will run a function to clear the button and start init game
+        displayPlayAgainButton();//When pressed it will run a function to clear the button and start init game
     }
 }
 
-//logic run once the player places their bet
+/**
+ * Logic run once the player places their bet. It checks if a new deck is needed,
+ * deals the cards to human player and dealer and checks for blackjack.
+ * @param {Dealer} dealer - The dealer object in the game.
+ * @param {HumanPlayer} humanPlayer - The human player object in the game.
+ * @returns - Used to exit the gameplay if human player achieves blackjack. 
+ */
 async function startDeal(dealer, humanPlayer) {
-    //check if we need a new deck
+    //Check if we need a new deck
     if (dealer.getNumOfCardInDeck() < 20) {
-        //build and shuffle a new deck
+        //Build and shuffle a new deck
         dealer.newDeck();
         dealer.shuffleDeck();
     }
     
-    //dealth one by one so that we can hide the first card and add delays/animation
+    //Dealth one by one so that we can hide the first card and add delays
     
     //Dealer 1st card no delay (remove card backs)
     dealer.dealCard(dealer);
@@ -375,7 +510,7 @@ async function startDeal(dealer, humanPlayer) {
     dealer.dealCard(humanPlayer);
     humanPlayer.addCardToDisplay("players-cards");
 
-    //calculate and display hand counts
+    //Calculate and display hand counts
     dealer.calculateHandValue();
     dealer.displayHandValue("dealer-hand-value")
     humanPlayer.calculateHandValue();
@@ -387,21 +522,26 @@ async function startDeal(dealer, humanPlayer) {
         return; //Exit function and do not enable buttons below 
     }
 
-    //enable hit and stand buttons
+    //Enable hit and stand buttons
     enableHitButton();
     enableStandButton();
 }
 
-//logic run once player stands
+/**
+ * Logic run once player stands. It plays out the dealer's turn,
+ * checks who the winner is and handles the game results.
+ * @param {Dealer} dealer - The dealer object in the game. 
+ * @param {HumanPlayer} humanPlayer - The human player object in the game. 
+ */
 async function dealersPlay(dealer, humanPlayer) {
-    //no more player activity
+    //No more player activity
     disableHitButton();
     disableStandButton();
 
-    //display dealers first card
+    //Display dealers first card
     dealer.addCardToDisplay("dealers-cards", false, "first");
 
-    //show dealers real hand value 
+    //Show dealers real hand value 
     dealer.showHoleCardValue();
     dealer.calculateHandValue();
     dealer.displayHandValue("dealer-hand-value");
@@ -418,8 +558,7 @@ async function dealersPlay(dealer, humanPlayer) {
     checkWinner(dealer, humanPlayer);
 }
     
-
-//container functions
+//CONTAINER FUNCTIONS
 function disableHitButton() {
     document.getElementById("hit-button").disabled = true;
 }
@@ -456,19 +595,29 @@ function resetBetAmount() {
     document.getElementById("player-bet-input").value = 10;
 }
 
+//REGULAR FUNCTIONS
 
-//Regular functions
-
-//delay function for use in async functions, as learned from geeksforgeeks.org
+/**
+ * Delay function for use in async functions, as learned from geeksforgeeks.org.
+ * 
+ * @param {number} millisec - The delay time in milliseconds.
+ * @returns {Promise} - A promise that resolves after the specified delay.
+ */
 function delay(millisec) {
     return new Promise(resolve => {setTimeout(() => {resolve ('')}, millisec);} )
 }
 
+/**
+ * Check who won the game, dealer or player.
+ * Calls game results based on the type of win.
+ * @param {Dealer} dealer - The dealer object in the game.
+ * @param {HumanPlayer} humanPlayer - The human player object in the game.
+ */
 function checkWinner(dealer, humanPlayer) {
     const dealerValue = dealer.getHandValue();
     const playerValue = humanPlayer.getHandValue();
 
-    //dealer bust, player wins
+    //Dealer bust, player wins
     if (dealerValue > 21) { 
         handleGameResults("dealerBust", dealer, humanPlayer);
     } else if(playerValue === dealerValue) {
@@ -480,36 +629,42 @@ function checkWinner(dealer, humanPlayer) {
     }
 }
 
+/**
+ * Handles the game results based on the game results.
+ * @param {string} result - The result of the game (win, lose, push etc.)
+ * @param {Dealer} dealer - The dealer object in the game. 
+ * @param {HumanPlayer} humanPlayer - The human player object in the game.
+ */
 function handleGameResults (result, dealer, humanPlayer) {
     const bet = humanPlayer.getBetAmount();
     switch (result) {
         case "win":
-            //after half a second let them know they won 
+            //After half a second let them know they won 
             setTimeout(() => {displayModal("win", humanPlayer);}, 500);
             humanPlayer.collectWinnings("standard");
             break;
         case "lose":
-            //after half a second let them know they lost 
+            //After half a second let them know they lost 
             setTimeout(() => {displayModal("lose", humanPlayer); }, 500);
             break;
         case "bust":
-            //after half a second let them know their bust 
+            //After half a second let them know their bust 
             setTimeout(() => {displayModal("bust", humanPlayer); }, 500);
             break;
         case "blackjack":
-            //after half a second let them know they got blackjack 
+            //After half a second let them know they got blackjack 
             setTimeout(() => {displayModal("blackjack", humanPlayer); }, 500);
             humanPlayer.collectWinnings("blackjack");
             break;
 
         case "push":
-            //after half a second let them know it was a draw 
+            //After half a second let them know it was a draw 
             setTimeout(() => {displayModal("push", humanPlayer); }, 500);
             humanPlayer.collectWinnings("push");
             break;
         
         case "dealerBust":
-            //after half a second let them know they won, dealer bust  
+            //After half a second let them know they won, dealer bust  
             setTimeout(() => {displayModal("dealerBust", humanPlayer); }, 500);
             humanPlayer.collectWinnings("standard");
             break;
@@ -517,10 +672,15 @@ function handleGameResults (result, dealer, humanPlayer) {
         default:
             break;
     }
-    //after 3 seconds restart the game 
+    //After 3 seconds restart the game 
     setTimeout(() => {startGame(dealer, humanPlayer);}, 3000) 
 }
 
+/**
+ * Displays the play again button when human player does not have enough chips for min bet.
+ * Hides other elements that are replaced by the play again button (chip count, betting input, place bet button).
+ * It allows the human player to start a new game when they run out of chips.
+ */
 function displayPlayAgainButton() {
     //Hide player chip count 
     const chipCountContainer = document.getElementsByClassName("player-chip-count");
@@ -539,6 +699,14 @@ function displayPlayAgainButton() {
     newGameButton.style.display = "block";
 }
 
+/**
+ * Restarts the game (Play again button pressed) and gives playe chips.
+ * Hides the play again button and displays elements in its place.
+ * Elements displayed are chip count, betting input and place bet button. 
+ *  
+ * @param {Dealer} dealer - The dealer object in the game.
+ * @param {HumanPlayer} humanPlayer - The human player object in the game.
+ */
 function startAdditionalGame(dealer, humanPlayer) {
     //Display player chip count 
     const chipCountContainer = document.getElementsByClassName("player-chip-count");
@@ -559,12 +727,16 @@ function startAdditionalGame(dealer, humanPlayer) {
     //Give the players some chips
     humanPlayer.adjustChipCount(1000);
 
-    //call start game
+    //Call start game
     startGame(dealer, humanPlayer);
-
 }
 
-//Modal 
+//MODAL FUNCTIONS 
+/**
+ * Displays a modal popp with a specified message.
+ * @param {string} messageType - Type of message to be displayed in the modal.
+ * @param {HumanPlayer} humanPlayer - The human player object in the game. 
+ */
 function displayModal (messageType, humanPlayer) {
     const modalContainer = document.getElementById("modal-container");
     const modalMessage = document.getElementById("modal-message");
@@ -635,7 +807,7 @@ function displayModal (messageType, humanPlayer) {
             break;
 
         case "invalidBet":
-            modalMessage.textContent = "Please enter a valid betting amount in €10 increments, €10, €20, €30, etc. or use the arrows to select a betting amount";
+            modalMessage.textContent = "Please enter a valid betting amount in €10 increments, €10, €20, €30, etc.";
             styleSmallModal(modalContainer);
             break;
 
@@ -658,16 +830,22 @@ function displayModal (messageType, humanPlayer) {
    modalButton.onclick = function() {
         modalContainer.style.display = "none";    
    }
-
 }
 
-
+/**
+ * Styles the modal container for a large message
+ * @param {HTMLElement} modalContainer - The HTML element representing the modal container 
+ */
 function styleSmallModal(modalContainer) {
     modalContainer.style.display = "flex";
     modalContainer.style.justifyContent = "center";
     modalContainer.style.alignItems = "center";
 }
 
+/**
+ * Styles the modal container for a small message
+ * @param {HTMLElement} modalContainer - The HTML element representing the modal container 
+ */
 function styleLargeModal(modalContainer) {
     modalContainer.style.display = "flex";
     modalContainer.style.justifyContent = "center";
@@ -676,9 +854,7 @@ function styleLargeModal(modalContainer) {
 
 //Wait for DOM to load before initialising the game 
 document.addEventListener("DOMContentLoaded", function() {
-    //add event listeners
-    
-    //begin game set up
+    //Begin game set up
     initialiseGame();
 })
 

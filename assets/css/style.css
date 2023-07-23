@@ -31,7 +31,7 @@ h1, h2, h3 {
 }
 
 h2 {
-     font-size: 1.8rem; 
+    font-size: 1.8rem; 
 }
 
 /* Paragraphs */
@@ -322,7 +322,7 @@ header {
 
 /* 1200px */
 @media screen and (max-width:75em) {
-    /* GAME PAGE */
+/* GAME PAGE */
     /* respace hit and stand buttons */
     .game-controls-container {
         width: 100%;
@@ -419,7 +419,7 @@ header {
 
 /* 400px */
 @media screen and (max-width:25em) {
-    /* GAME PAGE */
+/* GAME PAGE */
     /* Remove the logo image */
     .logo-image img {
         display: none;  
@@ -436,7 +436,7 @@ header {
         align-items: center;
     }
 
-    /* GAME PAGE - WITH PLAY AGAIN DISPLAYED */
+/* GAME PAGE - WITH PLAY AGAIN DISPLAYED */
     /* resize the play again button */
     #play-again-button {
         width:18rem;
@@ -446,6 +446,7 @@ header {
 /********************* MEDIA QUERIES - HEIGHT *******************/
 /* 890 px */
 @media screen and (max-height:55.625em) {
+/* GAME PAGE */
     /* Resize controls container */
     .game-controls-container {
         height: 3rem;
@@ -465,6 +466,7 @@ header {
 
 /* 825 px */
 @media screen and (max-height:51.563em) {
+/* GAME PAGE */
     /* Remove header padding */
     header {
         padding: 0;
@@ -487,12 +489,12 @@ header {
 
     .hand-value {
         font-size: 1.4rem;
-
     }
 }
 
 /* 755 px */
 @media screen and (max-height:47.188em) {
+/* GAME PAGE */
     /* remove margins from betting input */
     .betting-input {
         margin-bottom: 0.5rem;
@@ -507,6 +509,7 @@ header {
 
 /* 685 px */
 @media screen and (max-height:42.813em) {
+/* GAME PAGE */
     /* Resize controls container */
     .game-controls-container {
         height: 1.9rem;
@@ -519,6 +522,7 @@ header {
         height: 1.9rem;
         font-size: 1.2rem;
     }
+
     /* resize player chipcount */
     .player-chip-count p {
         font-size: 1.2rem;
@@ -528,6 +532,7 @@ header {
         text-decoration-thickness: 0rem;
         text-underline-offset: 0.1rem;  
     }
+    
     /* resize betting section amount*/
     .betting-container {
         margin-top: 0.25rem;
@@ -554,7 +559,7 @@ header {
         font-size: 1.2rem;
     }
 
-    /* GAME PAGE - WITH PLAY AGAIN DISPLAYED */
+/* GAME PAGE - WITH PLAY AGAIN DISPLAYED */
     /* resize the play again button */
     #play-again-button {
         width:14rem;
@@ -564,6 +569,7 @@ header {
 
 /* 602 px */
 @media screen and (max-height:37.625em) {
+/* GAME PAGE */
     /* resize card images */
     #dealers-cards img, #players-cards img {
         width: 4.688rem;
@@ -571,19 +577,11 @@ header {
     } 
 }
 
-
 /* 472 px */
 @media screen and (max-height:29.5em) { 
+/* GAME PAGE & 404 PAGE*/
     /* Background image scales to smaller screen heights */
     .game-page-wrapper, .page-wrapper{
         height: 100%;   /*ensures full vertical coverage on zoom in */
     }
-
-
-
 }
-
-
-
-
-
