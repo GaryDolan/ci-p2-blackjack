@@ -187,7 +187,7 @@ class HumanPlayer extends Player {
         this.betAmount = parseInt(document.getElementById("player-bet-input").value);
         
         //validate user input and place bet 
-        if(isNaN(this.betAmount) || this.betAmount % 10 != 0 ) {
+        if(isNaN(this.betAmount) || this.betAmount % 10 != 0 || this.betAmount === 0) {
             displayModal("invalidBet", this); 
         } else {
             if (this.betAmount > this.chipCount) {
