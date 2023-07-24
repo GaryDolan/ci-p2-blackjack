@@ -510,11 +510,11 @@ The google lighthouse chrome developer tool was used to test the games performan
 
 <summary style="font-size: 20px; font-weight: bold;">404 </summary>
 
-Desktop
-![404 lighthouse results](/documentation/lighthouse/404-desktop-lighthouse.png)
+### Desktop
+![404 lighthouse results](/documentation/testing/lighthouse/404-desktop-lighthouse.png)
 
-Mobile
-![404 lighthouse results](/documentation/lighthouse/404-mobile-lighthouse.png)
+### Mobile
+![404 lighthouse results](/documentation/testing/lighthouse/404-mobile-lighthouse.png)
 
 </details>
 
@@ -523,10 +523,10 @@ Mobile
 
 <summary style="font-size: 20px; font-weight: bold;">Index</summary>
 
-Desktop
+### Desktop
 ![Index lighthouse results](/documentation/lighthouse/index-desktop-lighthouse.png)
 
-Mobile
+### Mobile
 ![Index lighthouse results](/documentation/lighthouse/index-mobile-lighthouse.png)
 
 </details>
