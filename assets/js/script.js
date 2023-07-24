@@ -811,7 +811,7 @@ function displayModal (messageType, humanPlayer) {
             break;
 
         case "betExceedsChips":
-            modalMessage.textContent = `The Bet you placed exceeded your chip count, your bet has been place at your chip count €${humanPlayer.chipCount}`;
+            modalMessage.textContent = `The Bet you placed exceeded your chip count, your bet has been placed at your chip count €${humanPlayer.chipCount}`;
             styleSmallModal(modalContainer);
             break;
     
