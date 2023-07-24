@@ -1,3 +1,5 @@
+/* jshint esversion: 8, esnext: false*/ /* This sets the correct configuration for the JSHint validator*/
+
 //////////////////////////////// CLASSES //////////////////////////////
 /**
  * Represents a player in the game.
@@ -54,10 +56,11 @@ class Player {
         let numAces = 0;
 
         for (let i = 0; i < this.hand.length; i++) {
-            if (this.hideFirstCardValue && i===0) {
+            const cardValue = this.hand[i];
+            if (this.hideFirstCardValue && i === 0) {
                 //Don't add value for dealer hidden card
-            } else if (faceCards.some(faceCard => this.hand[i].includes(faceCard))){ //do we have a face card
-                this.handValue += 10;    
+            } else if (faceCards.some(faceCard => cardValue.includes(faceCard))) { //do we have a face card
+                this.handValue += 10;
             } else if (this.hand[i].includes ('a')) {
                 //Check if we have aces and keep count
                 numAces ++;
@@ -198,7 +201,7 @@ class Dealer extends Player {
      */
     dealCard(player) {
         let card = this.deck.pop();
-        player.hand.push(card)
+        player.hand.push(card);
     }
 
     /**
@@ -459,12 +462,12 @@ function startGame(dealer, humanPlayer) {
     humanPlayer.displayChipCount();
 
     //Clear old cards and display card backs 
-    dealer.resetHand("dealers-cards", "dealer-hand-value")
+    dealer.resetHand("dealers-cards", "dealer-hand-value");
     humanPlayer.resetHand("players-cards", "player-hand-value");
     
     if (humanPlayer.hasMinBetAmount()) {
         //Enable betting
-        humanPlayer.enableBetting()
+        humanPlayer.enableBetting();
     }else {
         displayModal("noChips", humanPlayer);
         displayPlayAgainButton();
@@ -511,9 +514,9 @@ async function startDeal(dealer, humanPlayer) {
 
     //Calculate and display hand counts
     dealer.calculateHandValue();
-    dealer.displayHandValue("dealer-hand-value")
+    dealer.displayHandValue("dealer-hand-value");
     humanPlayer.calculateHandValue();
-    humanPlayer.displayHandValue("player-hand-value")
+    humanPlayer.displayHandValue("player-hand-value");
 
     //Check for blackjack (auto win)
     if (humanPlayer.checkForBlackjack()) {
@@ -603,7 +606,7 @@ function resetBetAmount() {
  * @returns {Promise} - A promise that resolves after the specified delay.
  */
 function delay(millisec) {
-    return new Promise(resolve => {setTimeout(() => {resolve ('')}, millisec);} )
+    return new Promise(resolve => {setTimeout(() => {resolve ('');}, millisec);});
 }
 
 /**
@@ -635,7 +638,6 @@ function checkWinner(dealer, humanPlayer) {
  * @param {HumanPlayer} humanPlayer - The human player object in the game.
  */
 function handleGameResults (result, dealer, humanPlayer) {
-    const bet = humanPlayer.getBetAmount();
     switch (result) {
         case "win":
             //After half a second let them know they won 
@@ -672,7 +674,7 @@ function handleGameResults (result, dealer, humanPlayer) {
             break;
     }
     //After 3 seconds restart the game 
-    setTimeout(() => {startGame(dealer, humanPlayer);}, 3000) 
+    setTimeout(() => {startGame(dealer, humanPlayer);}, 3000); 
 }
 
 /**
@@ -823,12 +825,12 @@ function displayModal (messageType, humanPlayer) {
     const closeButton = document.getElementsByClassName("close")[0];
     closeButton.onclick = function() {
         modalContainer.style.display = "none";
-    }
+    };
 
    //OK button
    modalButton.onclick = function() {
         modalContainer.style.display = "none";    
-   }
+   };
 }
 
 /**
@@ -855,6 +857,6 @@ function styleLargeModal(modalContainer) {
 document.addEventListener("DOMContentLoaded", function() {
     //Begin game set up
     initialiseGame();
-})
+});
 
 

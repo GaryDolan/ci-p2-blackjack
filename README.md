@@ -482,15 +482,18 @@ Testing of this online game was ongoing throughout the development process. I us
 ## Automated testing
 The automated testing of this online games HTML code was carried out using [Validator w3](https://validator.w3.org/nu/), all html pages passed without any errors or warnings, the results are shown below 
 
-* [index.html test results]()  
-* [404.html test results]()
+* [index.html test results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fgarydolan.github.io%2Fci-p2-blackjack%2F)  
+* [404.html test results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fgarydolan.github.io%2Fci-p2-blackjack%2F404.html)
 
 
 The online games CSS was validated using [W3C CSS validator](https://jigsaw.w3.org/css-validator/). The game passed with no errors or warnings and the test results can be seen below.
-[CSS test results]().
+* [CSS test results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fgarydolan.github.io%2Fci-p2-blackjack%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en).
 
-The online games JavaScript was validated using the [JSHint tool](https://jshint.com/). The game passed with no errors or warnings and the test results can be seen below.
-[JSHint test results]()
+The online games JavaScript was validated using the [JSHint tool](https://jshint.com/). The game passed with no errors and the test results can be seen below. 
+
+![JSHint test results](documentation/testing/javascript-validation-post-fixes.png)
+
+Initially the online tool gave warnings regarding my use of async functions as they are a feature only available in ES8. Due to the fact that the tool does not currently have the option to set it to include ES8 functionality, I needed to figure out how to do this myself. To do this I used the [options reference](https://jshint.com/docs/options/#esversion) for the tool and set my version to ES8. This then gave a warning stating that there would be a conflict if I configure the tool with ES8 and also leave the ESnext option on. I added a part to the comment to disable ESnext. This allows the tool to scan my code including scanning features availble in ES8. I have left the comment in my code (as advised by student support) who I spoke to after I solved the issue, so that if my code is copied and pasted into the validator it will apply the correct settings to the tool.
 
 ## Manual testing
 The tests for this online game listed below were conducted on a number of browsers (google chrome, mozilla firefox, microsoft edge, samsung internet) across various devices (msi laptop with large screen attached, surface pro, Huawei P30 Pro). I also tested the games responsive design using the developer tools on chrome and firefox to ensure it responded as intended.
@@ -545,11 +548,14 @@ During manual testing some bugs were found and fixed, these were,
 ### Game modal bug
 
 ## Automated testing bugs
-During the automated testing various errors were found in the online game, all errors were fixed.
+During the automated testing various warning and errors were found in the online games HTML and JavaScript, all were fixed. No errors or warnings were found in the CSS.
 
+### HTML warnings and errors
 ![HTML warnings / errors](documentation/testing/html-validation-warn-errors.png)
-![CSS warnings / errors]()
-![JavaScript warnings / errors]()
+
+
+### JavaScript warnings and errors
+![JavaScript warnings / errors](documentation/testing/javascript-validation-pre-fixes.png)
 
 
 [Return to Table of Contents](#table-of-contents)
