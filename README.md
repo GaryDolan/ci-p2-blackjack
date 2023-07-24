@@ -435,7 +435,7 @@ I was conscious of accessibility throughout the entire game development process 
 * [Webaim](https://webaim.org/resources/contrastchecker/) was used to ensure colour palette is compliant. 
 * [Google fonts](https://fonts.google.com/) was used to research and import fonts.
 * [Font joy](https://fontjoy.com/) was used to compare various fonts.
-* [Chat GPT](https://openai.com/blog/chatgpt) was used for game rules copy and asking questions regarding the rules and flow of blackjack as a game.
+* [Chat GPT](https://openai.com/blog/chatgpt) was used for game rules copy.
 * [Pixabay](https://pixabay.com) was used as a source for images used in the game.
 * [Adobe Stock](https://stock.adobe.com/ie) was used for a background image.
 * [Open Game Art](https://opengameart.org) was used as a source for card images.
@@ -501,7 +501,7 @@ The tests for this online game listed below were conducted on a number of browse
 
 <details>
 
-<summary style="font-size: 20px; font-weight: bold;">Game page tests</summary>
+<summary style="font-size: 20px; font-weight: bold;">Game page tests 1st game</summary>
 
 | Test                                          | Expected Result                                                                                           | Pass   |
 |-----------------------------------------------|-----------------------------------------------------------------------------------------------------------|--------|
@@ -513,7 +513,7 @@ The tests for this online game listed below were conducted on a number of browse
 |Game rules modal - x button                    |Closes modal window                                                                                        |&#10004;|
 |Game rules modal - OK button                   |Closes modal window                                                                                        |&#10004;|
 |1st game start - focus                         |Focus is moved to betting input on start                                                                   |&#10004;|
-|1st game start - old bet cleared               |value of player bet set to 0                                                                               |&#10004;|
+|1st game start - old bet cleared               |Value of player bet set to 0                                                                               |&#10004;|
 |1st game start - hit button disabled           |Hit button is disabled on start                                                                            |&#10004;|
 |1st game start - stand button disabled         |Stand button is disabled on start                                                                          |&#10004;|
 |1st game start - max bet                       |Players max bet is set to chip count on game start                                                         |&#10004;|
@@ -522,37 +522,47 @@ The tests for this online game listed below were conducted on a number of browse
 |1st game start - chip count < 10               |Modal displayed with no chips message, Play again button displayed                                         |&#10004;|
 |1st game start - chip count > 10               |Betting is enable                                                                                          |&#10004;|
 |1st game start - chip count display            |Chip count of 1000 displayed                                                                               |&#10004;|
-|1st game start - betting input value           |betting input defaults to min bet value of 10                                                              |&#10004;|
-|1st game start - betting input entry           |user can use arrows (large displays only) to change bet                                                    |&#10004;|
-|1st game start - place bet button feedback     |Changes colors when moused over                                                                            |&#10004;|
-|1st game bet - place bet button functionality  |bet is placed when button is pressed                                                                       |&#10004;|
-|1st game bet - place bet button chip count     |bet amount is removed from chip count when button is pressed                                               |&#10004;|
-|1st game bet - place bet button disable        |button is disabled after it is pressed                                                                     |&#10004;|
-|1st game bet - invalid input                   |only numbers in increments of 10 can be placed, all other entries trigger modal msg                        |&#10004;|
-|1st game bet - valid input above chip count    |bet amount will be reduced to chip count and modal will inform user                                        |&#10004;|
-|1st game player play - dealing                 |cards are dealth 1 by 1 with 1 sec delay, hold card is face down                                           |&#10004;|
-|1st game player play - card displays           |cards are dealth 1 by 1 with 1 sec delay, hold card is face down                                           |&#10004;|
-|1st game player play - card overlap            |cards are dealth 1 by 1 with 1 sec delay, hold card is face down                                           |&#10004;|
-|1st game player play - player hand count       |cards are dealth 1 by 1 with 1 sec delay, hold card is face down                                           |&#10004;|
-|1st game player play - dealer hand count       |cards are dealth 1 by 1 with 1 sec delay, hold card is face down                                           |&#10004;|
-|1st game player play - hit button enabled      |after cards are dealt hit button is enabled                                                                |&#10004;|
-|1st game player play - stand button enabled    |after cards are dealt hit button is enabled                                                                |&#10004;|
+|1st game start - betting input value           |Betting input defaults to min bet value of 10                                                              |&#10004;|
+|1st game start - betting input entry           |User can use arrows (large displays only) to change bet                                                    |&#10004;|
+|1st game start - place bet button feedback     |Changes colours when moused over                                                                           |&#10004;|
+|1st game bet - place bet button functionality  |Bet is placed when button is pressed                                                                       |&#10004;|
+|1st game bet - place bet button chip count     |Bet amount is removed from chip count when button is pressed                                               |&#10004;|
+|1st game bet - place bet button disable        |Button is disabled after it is pressed                                                                     |&#10004;|
+|1st game bet - invalid input                   |Only numbers in increments of 10 can be placed, all other entries trigger modal invalid message            |&#10004;|
+|1st game bet - valid input above chip count    |Bet amount will be reduced to chip count and modal will inform user                                        |&#10004;|
+|1st game player play - new deck                |If cards in deck drop below 20 a new deck is created and shuffled                                          |&#10004;|
+|1st game player play - dealing                 |Cards are dealt 1 by 1 with 1 sec delay, hold card is face down                                            |&#10004;|
+|1st game player play - card displays           |Cards are dealt 1 by 1 with 1 sec delay, hold card is face down                                            |&#10004;|
+|1st game player play - card overlap            |Cards are dealt 1 by 1 with 1 sec delay, hold card is face down                                            |&#10004;|
+|1st game player play - player hand count       |Cards are dealt 1 by 1 with 1 sec delay, hold card is face down                                            |&#10004;|
+|1st game player play - dealer hand count       |Cards are dealt 1 by 1 with 1 sec delay, hold card is face down                                            |&#10004;|
+|1st game player play - hit button enabled      |After cards are dealt hit button is enabled                                                                |&#10004;|
+|1st game player play - stand button enabled    |After cards are dealt hit button is enabled                                                                |&#10004;|
 |1st game player play - hit button feedback     |Changes colour on mouse over                                                                               |&#10004;|
-|1st game player play - stand button feedback    |Changes colour on mouse over                                                                              |&#10004;|
-|1st game player play - blackjack               |after cards dealt, players hand value is 21 win modal shown, chip count updated, new game starts in 3 sec. |&#10004;|
-|1st game player play - hit button functionality|when pressed the player will receive another card, hand value is updated                                   |&#10004;|
-|1st game player play - hit btn functionality 2 |after 3rd card, if not bust player can take another                                                        |&#10004;|
-|1st game player play - hit btn functionality 3 |after 4th card, if not bust player can take another                                                        |&#10004;|
-|1st game player play - bust                    |when hit is selected if hand count goes above 21 bust modal is displayed, new game starts after 3 sec.     |&#10004;|
+|1st game player play - stand button feedback   |Changes colour on mouse over                                                                               |&#10004;|
+|1st game player play - blackjack               |After cards dealt, players hand value is 21 win modal shown, chip count updated, new game starts in 3 sec. |&#10004;|
+|1st game player play - hit button functionality|When pressed the player will receive another card, hand value is updated                                   |&#10004;|
+|1st game player play - hit btn functionality 2 |After 3rd card, if not bust player can take another                                                        |&#10004;|
+|1st game player play - hit btn functionality 3 |After 4th card, if not bust player can take another                                                        |&#10004;|
+|1st game player play - bust                    |When hit is selected if hand count goes above 21 bust modal is displayed, new game starts after 3 sec.     |&#10004;|
 |1st game player play - stand btn functionality |When pressed players gameplay ends, hit and stand buttons disabled                                         |&#10004;|
-|1st game dealer play - draw cards below 17     |dealer will draw cards until they reach 17 or above                                                        |&#10004;|
-|1st game dealer play - draw cards above 17     |dealer will take no more cards, game results will be evaluated                                             |&#10004;|
-|1st game game results - dealer bust            |game ends, correct modal displayed, chip count updated, new game starts after 3 sec                        |&#10004;|
-|1st game game results - push                   |game ends, correct modal displayed, chip count updated, new game starts after 3 sec                        |&#10004;|
-|1st game game results - player wins            |game ends, correct modal displayed, chip count updated, new game starts after 3 sec                        |&#10004;|
-|1st game game results - player loses           |game ends, correct modal displayed, chip count updated, new game starts after 3 sec                        |&#10004;|
+|1st game dealer play - draw cards below 17     |Dealer will draw cards until they reach 17 or above                                                        |&#10004;|
+|1st game dealer play - draw cards above 17     |Dealer will take no more cards, game results will be evaluated                                             |&#10004;|
+|1st game game results - dealer bust            |Game ends, correct modal displayed, chip count updated, new game starts after 3 sec                        |&#10004;|
+|1st game game results - push                   |Game ends, correct modal displayed, chip count updated, new game starts after 3 sec                        |&#10004;|
+|1st game game results - player wins            |Game ends, correct modal displayed, chip count updated, new game starts after 3 sec                        |&#10004;|
+|1st game game results - player loses           |Game ends, correct modal displayed, chip count updated, new game starts after 3 sec                        |&#10004;|
+
+</details>
+
+<details>
+
+<summary style="font-size: 20px; font-weight: bold;">Game page tests 2nd game</summary>
+
+| Test                                          | Expected Result                                                                                           | Pass   |
+|-----------------------------------------------|-----------------------------------------------------------------------------------------------------------|--------|
 |2nd game start - focus                         |Focus is moved to betting input on start                                                                   |&#10004;|
-|2nd game start - old bet cleared               |value of player bet set to 0                                                                               |&#10004;|
+|2nd game start - old bet cleared               |Value of player bet set to 0                                                                               |&#10004;|
 |2nd game start - hit button disabled           |Hit button is disabled on start                                                                            |&#10004;|
 |2nd game start - stand button disabled         |Stand button is disabled on start                                                                          |&#10004;|
 |2nd game start - max bet                       |Players max bet is set to chip count on game start                                                         |&#10004;|
@@ -561,37 +571,47 @@ The tests for this online game listed below were conducted on a number of browse
 |2nd game start - chip count < 10               |Modal displayed with no chips message, Play again button displayed                                         |&#10004;|
 |2nd game start - chip count > 10               |Betting is enable                                                                                          |&#10004;|
 |2nd game start - chip count display            |Chip count of 1000 displayed                                                                               |&#10004;|
-|2nd game start - betting input value           |betting input defaults to min bet value of 10                                                              |&#10004;|
-|2nd game start - betting input entry           |user can use arrows (large displays only) to change bet                                                    |&#10004;|
-|2nd game start - place bet button feedback     |Changes colors when moused over                                                                            |&#10004;|
-|2nd game bet - place bet button functionality  |bet is placed when button is pressed                                                                       |&#10004;|
-|2nd game bet - place bet button chip count     |bet amount is removed from chip count when button is pressed                                               |&#10004;|
-|2nd game bet - place bet button disable        |button is disabled after it is pressed                                                                     |&#10004;|
-|2nd game bet - invalid input                   |only numbers in increments of 10 can be placed, all other entries trigger modal msg                        |&#10004;|
-|2nd game bet - valid input above chip count    |bet amount will be reduced to chip count and modal will inform user                                        |&#10004;|
-|2nd game player play - dealing                 |cards are dealth 1 by 1 with 1 sec delay, hold card is face down                                           |&#10004;|
-|2nd game player play - card displays           |cards are dealth 1 by 1 with 1 sec delay, hold card is face down                                           |&#10004;|
-|2nd game player play - card overlap            |cards are dealth 1 by 1 with 1 sec delay, hold card is face down                                           |&#10004;|
-|2nd game player play - player hand count       |cards are dealth 1 by 1 with 1 sec delay, hold card is face down                                           |&#10004;|
-|2nd game player play - dealer hand count       |cards are dealth 1 by 1 with 1 sec delay, hold card is face down                                           |&#10004;|
-|2nd game player play - hit button enabled      |after cards are dealt hit button is enabled                                                                |&#10004;|
-|2nd game player play - stand button enabled    |after cards are dealt hit button is enabled                                                                |&#10004;|
+|2nd game start - betting input value           |Betting input defaults to min bet value of 10                                                              |&#10004;|
+|2nd game start - betting input entry           |User can use arrows (large displays only) to change bet                                                    |&#10004;|
+|2nd game start - place bet button feedback     |Changes colours when moused over                                                                           |&#10004;|
+|2nd game bet - place bet button functionality  |Bet is placed when button is pressed                                                                       |&#10004;|
+|2nd game bet - place bet button chip count     |Bet amount is removed from chip count when button is pressed                                               |&#10004;|
+|2nd game bet - place bet button disable        |Button is disabled after it is pressed                                                                     |&#10004;|
+|2nd game bet - invalid input                   |Only numbers in increments of 10 can be placed, all other entries trigger modal invalid message            |&#10004;|
+|2nd game bet - valid input above chip count    |Bet amount will be reduced to chip count and modal will inform user                                        |&#10004;|
+|2nd game player play - new deck                |If cards in deck drop below 20 a new deck is created and shuffled                                          |&#10004;|
+|2nd game player play - dealing                 |Cards are dealt 1 by 1 with 1 sec delay, hold card is face down                                            |&#10004;|
+|2nd game player play - card displays           |Cards are dealt 1 by 1 with 1 sec delay, hold card is face down                                            |&#10004;|
+|2nd game player play - card overlap            |Cards are dealt 1 by 1 with 1 sec delay, hold card is face down                                            |&#10004;|
+|2nd game player play - player hand count       |Cards are dealt 1 by 1 with 1 sec delay, hold card is face down                                            |&#10004;|
+|2nd game player play - dealer hand count       |Cards are dealt 1 by 1 with 1 sec delay, hold card is face down                                            |&#10004;|
+|2nd game player play - hit button enabled      |After cards are dealt hit button is enabled                                                                |&#10004;|
+|2nd game player play - stand button enabled    |After cards are dealt hit button is enabled                                                                |&#10004;|
 |2nd game player play - hit button feedback     |Changes colour on mouse over                                                                               |&#10004;|
-|2nd game player play - stand button feedback    |Changes colour on mouse over                                                                              |&#10004;|
-|2nd game player play - blackjack               |after cards dealt, players hand value is 21 win modal shown, chip count updated, new game starts in 3 sec. |&#10004;|
-|2nd game player play - hit button functionality|when pressed the player will receive another card, hand value is updated                                   |&#10004;|
-|2nd game player play - hit btn functionality 2 |after 3rd card, if not bust player can take another                                                        |&#10004;|
-|2nd game player play - hit btn functionality 3 |after 4th card, if not bust player can take another                                                        |&#10004;|
-|2nd game player play - bust                    |when hit is selected if hand count goes above 21 bust modal is displayed, new game starts after 3 sec.     |&#10004;|
+|2nd game player play - stand button feedback   |Changes colour on mouse over                                                                               |&#10004;|
+|2nd game player play - blackjack               |After cards dealt, players hand value is 21 win modal shown, chip count updated, new game starts in 3 sec. |&#10004;|
+|2nd game player play - hit button functionality|When pressed the player will receive another card, hand value is updated                                   |&#10004;|
+|2nd game player play - hit btn functionality 2 |After 3rd card, if not bust player can take another                                                        |&#10004;|
+|2nd game player play - hit btn functionality 3 |After 4th card, if not bust player can take another                                                        |&#10004;|
+|2nd game player play - bust                    |When hit is selected if hand count goes above 21 bust modal is displayed, new game starts after 3 sec.     |&#10004;|
 |2nd game player play - stand btn functionality |When pressed players gameplay ends, hit and stand buttons disabled                                         |&#10004;|
-|2nd game dealer play - draw cards below 17     |dealer will draw cards until they reach 17 or above                                                        |&#10004;|
-|2nd game dealer play - draw cards above 17     |dealer will take no more cards, game results will be evaluated                                             |&#10004;|
-|2nd game game results - dealer bust            |game ends, correct modal displayed, chip count updated, new game starts after 3 sec                        |&#10004;|
-|2nd game game results - push                   |game ends, correct modal displayed, chip count updated, new game starts after 3 sec                        |&#10004;|
-|2nd game game results - player wins            |game ends, correct modal displayed, chip count updated, new game starts after 3 sec                        |&#10004;|
-|2nd game game results - player loses           |game ends, correct modal displayed, chip count updated, new game starts after 3 sec                        |&#10004;|
+|2nd game dealer play - draw cards below 17     |Dealer will draw cards until they reach 17 or above                                                        |&#10004;|
+|2nd game dealer play - draw cards above 17     |Dealer will take no more cards, game results will be evaluated                                             |&#10004;|
+|2nd game game results - dealer bust            |Game ends, correct modal displayed, chip count updated, new game starts after 3 sec                        |&#10004;|
+|2nd game game results - push                   |Game ends, correct modal displayed, chip count updated, new game starts after 3 sec                        |&#10004;|
+|2nd game game results - player wins            |Game ends, correct modal displayed, chip count updated, new game starts after 3 sec                        |&#10004;|
+|2nd game game results - player loses           |Game ends, correct modal displayed, chip count updated, new game starts after 3 sec                        |&#10004;|
+
+</details>
+
+<details>
+
+<summary style="font-size: 20px; font-weight: bold;">Game page tests nth game</summary>
+
+| Test                                          | Expected Result                                                                                           | Pass   |
+|-----------------------------------------------|-----------------------------------------------------------------------------------------------------------|--------|
 |nth game start - focus                         |Focus is moved to betting input on start                                                                   |&#10004;|
-|nth game start - old bet cleared               |value of player bet set to 0                                                                               |&#10004;|
+|nth game start - old bet cleared               |Value of player bet set to 0                                                                               |&#10004;|
 |nth game start - hit button disabled           |Hit button is disabled on start                                                                            |&#10004;|
 |nth game start - stand button disabled         |Stand button is disabled on start                                                                          |&#10004;|
 |nth game start - max bet                       |Players max bet is set to chip count on game start                                                         |&#10004;|
@@ -600,35 +620,45 @@ The tests for this online game listed below were conducted on a number of browse
 |nth game start - chip count < 10               |Modal displayed with no chips message, Play again button displayed                                         |&#10004;|
 |nth game start - chip count > 10               |Betting is enable                                                                                          |&#10004;|
 |nth game start - chip count display            |Chip count of 1000 displayed                                                                               |&#10004;|
-|nth game start - betting input value           |betting input defaults to min bet value of 10                                                              |&#10004;|
-|nth game start - betting input entry           |user can use arrows (large displays only) to change bet                                                    |&#10004;|
-|nth game start - place bet button feedback     |Changes colors when moused over                                                                            |&#10004;|
-|nth game bet - place bet button functionality  |bet is placed when button is pressed                                                                       |&#10004;|
-|nth game bet - place bet button chip count     |bet amount is removed from chip count when button is pressed                                               |&#10004;|
-|nth game bet - place bet button disable        |button is disabled after it is pressed                                                                     |&#10004;|
-|nth game bet - invalid input                   |only numbers in increments of 10 can be placed, all other entries trigger modal msg                        |&#10004;|
-|nth game bet - valid input above chip count    |bet amount will be reduced to chip count and modal will inform user                                        |&#10004;|
-|nth game player play - dealing                 |cards are dealth 1 by 1 with 1 sec delay, hold card is face down                                           |&#10004;|
-|nth game player play - card displays           |cards are dealth 1 by 1 with 1 sec delay, hold card is face down                                           |&#10004;|
-|nth game player play - card overlap            |cards are dealth 1 by 1 with 1 sec delay, hold card is face down                                           |&#10004;|
-|nth game player play - player hand count       |cards are dealth 1 by 1 with 1 sec delay, hold card is face down                                           |&#10004;|
-|nth game player play - dealer hand count       |cards are dealth 1 by 1 with 1 sec delay, hold card is face down                                           |&#10004;|
-|nth game player play - hit button enabled      |after cards are dealt hit button is enabled                                                                |&#10004;|
-|nth game player play - stand button enabled    |after cards are dealt hit button is enabled                                                                |&#10004;|
+|nth game start - betting input value           |Betting input defaults to min bet value of 10                                                              |&#10004;|
+|nth game start - betting input entry           |User can use arrows (large displays only) to change bet                                                    |&#10004;|
+|nth game start - place bet button feedback     |Changes colours when moused over                                                                           |&#10004;|
+|nth game bet - place bet button functionality  |Bet is placed when button is pressed                                                                       |&#10004;|
+|nth game bet - place bet button chip count     |Bet amount is removed from chip count when button is pressed                                               |&#10004;|
+|nth game bet - place bet button disable        |Button is disabled after it is pressed                                                                     |&#10004;|
+|nth game bet - invalid input                   |Only numbers in increments of 10 can be placed, all other entries trigger modal invalid message            |&#10004;|
+|nth game bet - valid input above chip count    |Bet amount will be reduced to chip count and modal will inform user                                        |&#10004;|
+|nth game player play - new deck                |If cards in deck drop below 20 a new deck is created and shuffled                                          |&#10004;|
+|nth game player play - dealing                 |Cards are dealt 1 by 1 with 1 sec delay, hold card is face down                                            |&#10004;|
+|nth game player play - card displays           |Cards are dealt 1 by 1 with 1 sec delay, hold card is face down                                            |&#10004;|
+|nth game player play - card overlap            |Cards are dealt 1 by 1 with 1 sec delay, hold card is face down                                            |&#10004;|
+|nth game player play - player hand count       |Cards are dealt 1 by 1 with 1 sec delay, hold card is face down                                            |&#10004;|
+|nth game player play - dealer hand count       |Cards are dealt 1 by 1 with 1 sec delay, hold card is face down                                            |&#10004;|
+|nth game player play - hit button enabled      |After cards are dealt hit button is enabled                                                                |&#10004;|
+|nth game player play - stand button enabled    |After cards are dealt hit button is enabled                                                                |&#10004;|
 |nth game player play - hit button feedback     |Changes colour on mouse over                                                                               |&#10004;|
-|nth game player play - stand button feedback    |Changes colour on mouse over                                                                              |&#10004;|
-|nth game player play - blackjack               |after cards dealt, players hand value is 21 win modal shown, chip count updated, new game starts in 3 sec. |&#10004;|
-|nth game player play - hit button functionality|when pressed the player will receive another card, hand value is updated                                   |&#10004;|
-|nth game player play - hit btn functionality 2 |after 3rd card, if not bust player can take another                                                        |&#10004;|
-|nth game player play - hit btn functionality 3 |after 4th card, if not bust player can take another                                                        |&#10004;|
-|nth game player play - bust                    |when hit is selected if hand count goes above 21 bust modal is displayed, new game starts after 3 sec.     |&#10004;|
+|nth game player play - stand button feedback   |Changes colour on mouse over                                                                               |&#10004;|
+|nth game player play - blackjack               |After cards dealt, players hand value is 21 win modal shown, chip count updated, new game starts in 3 sec. |&#10004;|
+|nth game player play - hit button functionality|When pressed the player will receive another card, hand value is updated                                   |&#10004;|
+|nth game player play - hit btn functionality 2 |After 3rd card, if not bust player can take another                                                        |&#10004;|
+|nth game player play - hit btn functionality 3 |After 4th card, if not bust player can take another                                                        |&#10004;|
+|nth game player play - bust                    |When hit is selected if hand count goes above 21 bust modal is displayed, new game starts after 3 sec.     |&#10004;|
 |nth game player play - stand btn functionality |When pressed players gameplay ends, hit and stand buttons disabled                                         |&#10004;|
-|nth game dealer play - draw cards below 17     |dealer will draw cards until they reach 17 or above                                                        |&#10004;|
-|nth game dealer play - draw cards above 17     |dealer will take no more cards, game results will be evaluated                                             |&#10004;|
-|nth game game results - dealer bust            |game ends, correct modal displayed, chip count updated, new game starts after 3 sec                        |&#10004;|
-|nth game game results - push                   |game ends, correct modal displayed, chip count updated, new game starts after 3 sec                        |&#10004;|
-|nth game game results - player wins            |game ends, correct modal displayed, chip count updated, new game starts after 3 sec                        |&#10004;|
-|nth game game results - player loses           |game ends, correct modal displayed, chip count updated, new game starts after 3 sec                        |&#10004;|
+|nth game dealer play - draw cards below 17     |Dealer will draw cards until they reach 17 or above                                                        |&#10004;|
+|nth game dealer play - draw cards above 17     |Dealer will take no more cards, game results will be evaluated                                             |&#10004;|
+|nth game game results - dealer bust            |Game ends, correct modal displayed, chip count updated, new game starts after 3 sec                        |&#10004;|
+|nth game game results - push                   |Game ends, correct modal displayed, chip count updated, new game starts after 3 sec                        |&#10004;|
+|nth game game results - player wins            |Game ends, correct modal displayed, chip count updated, new game starts after 3 sec                        |&#10004;|
+|nth game game results - player loses           |Game ends, correct modal displayed, chip count updated, new game starts after 3 sec                        |&#10004;|
+
+</details>
+
+<details>
+
+<summary style="font-size: 20px; font-weight: bold;">Game page responsive design testing</summary>
+
+| Test                                          | Expected Result                                                                                           | Pass   |
+|-----------------------------------------------|-----------------------------------------------------------------------------------------------------------|--------|
 |Game page media query width - 1600px           |All media query rules are applied                                                                          |&#10004;|
 |Game modals - 1600px                           |All game modals display correctly                                                                          |&#10004;|
 |Game functionality - 1600px                    |Game functions correctly                                                                                   |&#10004;|
@@ -678,13 +708,13 @@ The tests for this online game listed below were conducted on a number of browse
 <summary style="font-size: 20px; font-weight: bold;">404 page tests</summary>
 
 
-| Test                                 | Expected Result                       | Pass   |
-|--------------------------------------|---------------------------------------|--------|
-|Logo works correctly                  |Sends user to home page                |&#10004;|
-|Logo feedback works correctly         |Changes colour when moused over        |&#10004;|
-|Responsive design width(1600px-320px) |Page adjusted so all item are viewable |&#10004;|
-|Home button functionality             |User sent to home page                 |&#10004;|
-|Page displaye for incorrect URL       |404 page is displayed                  |&#10004;|
+| Test                                  | Expected Result                       | Pass   |
+|---------------------------------------|---------------------------------------|--------|
+|Logo works correctly                   |Sends user to home page                |&#10004;|
+|Logo feedback works correctly          |Changes colour when moused over        |&#10004;|
+|Responsive design width(1600px-320px)  |Page adjusted so all item are viewable |&#10004;|
+|Home button functionality              |User sent to home page                 |&#10004;|
+|Page displayed for incorrect URL       |404 page is displayed                  |&#10004;|
 
 </details>
 
@@ -724,7 +754,7 @@ The google lighthouse chrome developer tool was used to test the games performan
     * The online game imagery, colouring, background and text all make it immediately clear that this is a blackjack game.
 
 * I want to test if the user can easily and intuitively use the online game.
-    * The user is immediately focused to the betting input upon game load, only the betting input and place bet button are available to them initially. After that the user receives a lot of feedback regarding what they can interact with via button enabling / disbabling, tool tips, modals etc. Interactivity was kept simple and self explanatory.
+    * The user is immediately focused to the betting input upon game load, only the betting input and place bet button are available to them initially. After that the user receives a lot of feedback regarding what they can interact with via button enabling / disabling, tool tips, modals etc. Interactivity was kept simple and self explanatory.
 
 * I want to test that the games performance is good, with regards to responsiveness and load times.
     * The online game performance testing has been excellent.
@@ -740,10 +770,10 @@ The google lighthouse chrome developer tool was used to test the games performan
     * All items which can be interacted with in the game supply the user with feedback in terms of colour changes, prompts, modal messaging etc.
 
 * I want to test that the user is provided with all the information needed to play the game, ensuring that all players, regardless of skill level can enjoy the game.
-    * The game rules modal in header displays the rules in full. Pleayer's are also provided with a high level of feedback as they play.
+    * The game rules modal in header displays the rules in full. Player's are also provided with a high level of feedback as they play.
 
 * I want to test that regardless of the users actions, they cannot cause any issues with the game.
-    * The game was heavly tested at all stages of development to ensure 100% correct functionality. Game also has strong user input validation and limits player access to controls until they are meant to be used.
+    * The game was heavily tested at all stages of development to ensure 100% correct functionality. Game also has strong user input validation and limits player access to controls until they are meant to be used.
 
 * I want to ensure if anything goes wrong the user can navigate back to the home page.
 
@@ -763,29 +793,29 @@ The google lighthouse chrome developer tool was used to test the games performan
 
 ### Returning user
 * I want to play blackjack.
-    * The online blackjack game is 100% fucntional and ready to play. 
+    * The online blackjack game is 100% functional and ready to play. 
 * I want the game to be familiar and to remember all the functionality immediately.
     * The game functionality is very straightforward and easy to remember, game rules are available to check at all times.
 * I want to be able to place bets and try win larger amounts of chips.
     * Betting is incorporated into the game and player winnings are tracked until the player closes the game, restarts the game or loses all their chips.
 * I want the ability to play the online game on all my devices
-    * The game is fully responsive and will scale from very large device down to the smallest mobile devices and everything inbetween.
+    * The game is fully responsive and will scale from very large device down to the smallest mobile devices and everything in between.
 ## Manual testing bugs
 During manual testing some bugs were found and fixed, these were,
 
 ### Images not displayed after deployment bug
-This occured after I deployed the online game. The card images were not showing when the game was rendered. To fix this bug I needed to change the types of file paths I used from absolute file paths to relative paths. 
+This occurred after I deployed the online game. The card images were not showing when the game was rendered. To fix this bug I needed to change the types of file paths I used from absolute file paths to relative paths. 
 
 ### Game modal bug
-During my online game development I ran into an issue with the modal display. My issue occured at smaller device sizes. At the smaller sizes the modal became much longer and the text was pushed up making it impossible to read. The user could still scroll down but could not scroll up to the top of the modal message. 
+During my online game development I ran into an issue with the modal display. My issue occurred at smaller device sizes. At the smaller sizes the modal became much longer and the text was pushed up making it impossible to read. The user could still scroll down but could not scroll up to the top of the modal message. 
 
 I figured out that this was due to the align-items center property of the modal. I tried to solve this using the align items stretch property but this made the smaller modals,  which were shown much more frequently stretch much larger than they needed to and look terrible.
 
-I then looked at ways to change from center to stretch using css media queries. I ran into an issue here as he style rules which I applied in the javaScript were overriding the css rules that I had plaed in the css media query. I decided to use the !important keyword to give presedance to the css rule but again ran into issues where the small messages still stretched when below the 992px media query.
+I then looked at ways to change from center to stretch using css media queries. I ran into an issue here as he style rules which I applied in the javaScript were overriding the css rules that I had placed in the css media query. I decided to use the !important keyword to give precedence to the css rule but again ran into issues where the small messages still stretched when below the 992px media query.
 
 I finally came to a solution which I was happy with. I modified the modal code to call one of two helper function to style the modal. If the message was large it will call one function to stretch and if the message was small it would call another to center. 
 
-This still left the issue that at extremely large screen sizes the game rules modal (large) would stretch and use more space than it needed. I settled on this solution because these screen sizes are not typical and when tested on all the standard screen sizes such as 1600x992, 1280x802, 768x1024 and 320x480 the large messages looke good. 
+This still left the issue that at extremely large screen sizes the game rules modal (large) would stretch and use more space than it needed. I settled on this solution because these screen sizes are not typical and when tested on all the standard screen sizes such as 1600x992px, 1280x802px, 768x1024px and 320x480px the large messages looked good. 
 
 ### 0 bet bug
 
