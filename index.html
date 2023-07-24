@@ -50,10 +50,10 @@
             </section>
 
             <!-- Game controls section -->
-            <section class="game-controls-container">
+            <div class="game-controls-container">
                 <button id="hit-button" aria-label="Hit button" title="Press to receive an additional card">Hit</button>
                 <button id="stand-button" aria-label="Stand button" title="Press to finalise your cards and allow dealer to play">Stand</button>
-            </section>
+            </div>
 
             <!-- Player section -->
             <section class="player-container">
@@ -73,7 +73,7 @@
                 <p>Player Chip Count €<span id="chip-count">0</span></p>
             </div>
             <!-- Betting section -->
-            <section class="betting-container">
+            <div class="betting-container">
                 <div class="betting-input">
                     <p>Bet Amount</p>
                     <input id="player-bet-input"  type="number" placeholder="Enter your bet" title="Please enter a bet in €10 increments or use arrows to increase/decrease bet" min="10" step="10" value="10">
@@ -82,15 +82,15 @@
                 <button id="place-bet-button" aria-label="Place bet button" title="Press to place bet">Place Bet</button>
 
                 <button id="play-again-button" aria-label="New game button" title="Press to start new game">Play Again</button>
-            </section>
+            </div>
         </main>
 
         <!-- Modal Container -->
         <div id="modal-container" class="modal">
             <!-- Modal Content -->
             <div class="modal-content">
-                <span class="close">&times</span>
-                <p id="modal-message"><p/>
+                <span class="close">&times;</span>
+                <p id="modal-message"></p>
                 <button id="modal-button">OK</button>
             </div>
         </div>

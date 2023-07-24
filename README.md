@@ -547,13 +547,10 @@ During manual testing some bugs were found and fixed, these were,
 ## Automated testing bugs
 During the automated testing various errors were found in the online game, all errors were fixed.
 
-### HTML bugs
-* 
-### CSS bugs
+![HTML warnings / errors](documentation/testing/html-validation-warn-errors.png)
+![CSS warnings / errors]()
+![JavaScript warnings / errors]()
 
-* 
-### JavaScript bugs
-*
 
 [Return to Table of Contents](#table-of-contents)
 
