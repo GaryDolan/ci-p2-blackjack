@@ -323,8 +323,23 @@ header {
     text-decoration: none;
     cursor: pointer;
 }
+/********************** CARD ANIMATION ********************/
+/* css class rule - add this to  */
+.card-animation {
+    animation-name: cardAnimation;  /*name of keyframe where transition is defined*/
+    animation-duration: 1s;         /*how long it should take to complete the keyframe*/
+}
 
-/********************* MEDIA QUERIES - WIDTH *******************/   
+@keyframes cardAnimation {
+    from {
+        transform: translateY(-18.75rem) rotateY(90deg); /* Initial position and rotation */
+    }
+    to {
+        transform: translateY(0) rotateY(0); /* Final position and rotation */
+    }
+}
+
+/******************* MEDIA QUERIES - WIDTH *****************/   
 /* 1600px */
 @media screen and (max-width:100em) {
 /* GAME PAGE */
@@ -440,20 +455,30 @@ header {
 /* 400px */
 @media screen and (max-width:25em) {
 /* GAME PAGE */
-    /* Remove the logo image */
-    .logo-image img {
-        display: none;  
+
+    /* Remove header padding */
+    header {
+        padding: 0;
     }
 
-    /* Resize logo text size */
-    .logo-content h1{
-        font-size: 1.8rem;
-    } 
+    /* Resize logo image and content */
+    .logo-image img {
+        height:1.625rem;
+        width: 1.656rem;  
+    }
 
-    /* Adjust betting input */
-    .betting-input {
-        flex-direction: column;
-        align-items: center;
+    .logo-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .betting-input p {
+        margin-right: 0.25rem;
+        font-size: 1.2rem;
+    }
+
+    .betting-input input {
+        font-size: 1rem;
+        font-weight: 500;
     }
 
 /* GAME PAGE - WITH PLAY AGAIN DISPLAYED */
@@ -494,8 +519,8 @@ header {
 
     /* Resize logo image and content */
     .logo-image img {
-        width: 1.97rem;
-        height: 2rem;
+        height:1.625rem;
+        width: 1.656rem;  
     }
 
     .logo-content h1 {
@@ -512,8 +537,18 @@ header {
     }
 }
 
-/* 755 px */
-@media screen and (max-height:47.188em) {
+/* 710 px */
+@media screen and (max-height:44.375em) {
+    /* GAME PAGE - WITH PLAY AGAIN DISPLAYED */
+    /* resize the play again button */
+    #play-again-button {
+        width:14rem;
+        height: 5.5rem;
+    }  
+}
+
+/* 768 px */
+@media screen and (max-height:48em) {
 /* GAME PAGE */
     /* remove margins from betting input */
     .betting-input {
@@ -522,13 +557,13 @@ header {
 
     /* resize card images */
     #dealers-cards img, #players-cards img {
-        width: 6.25rem;
-        height: 9.063rem;
+        width: 7rem;
+        height: 9rem;
     }  
 }
 
-/* 685 px */
-@media screen and (max-height:42.813em) {
+/* 650 px */
+@media screen and (max-height:40.625em) {
 /* GAME PAGE */
     /* Resize controls container */
     .game-controls-container {
@@ -563,12 +598,12 @@ header {
     }
     
     .betting-input p {
-        margin-right: 1rem;
+        margin-right: 0.25rem;
         font-size: 1.1rem;
     }
 
     .betting-input input {
-        font-size: 0.8rem;
+        font-size: 1rem;
         font-weight: 500;
     }
 
@@ -583,12 +618,12 @@ header {
     /* resize the play again button */
     #play-again-button {
         width:14rem;
-        height: 5.5rem;
+        height: 5rem;
     }  
 }
 
-/* 602 px */
-@media screen and (max-height:37.625em) {
+/* 590 px */
+@media screen and (max-height:36.875em) {
 /* GAME PAGE */
     /* resize card images */
     #dealers-cards img, #players-cards img {
@@ -597,8 +632,8 @@ header {
     } 
 }
 
-/* 530 px */
-@media screen and (max-height:33.125em) {
+/* 520 px */
+@media screen and (max-height:32.5em) {
     /* GAME PAGE */
     /* Reduce some margins */
     .dealer-container, .player-container {

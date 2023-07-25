@@ -31,6 +31,7 @@ The Lucky 21 online game was designed to allow the user a place to practice and 
     * [Play again button](#play-again-button)
     * [Modal pop up box](#modal-pop-up-box)
     * [Game Audio](#game-audio)
+    * [Card Animation](#card-animation)
     * [404 page](#404-page)
     * [Game Functionality](#game-functionality)
     * [Future Implementations](#future-implementations)
@@ -360,6 +361,24 @@ All the audio in the game is off by default to ensure a good user experience. A 
 ![Audio disabled desktop](documentation/features/audio-enabled-desktop.png)
 #### Mobile
 ![Audio disabled mobile](documentation/features/audio-enabled-mobile.png)
+
+
+### Game audio demo 
+Please click the link below to be directed to the demo video of the game audio. This opens a youtube video. 
+
+[![Card Animation Demo](https://img.youtube.com/vi/wuDHIqxKwJ0/0.jpg)](https://www.youtube.com/watch?v=wuDHIqxKwJ0)
+
+## Card Animation
+The last feature I added to my code was a card animation. The animation occurs anytime the dealer deals a card to the player or themselves and also when the dealer shows their hole card. Its primary purpose was to add a feel of quality to the online game and improve the users experience. 
+
+The animation is added to the card image inside the function which creates and add the cards to the HTML. Due to this the card variable no longer exists after it is inserted into the HTML and the function ends, meaning it does not need to hold any of its values after the animation using fill mode forward etc.
+
+### Link to video of animation 
+Please click the link below to be directed to the demo video of the animation. This opens a youtube video.
+
+[![Card Animation Demo](https://img.youtube.com/vi/7O0xEwYkH1Q/0.jpg)](https://www.youtube.com/watch?v=7O0xEwYkH1Q)
+
+
 ## 404 page
 The 404 page is the page the user will be directed to if they try to visit a page that doesn't exist. It is used as feedback to let the user know that something has gone wrong and provide them with a home button back to safety (game page).
 
@@ -414,8 +433,6 @@ Based upon the game results above the game will no display a message informing t
 ## Future implementations
 In the future I would like to add the following features to the online game
 * Functionality for splitting a players hand.
-* Animations that flip the cards when dealt.
-* Background music, card dealt sound, win and loss sounds (all off by default).
 * Update the betting section so that it used images of chips for betting.
 * Add an option for the user to select the number of deck that are used in the game
 * Add local storage so that the player's game progress (chip count) could be saved.
@@ -574,7 +591,18 @@ The tests for this online game listed below were conducted on a number of browse
 |1st game game results - push                   |Game ends, correct modal displayed, chip count updated, new game starts after 3 sec                        |&#10004;|
 |1st game game results - player wins            |Game ends, correct modal displayed, chip count updated, new game starts after 3 sec                        |&#10004;|
 |1st game game results - player loses           |Game ends, correct modal displayed, chip count updated, new game starts after 3 sec                        |&#10004;|
-
+|Audio - Icon default image                     |Defaults to speaker off icon                                                                               |&#10004;|
+|Audio - Icon default feedback                  |Change colour on mouse over                                                                                |&#10004;|
+|Audio - Icon default functionality             |When clicked, music plays, icon changes to on icon                                                         |&#10004;|
+|Audio - Icon toggle                            |When clicked, music and icon toggle from on to off                                                         |&#10004;|
+|Audio - Icon blocks all audio                  |When toggled off, no other audio sounds (card flip, win, lose) will play                                   |&#10004;|
+|Audio - Card flip sound                        |Ensure card flip sound is played when cards are dealt, player hits or dealer turns hole card               |&#10004;|
+|Audio - Win sound                              |Ensure win sound is played for all types of win (win, blackjack, push, dealer bust)                        |&#10004;|
+|Audio - Lose sound                             |Ensure lose sound is played for all types of lose (lose bust)                                              |&#10004;|
+|Animation - Card filp (deal)                   |Ensure card animation works for initial deal                                                               |&#10004;|
+|Animation - Card filp (hit)                    |Ensure card animation works when player hits                                                               |&#10004;|
+|Animation - Card filp (dealer hole card)       |Ensure card animation works when dealer reveals hole card                                                  |&#10004;|
+|Animation - Card filp (dealer hits)            |Ensure card animation works when dealer takes additional cards                                             |&#10004;|
 </details>
 
 <details>
@@ -623,6 +651,18 @@ The tests for this online game listed below were conducted on a number of browse
 |2nd game game results - push                   |Game ends, correct modal displayed, chip count updated, new game starts after 3 sec                        |&#10004;|
 |2nd game game results - player wins            |Game ends, correct modal displayed, chip count updated, new game starts after 3 sec                        |&#10004;|
 |2nd game game results - player loses           |Game ends, correct modal displayed, chip count updated, new game starts after 3 sec                        |&#10004;|
+|Audio - Icon default image                     |Defaults to speaker off icon                                                                               |&#10004;|
+|Audio - Icon default feedback                  |Change colour on mouse over                                                                                |&#10004;|
+|Audio - Icon default functionality             |When clicked, music plays, icon changes to on icon                                                         |&#10004;|
+|Audio - Icon toggle                            |When clicked, music and icon toggle from on to off                                                         |&#10004;|
+|Audio - Icon blocks all audio                  |When toggled off, no other audio sounds (card flip, win, lose) will play                                   |&#10004;|
+|Audio - Card flip sound                        |Ensure card flip sound is played when cards are dealt, player hits or dealer turns hole card               |&#10004;|
+|Audio - Win sound                              |Ensure win sound is played for all types of win (win, blackjack, push, dealer bust)                        |&#10004;|
+|Audio - Lose sound                             |Ensure lose sound is played for all types of lose (lose bust)                                              |&#10004;|
+|Animation - Card filp (deal)                   |Ensure card animation works for initial deal                                                               |&#10004;|
+|Animation - Card filp (hit)                    |Ensure card animation works when player hits                                                               |&#10004;|
+|Animation - Card filp (dealer hole card)       |Ensure card animation works when dealer reveals hole card                                                  |&#10004;|
+|Animation - Card filp (dealer hits)            |Ensure card animation works when dealer takes additional cards                                             |&#10004;|
 
 </details>
 
@@ -672,12 +712,24 @@ The tests for this online game listed below were conducted on a number of browse
 |nth game game results - push                   |Game ends, correct modal displayed, chip count updated, new game starts after 3 sec                        |&#10004;|
 |nth game game results - player wins            |Game ends, correct modal displayed, chip count updated, new game starts after 3 sec                        |&#10004;|
 |nth game game results - player loses           |Game ends, correct modal displayed, chip count updated, new game starts after 3 sec                        |&#10004;|
+|Audio - Icon default image                     |Defaults to speaker off icon                                                                               |&#10004;|
+|Audio - Icon default feedback                  |Change colour on mouse over                                                                                |&#10004;|
+|Audio - Icon default functionality             |When clicked, music plays, icon changes to on icon                                                         |&#10004;|
+|Audio - Icon toggle                            |When clicked, music and icon toggle from on to off                                                         |&#10004;|
+|Audio - Icon blocks all audio                  |When toggled off, no other audio sounds (card flip, win, lose) will play                                   |&#10004;|
+|Audio - Card flip sound                        |Ensure card flip sound is played when cards are dealt, player hits or dealer turns hole card               |&#10004;|
+|Audio - Win sound                              |Ensure win sound is played for all types of win (win, blackjack, push, dealer bust)                        |&#10004;|
+|Audio - Lose sound                             |Ensure lose sound is played for all types of lose (lose bust)                                              |&#10004;|
+|Animation - Card filp (deal)                   |Ensure card animation works for initial deal                                                               |&#10004;|
+|Animation - Card filp (hit)                    |Ensure card animation works when player hits                                                               |&#10004;|
+|Animation - Card filp (dealer hole card)       |Ensure card animation works when dealer reveals hole card                                                  |&#10004;|
+|Animation - Card filp (dealer hits)            |Ensure card animation works when dealer takes additional cards                                             |&#10004;|
 
 </details>
 
 <details>
 
-<summary style="font-size: 20px; font-weight: bold;">Game page responsive design and audio testing</summary>
+<summary style="font-size: 20px; font-weight: bold;">Game page responsive design</summary>
 
 | Test                                          | Expected Result                                                                                           | Pass   |
 |-----------------------------------------------|-----------------------------------------------------------------------------------------------------------|--------|
@@ -706,30 +758,23 @@ The tests for this online game listed below were conducted on a number of browse
 |Game page media query height - 825px           |All media query rules are applied                                                                          |&#10004;|
 |Game modals - 825px                            |All game modals display correctly                                                                          |&#10004;|
 |Game functionality - 825px                     |Game functions correctly                                                                                   |&#10004;|
-|Game page media query height - 755px           |All media query rules are applied                                                                          |&#10004;|
-|Game modals - 755px                            |All game modals display correctly                                                                          |&#10004;|
-|Game functionality - 755px                     |Game functions correctly                                                                                   |&#10004;|
-|Game page media query height - 685px           |All media query rules are applied                                                                          |&#10004;|
-|Play again button displayed  height - 685px    |All media query rules are applied                                                                          |&#10004;|
-|Game modals - 685px                            |All game modals display correctly                                                                          |&#10004;|
-|Game functionality - 685px                     |Game functions correctly                                                                                   |&#10004;|
-|Game page media query height - 602px           |All media query rules are applied                                                                          |&#10004;|
-|Game modals - 602px                            |All game modals display correctly                                                                          |&#10004;|
-|Game functionality - 602px                     |Game functions correctly                                                                                   |&#10004;|
-|Game page media query height - 530px           |All media query rules are applied                                                                          |&#10004;|
-|Game modals - 530px                            |All game modals display correctly                                                                          |&#10004;|
-|Game functionality - 530px                     |Game functions correctly                                                                                   |&#10004;|
+|Game page media query height - 768px           |All media query rules are applied                                                                          |&#10004;|
+|Game modals - 768px                            |All game modals display correctly                                                                          |&#10004;|
+|Game functionality - 768px                     |Game functions correctly                                                                                   |&#10004;|
+|Play again button displayed  width - 710px     |All media query rules are applied                                                                          |&#10004;|
+|Game page media query height - 650px           |All media query rules are applied                                                                          |&#10004;|
+|Play again button displayed  height - 650px    |All media query rules are applied                                                                          |&#10004;|
+|Game modals - 650px                            |All game modals display correctly                                                                          |&#10004;|
+|Game functionality - 650px                     |Game functions correctly                                                                                   |&#10004;|
+|Game page media query height - 590px           |All media query rules are applied                                                                          |&#10004;|
+|Game modals - 590px                            |All game modals display correctly                                                                          |&#10004;|
+|Game functionality - 590px                     |Game functions correctly                                                                                   |&#10004;|
+|Game page media query height - 520px           |All media query rules are applied                                                                          |&#10004;|
+|Game modals - 520px                            |All game modals display correctly                                                                          |&#10004;|
+|Game functionality - 520px                     |Game functions correctly                                                                                   |&#10004;|
 |Game page media query height - 472px           |All media query rules are applied                                                                          |&#10004;|
 |Game modals - 472px                            |All game modals display correctly                                                                          |&#10004;|
 |Game functionality - 472px                     |Game functions correctly                                                                                   |&#10004;|
-|Audio - Icon default image                     |Defaults to speaker off icon                                                                               |&#10004;|
-|Audio - Icon default feedback                  |Change colour on mouse over                                                                                |&#10004;|
-|Audio - Icon default functionality             |When clicked, music plays, icon changes to on icon                                                         |&#10004;|
-|Audio - Icon toggle                            |When clicked, music and icon toggle from on to off                                                         |&#10004;|
-|Audio - Icon blocks all audio                  |When toggled off, no other audio sounds (card flip, win, lose) will play                                   |&#10004;|
-|Audio - Card flip sound                        |Ensure card flip sound is played when cards are dealt, player hits or dealer turns hole card               |&#10004;|
-|Audio - Win sound                              |Ensure win sound is played for all types of win (win, blackjack, push, dealer bust)                        |&#10004;|
-|Audio - Lose sound                             |Ensure wlose sound is played for all types of lose (lose bust)                                             |&#10004;|
 
 </details>
 
@@ -882,12 +927,17 @@ Game rules copy was written by GPT. Copy was modified by myself.
 * [Lose audio](https://pixabay.com/sound-effects/wah-wah-sad-trombone-6347/) by [Pixabay](https://pixabay.com/users/pixabay-1/)
 
 ## Code
+For most cases the below code was only used as a learing tool and not directly used in my code, the exception to this is the fisher yates shuffle, which was used in my code.
 * Learned how to implement favicons from [W3schools](https://www.w3schools.com/html/html_favicon.asp).
 * Learned about the fisher yates shuffle from [W3schools](https://www.w3schools.com/js/js_array_sort.asp).
 * Learned how to check for substrings in a string from [Stackoverflow](https://stackoverflow.com/questions/5582574/how-to-check-if-a-string-contains-text-from-an-array-of-substrings-in-javascript)
 * Learned how to disable buttons from [W3schools](https://www.w3schools.com/jsref/prop_pushbutton_disabled.asp).
 * Learned to style disabled buttons from [Stackoverflow](https://stackoverflow.com/questions/14750078/style-disabled-button-with-css)
 * Learned to create modals from [W3schools](https://www.w3schools.com/howto/howto_css_modals.asp)
+* Learned to create animations from [W3schools](https://www.w3schools.com/css/css3_animations.asp)
+* Learned about 3d transforms from [W3schools](https://www.w3schools.com/css/css3_3dtransforms.asp)
+* Learned about the translate property from [W3schools](https://www.w3schools.com/cssref/css_pr_translate.php)
+* Used this test editor from [W3schools](https://www.w3schools.com/css/tryit.asp?filename=trycss3_animation1) to test animation types and properties.
 ## Acknowledgements
 I would like to acknowledge the following people for support and guidance during this project,
 * My Mentor Spencer Barriball for advice before and during this project.

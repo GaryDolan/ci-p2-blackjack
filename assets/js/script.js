@@ -17,7 +17,7 @@ class Player {
     }
     
     /**
-     * Adds a card to he display of a player's hand. 
+     * Adds a card to the display of a player's hand, also animates the card. 
      * @param {string} elementId - The ID of the HTML element which hold the card image.
      * @param {boolean} hideFirstCard - Flag to hide the dealers hole card.
      * @param {string} position - Position to add card image, used to show dealers hole card.
@@ -32,6 +32,9 @@ class Player {
             cardImg.src = `assets/images/playing-card-images/${hideFirstCard ? "card-back" : this.hand[this.hand.length - 1]}.webp`;
             cardImg.alt = `Image of a playing card, value ${this.hand[this.hand.length - 1]}`;
             
+            //Trigger the animation on the card as it is about to be inserted in the HTML
+            cardImg.classList.add("card-animation");
+
             //Append the card image to element
             cardContainer.appendChild(cardImg);  
         } else {
@@ -40,8 +43,13 @@ class Player {
             cardImg.src = `assets/images/playing-card-images/${hideFirstCard ? "card-back" : this.hand[0]}.webp`;
             cardImg.alt = `Image of a playing card, value ${this.hand[0]}`;
 
-            //Delete first card and insert new
-            cardContainer.insertBefore(cardImg, firstChild);
+            //Trigger the animation
+            cardImg.classList.add("card-animation");
+
+            //Insert the image
+            cardContainer.insertBefore(cardImg, firstChild);   
+
+            //Delete first card
             cardContainer.removeChild(firstChild);
         } 
     }
