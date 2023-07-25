@@ -138,8 +138,8 @@ header {
     text-decoration-thickness: 0.15rem;
 }
 
-#speaker-icon {
-    margin-right: 1.5rem;
+#game-rules {
+    margin-left: 2rem;
 }
 
 #game-rules:hover {
@@ -393,9 +393,15 @@ header {
 
     /* Adjust game rules */
     #game-rules {
-        margin: 0 0 0.5rem 0;
+        margin: 0 0 0.5rem 2rem;
         text-decoration: none;
     }
+
+    /* shift header content left to compensate for space between game rules and speaker icon */
+    .header-content {
+        margin-right: 3rem;
+    }
+
    
     /* resize card images */
     #dealers-cards img, #players-cards img {
@@ -604,7 +610,11 @@ header {
     }
 
     #game-rules {
-        margin: 0 0 0.25rem 0;
+        margin: 0 0 0.25rem 2rem;
+    }
+    /* shift header content left to compensate for space between game rules and speaker icon */
+    .header-content {
+        margin-right: 3rem;
     }
 
     /* Resize dealer & Player info */

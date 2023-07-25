@@ -30,6 +30,7 @@ The Lucky 21 online game was designed to allow the user a place to practice and 
     * [Betting section](#betting-section)
     * [Play again button](#play-again-button)
     * [Modal pop up box](#modal-pop-up-box)
+    * [Game Audio](#game-audio)
     * [404 page](#404-page)
     * [Game Functionality](#game-functionality)
     * [Future Implementations](#future-implementations)
@@ -53,6 +54,7 @@ The Lucky 21 online game was designed to allow the user a place to practice and 
 8. [Credits](#credits)
     * [Copy](#copy)
     * [Imagery](#images)
+    * [Audio](#audio)
     * [Code](#code)
     * [Acknowledgements](#acknowledgements)
 
@@ -338,7 +340,26 @@ This modal is displayed when the player enter places a valid betting amount that
 
 ![Image of bet exceeds chip count modal mobile](/documentation/features/bet-exceeds-chip-count-mobile.png)
 
+## Game audio
+One of my final additions to the game was the game audio. I did this, not only to add another element of feedback, but to add some fun and atmosphere. I added four types of audios to the game,
+* Background music - This is a traditional swing/jazz piece of music that when played loops. I did not want this to distract from the game, overwhelm the player or cover the other sounds in the game so the volume has been set to 10%.
+* Card flip sound - This was added to indicate when a card is being dealt or turned over. It was left at a default of 100% volume as I felt it was one of the most important sounds in the game and the audio was quite low.
+* Win sound - This sound was added to indicate to the winner they had won. It is light and exciting and add to a great user experience. This was added at a volume of 20%.
+* Loss sound - This sound was added to indicate that the player has lost. Again, to promote a good user experience I wanted to use a fun playful sound to ensure even when losing the player is having fun. I choose the "wha wha" trombone sound and set its volume at 20%.
 
+All the audio in the game is off by default to ensure a good user experience. A speaker icon was added to the header of the game, which allows the user to toggle the audio on and off. When the audio is toggled on and off the icon will change to provide feedback and indicate the audio status.
+
+### Audio disabled
+#### Desktop
+![Audio disabled desktop](documentation/features/audio-disabled-desktop.png)
+#### Mobile
+![Audio disabled mobile](documentation/features/audio-disabled-mobile.png)
+
+### Audio enabled 
+#### Desktop
+![Audio disabled desktop](documentation/features/audio-enabled-desktop.png)
+#### Mobile
+![Audio disabled mobile](documentation/features/audio-enabled-mobile.png)
 ## 404 page
 The 404 page is the page the user will be directed to if they try to visit a page that doesn't exist. It is used as feedback to let the user know that something has gone wrong and provide them with a home button back to safety (game page).
 
@@ -656,7 +677,7 @@ The tests for this online game listed below were conducted on a number of browse
 
 <details>
 
-<summary style="font-size: 20px; font-weight: bold;">Game page responsive design testing</summary>
+<summary style="font-size: 20px; font-weight: bold;">Game page responsive design and audio testing</summary>
 
 | Test                                          | Expected Result                                                                                           | Pass   |
 |-----------------------------------------------|-----------------------------------------------------------------------------------------------------------|--------|
@@ -701,6 +722,14 @@ The tests for this online game listed below were conducted on a number of browse
 |Game page media query height - 472px           |All media query rules are applied                                                                          |&#10004;|
 |Game modals - 472px                            |All game modals display correctly                                                                          |&#10004;|
 |Game functionality - 472px                     |Game functions correctly                                                                                   |&#10004;|
+|Audio - Icon default image                     |Defaults to speaker off icon                                                                               |&#10004;|
+|Audio - Icon default feedback                  |Change colour on mouse over                                                                                |&#10004;|
+|Audio - Icon default functionality             |When clicked, music plays, icon changes to on icon                                                         |&#10004;|
+|Audio - Icon toggle                            |When clicked, music and icon toggle from on to off                                                         |&#10004;|
+|Audio - Icon blocks all audio                  |When toggled off, no other audio sounds (card flip, win, lose) will play                                   |&#10004;|
+|Audio - Card flip sound                        |Ensure card flip sound is played when cards are dealt, player hits or dealer turns hole card               |&#10004;|
+|Audio - Win sound                              |Ensure win sound is played for all types of win (win, blackjack, push, dealer bust)                        |&#10004;|
+|Audio - Lose sound                             |Ensure wlose sound is played for all types of lose (lose bust)                                             |&#10004;|
 
 </details>
 
@@ -848,6 +877,9 @@ Game rules copy was written by GPT. Copy was modified by myself.
 
 ## Audio
 * [Background audio](https://pixabay.com/music/traditional-jazz-swing-110485/) by [Music_For_Videos](https://pixabay.com/users/music_for_videos-26992513/)
+* [Card flip audio](https://pixabay.com/sound-effects/flipcard-91468/) by [Pixabay](https://pixabay.com/users/pixabay-1/)
+* [Win audio](https://pixabay.com/sound-effects/success-1-6297/) by [Pixabay](https://pixabay.com/users/pixabay-1/)
+* [Lose audio](https://pixabay.com/sound-effects/wah-wah-sad-trombone-6347/) by [Pixabay](https://pixabay.com/users/pixabay-1/)
 
 ## Code
 * Learned how to implement favicons from [W3schools](https://www.w3schools.com/html/html_favicon.asp).

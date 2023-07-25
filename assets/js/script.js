@@ -202,6 +202,7 @@ class Dealer extends Player {
     dealCard(player) {
         let card = this.deck.pop();
         player.hand.push(card);
+        playSound("cardFlip");
     }
 
     /**
@@ -504,18 +505,18 @@ async function startDeal(dealer, humanPlayer) {
     dealer.addCardToDisplay("dealers-cards", true);
 
     //1 sec then player card 1
-    await delay(1000);
+    await delay(1100);
     dealer.dealCard(humanPlayer);
     humanPlayer.clearCards ("players-cards");
     humanPlayer.addCardToDisplay("players-cards");
 
     //1 sec then dealer card 2
-    await delay(1000);
+    await delay(1100);
     dealer.dealCard(dealer);
     dealer.addCardToDisplay("dealers-cards");
     
     //1 sec then player card 2
-    await delay(1000);
+    await delay(1100);
     dealer.dealCard(humanPlayer);
     humanPlayer.addCardToDisplay("players-cards");
 
@@ -554,7 +555,8 @@ async function dealersPlay(dealer, humanPlayer) {
     dealer.showHoleCardValue();
     dealer.calculateHandValue();
     dealer.displayHandValue("dealer-hand-value");
-    await delay(1000);
+    playSound("cardFlip");
+    await delay(1100);
 
     //Dealer takes cards until above 17 
     while (dealer.getHandValue() < 17) {
@@ -562,7 +564,7 @@ async function dealersPlay(dealer, humanPlayer) {
         dealer.addCardToDisplay("dealers-cards");
         dealer.calculateHandValue();
         dealer.displayHandValue("dealer-hand-value");
-        await delay(1000);
+        await delay(1100);
     }    
     checkWinner(dealer, humanPlayer);
 }
@@ -649,31 +651,37 @@ function handleGameResults (result, dealer, humanPlayer) {
         case "win":
             //After half a second let them know they won 
             setTimeout(() => {displayModal("win", humanPlayer);}, 500);
+            playSound("win");
             humanPlayer.collectWinnings("standard");
             break;
         case "lose":
             //After half a second let them know they lost 
             setTimeout(() => {displayModal("lose", humanPlayer); }, 500);
+            playSound("lose");
             break;
         case "bust":
             //After half a second let them know their bust 
             setTimeout(() => {displayModal("bust", humanPlayer); }, 500);
+            playSound("lose");
             break;
         case "blackjack":
             //After half a second let them know they got blackjack 
             setTimeout(() => {displayModal("blackjack", humanPlayer); }, 500);
+            playSound("win");
             humanPlayer.collectWinnings("blackjack");
             break;
 
         case "push":
             //After half a second let them know it was a draw 
             setTimeout(() => {displayModal("push", humanPlayer); }, 500);
+            playSound("win");
             humanPlayer.collectWinnings("push");
             break;
         
         case "dealerBust":
             //After half a second let them know they won, dealer bust  
             setTimeout(() => {displayModal("dealerBust", humanPlayer); }, 500);
+            playSound("win");
             humanPlayer.collectWinnings("standard");
             break;
 
@@ -739,8 +747,14 @@ function startAdditionalGame(dealer, humanPlayer) {
     startGame(dealer, humanPlayer);
 }
 
+/**
+ * Toggles background music on and off
+ * Also calls function to toggle icon image based on background music status 
+ * @param {HTMLElement} speakerIcon - The icon image to be toggled
+ */
 function toggleAudio(speakerIcon) {
     const backgroundMusic = document.getElementById("background-music");
+    backgroundMusic.volume = 0.1; 
 
     if (backgroundMusic.paused) {
         backgroundMusic.play();
@@ -751,6 +765,11 @@ function toggleAudio(speakerIcon) {
     }
 }
 
+/**
+ * Toggles the speaker icon between an off icon and an on icon.
+ * @param {HTMLElement} speakerIcon - The icon image to be toggled
+ * @param {boolean} isAudioOn - Indicates if the background music is on or off  
+ */
 function toggleAudioIcon(speakerIcon, isAudioOn) {
     if (isAudioOn) {
         speakerIcon.classList.remove("fa-volume-xmark");
@@ -758,6 +777,41 @@ function toggleAudioIcon(speakerIcon, isAudioOn) {
     } else {
         speakerIcon.classList.remove("fa-volume-high");
         speakerIcon.classList.add("fa-volume-xmark");
+    }
+}
+
+/**
+ * Function that plays an audio clip based on type passed
+ * @param {string} soundType - Type of sound to be played 
+ * 
+ */ 
+function playSound(soundType) {
+    const backgroundAudio = document.getElementById("background-music");
+    const cardFlipAudio = document.getElementById("card-flip-sound");
+    const winAudio = document.getElementById("win-sound");
+    winAudio.volume = 0.2;
+    const loseAudio = document.getElementById("lose-sound");
+    loseAudio.volume = 0.2;
+
+    if (backgroundAudio.paused) {
+        //Don't play any audio
+    } else {
+        switch (soundType) {
+            case "cardFlip":
+                cardFlipAudio.play();
+            break;
+
+            case "win":
+                winAudio.play();
+            break;
+            
+            case "lose":
+                loseAudio.play();
+            break;
+        
+            default:
+                break;
+        }
     }
 }
 
