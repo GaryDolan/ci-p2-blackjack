@@ -435,6 +435,7 @@ I was conscious of accessibility throughout the entire game development process 
 * [Webaim](https://webaim.org/resources/contrastchecker/) was used to ensure colour palette is compliant. 
 * [Google fonts](https://fonts.google.com/) was used to research and import fonts.
 * [Font joy](https://fontjoy.com/) was used to compare various fonts.
+* [Font awesome](https://fontawesome.com/) was used to import font icons.
 * [Chat GPT](https://openai.com/blog/chatgpt) was used for game rules copy.
 * [Pixabay](https://pixabay.com) was used as a source for images used in the game.
 * [Adobe Stock](https://stock.adobe.com/ie) was used for a background image.
@@ -844,6 +845,9 @@ Game rules copy was written by GPT. Copy was modified by myself.
 * [Playing card images](https://opengameart.org/content/playing-cards-vector-png) by Byron Knoll
 * [Playing card back image](https://pixabay.com/vectors/card-card-game-playing-card-game-7031432/) by [TFREE](https://pixabay.com/users/tjfree-9771479/)
 * [Playing card icon](https://pixabay.com/vectors/cards-poker-game-heart-spade-icon-98382/) by [OpenIcons](https://pixabay.com/users/openicons-28911/)
+
+## Audio
+* [Background audio](https://pixabay.com/music/traditional-jazz-swing-110485/) by [Music_For_Videos](https://pixabay.com/users/music_for_videos-26992513/)
 
 ## Code
 * Learned how to implement favicons from [W3schools](https://www.w3schools.com/html/html_favicon.asp).

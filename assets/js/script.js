@@ -430,6 +430,13 @@ function initialiseGame() {
         displayModal("gameRules", humanPlayer); 
     });
 
+    //Background music and speaker icon
+    //music off by default
+    const speakerIcon = document.getElementById("speaker-icon");
+    speakerIcon.addEventListener("click", function() {
+        toggleAudio(speakerIcon);
+    });
+
     //Begin gameplay 
     startGame(dealer, humanPlayer);
 }
@@ -730,6 +737,28 @@ function startAdditionalGame(dealer, humanPlayer) {
 
     //Call start game
     startGame(dealer, humanPlayer);
+}
+
+function toggleAudio(speakerIcon) {
+    const backgroundMusic = document.getElementById("background-music");
+
+    if (backgroundMusic.paused) {
+        backgroundMusic.play();
+        toggleAudioIcon(speakerIcon, true);
+    } else {
+        backgroundMusic.pause();
+        toggleAudioIcon(speakerIcon, false);
+    }
+}
+
+function toggleAudioIcon(speakerIcon, isAudioOn) {
+    if (isAudioOn) {
+        speakerIcon.classList.remove("fa-volume-xmark");
+        speakerIcon.classList.add("fa-volume-high");
+    } else {
+        speakerIcon.classList.remove("fa-volume-high");
+        speakerIcon.classList.add("fa-volume-xmark");
+    }
 }
 
 //MODAL FUNCTIONS 

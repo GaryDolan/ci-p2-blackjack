@@ -18,16 +18,26 @@
     <div class="game-page-wrapper">
         <!-- Header Element -->
         <header>
+            <!-- logo -->
             <a class="logo" href="index.html" aria-label="Return home">
                 <div class="logo-image">
                     <img src="assets/images/cards-icon.png" alt="Icon: Two cards, one heart and one spade ">
                 </div> 
                 <div class="logo-content">
                     <h1>Lucky 21 Blackjack</h1>
-                </div>
-                
+                </div>  
             </a>   
-            <p id="game-rules">Game Rules</p>     
+            <!-- audio -->
+            <audio id="background-music" loop>
+                <source src="assets/audio/background-music.mp3" type="audio/mpeg">
+                Your browser does not support audio
+            </audio>
+            <!-- game rules and speaker icon -->
+            <div class="header-content">
+                <i id="speaker-icon" class="fa-solid fa-volume-xmark"></i>
+                <p id="game-rules">Game Rules</p>
+            </div>
+                 
         </header>
 
         <!-- Main webpage content -->
@@ -98,5 +108,7 @@
     
     <!-- local script -->
     <script src="assets/js/script.js"></script>
+    <!-- font awesome script -->
+    <script src="https://kit.fontawesome.com/69c4af19c8.js" crossorigin="anonymous"></script>
 </body>
 </html>

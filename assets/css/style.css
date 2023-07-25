@@ -125,6 +125,12 @@ header {
     color: #CACBD8;
 }
 
+/* Header content - game rules and speaker icon */
+.header-content {
+    display: flex;
+    align-items: center;
+}
+
 /* Game rules pop up */
 #game-rules {
     margin-right: 1.5rem;
@@ -132,7 +138,15 @@ header {
     text-decoration-thickness: 0.15rem;
 }
 
+#speaker-icon {
+    margin-right: 1.5rem;
+}
+
 #game-rules:hover {
+    color: #CACBD8;
+}
+
+#speaker-icon:hover {
     color: #CACBD8;
 }
 
