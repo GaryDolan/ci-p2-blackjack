@@ -514,7 +514,7 @@ header {
 /* GAME PAGE */
     /* Remove header padding */
     header {
-        padding: 0;
+        padding: 0.5rem;
     }
 
     /* Resize logo image and content */
@@ -537,6 +537,21 @@ header {
     }
 }
 
+/* 785 px */
+@media screen and (max-height:49.063em) {
+/* GAME PAGE */
+    /* remove margins from betting input */
+    .betting-input {
+        margin-bottom: 0.5rem;
+    }
+
+    /* resize card images */
+    #dealers-cards img, #players-cards img {
+        width: 7rem;
+        height: 10.188rem;
+    }  
+}
+
 /* 710 px */
 @media screen and (max-height:44.375em) {
     /* GAME PAGE - WITH PLAY AGAIN DISPLAYED */
@@ -547,23 +562,8 @@ header {
     }  
 }
 
-/* 768 px */
-@media screen and (max-height:48em) {
-/* GAME PAGE */
-    /* remove margins from betting input */
-    .betting-input {
-        margin-bottom: 0.5rem;
-    }
-
-    /* resize card images */
-    #dealers-cards img, #players-cards img {
-        width: 7rem;
-        height: 9rem;
-    }  
-}
-
-/* 650 px */
-@media screen and (max-height:40.625em) {
+/* 702 px */
+@media screen and (max-height:43.875em) {
 /* GAME PAGE */
     /* Resize controls container */
     .game-controls-container {
@@ -622,8 +622,8 @@ header {
     }  
 }
 
-/* 590 px */
-@media screen and (max-height:36.875em) {
+/* 643 px */
+@media screen and (max-height:40.188em) {
 /* GAME PAGE */
     /* resize card images */
     #dealers-cards img, #players-cards img {
@@ -632,12 +632,12 @@ header {
     } 
 }
 
-/* 520 px */
-@media screen and (max-height:32.5em) {
+/* 534 px */
+@media screen and (max-height:33.375em) {
     /* GAME PAGE */
     /* Reduce some margins */
     .dealer-container, .player-container {
-        margin-bottom: 0.25rem;
+        margin-bottom: 0.2rem;
     }    
 
     .logo {

@@ -1,5 +1,5 @@
 # Lucky 21 Blackjack
-The Lucky 21 online game was designed to allow the user a place to practice and hone their Blackjack skills. 
+The Lucky 21 online game was designed to give the user a place to practice and hone their Blackjack skills. 
 
 ![Preview of website on various devices](documentation/responsive-design-screenshot.png)
 
@@ -33,7 +33,7 @@ The Lucky 21 online game was designed to allow the user a place to practice and 
     * [Game Audio](#game-audio)
     * [Card Animation](#card-animation)
     * [404 page](#404-page)
-    * [Game Functionality](#game-functionality)
+    * [Game Mechanics](#game-mechanics)
     * [Future Implementations](#future-implementations)
     * [Accessibility](#accessibility)
 5. [Technologies used](#technologies-used)
@@ -83,18 +83,20 @@ Lucky 21 Blackjack is an online game that I (Gary Dolan) developed for my second
 * I want the game to be intuitive and easy to play.
 * I want the game to provide me with feedback regarding actions I can take or actions I have taken. 
 * I want the ability to place bets when playing.
+* I want the game to be fun.
 
 ### Returning visitor goals 
 * I want to play blackjack.
 * I want the game to be familiar and to remember all the functionality immediately.
 * I want to be able to place bets and try win larger amounts of chips.
 * I want the ability to play the online game on all my devices.
+* I want the game to be fun.
 
 [Return to Table of Contents](#table-of-contents)
 
 # Design
 ## Colour scheme
-The primary objective I wanted to achieve with my colour scheme was to invoke a sense of familiarity in the players. Blackjack is a well known and loved game so I wanted to choose colours that players would expect. I also wanted to choose some colours that the players would not be used to seeing so that it would immediately draw their attention. These colours would be used for calls to action. 
+The primary objective I wanted to achieve with my colour scheme was to invoke a sense of familiarity in the players. Blackjack is a well known and loved game so I wanted to choose colours that players would expect. I also wanted to choose some colours that the players would not be used to seeing, so that it would immediately draw their attention. These colours would be used for calls to action. 
 
 A secondary goal of my colour scheme was to give the appearance of quality. I didn't just want to use solid colours but textured and high quality images where practical.
 
@@ -110,11 +112,11 @@ I based my colour palette largely around the existing colours of most versions o
 * #C83737: This is another one of my primary colours chosen for the rear of the playing cards, again a very common colour used in blackjack.
 * #FFFFFF: This is one of my secondary colours intended for use in most if not all of my text content.
 * #FF8205: This colour was chosen for use in my button as a strong stand out colour for calls to action.  
-* #CACBD8: Selected for use in elements which require user feedback such as the game rules modal or home icon. 
+* #CACBD8: This colour was selected for use in elements which require user feedback such as the game rules modal, home icon and the audio controls. 
 
-All intended colour combination from my pallet were tested on [Webaim](https://webaim.org/resources/contrastchecker/) and [Accessible web](https://accessibleweb.com/color-contrast-checker/) to ensure any text displayed on another colour complied with WCAG AAA standards.
+All intended colour combination from my pallet were tested on [Webaim](https://webaim.org/resources/contrastchecker/) to ensure any text displayed on another colour complied with WCAG AAA standards.
 
-I had one small issue when contrasting the text and background. This was with regards to the button text. I originally planned to use a darker text colour, such as #383838 in the buttons to ensure full compliance. When I used darker colours I found that although they were visible against their immediate background, they were harder to see due to the dark colour of the game background. I spoke to my class mates and my cohort facilitator and all agreed that a brighter coloured text gave much better visibility against the orange button and the green background image that the darker colours.  
+I had one small issue when contrasting the text and background. This was with regards to the button text. I originally planned to use a darker text colour, such as #383838 in the buttons to ensure full compliance. When I used darker colours I found that although they were visible against their immediate background, they were harder to see due to the dark colour of the game background. I spoke to my class mates and my cohort facilitator and they all agreed that a brighter coloured text gave much better visibility against the orange button and the green background image.  
 
 ## Typography
 When considering fonts, I used a combination of [Google fonts](https://fonts.google.com/) to research fonts, [Font joy](https://fontjoy.com/) to compare various fonts. I decided to use a font I had used on a previous project called Raleway because it was clean and elegant and offered a wide variety of weights.
@@ -124,17 +126,17 @@ I did change this font to sans-serif in two places in my code where numbers were
 ## Imagery
 Due to the nature of blackjack I did not need to use many images in my game. 
 
-My first image was the background image for the game. This would be a large visual aspect of the game so I wanted to ensure I choose one that was very high quality and would not be too distracting. I choose to licence an [image](https://stock.adobe.com/ie/search?k=blackjack+background&asset_id=325384191) from [Adobe Stock](https://stock.adobe.com) and have included an image for proof of licensing. 
+My first image was the background image for the game. This would be an important visual aspect of the game so I wanted to ensure I choose one that was very high quality and would not be distracting. I choose to licence an [image](https://stock.adobe.com/ie/search?k=blackjack+background&asset_id=325384191) from [Adobe Stock](https://stock.adobe.com) and have included an image for proof of licensing. 
 
 ![proof of licensing](documentation/background-license.png)
 
-My next [images](https://opengameart.org/content/playing-cards-vector-png) were for the placing card faces, there are 52 in total and I downloaded them under public domain license from [OpenGameArt.Org](https://opengameart.org).
+My next [images](https://opengameart.org/content/playing-cards-vector-png) were for the playing card faces, there are 52 in total and I downloaded them under public domain license from [OpenGameArt.Org](https://opengameart.org).
 
 The final two images I used were from [Pixabay](https://pixabay.com/). The first [image](https://pixabay.com/vectors/card-card-game-playing-card-game-7031432/) was used for the back of my playing cards and the second [image](https://pixabay.com/vectors/cards-poker-game-heart-spade-icon-98382/) was used as an icon in my logo and in two other places in the game. This image was converted to an icon using [Favicons convertor](https://favicon.io/favicon-converter/).
 
 
 ## Wireframes
-All the wireframes for the online game were created using the Balsamic desktop application. They were also created for specific breakpoint, which I took from [am I responsive](https://ui.dev/amiresponsive). 
+All the wireframes for the online game were created using the Balsamic desktop application. They were also created for specific viewports, which I took from [am I responsive](https://ui.dev/amiresponsive). 
 
 <details>
 
@@ -168,7 +170,7 @@ All the wireframes for the online game were created using the Balsamic desktop a
 
 </details>
 
-There were some deviations from the above wireframes as the game was developed including the removal of the message display section, which was replaced by modal pop ups.
+There were some deviations from the above wireframes as the game was developed, including the removal of the message display section, which was replaced by modal pop ups.
 
 [Return to Table of Contents](#table-of-contents)
 
@@ -178,7 +180,7 @@ The online game contains 2 pages in total. There is one game page and a 404 page
 ## Common to all pages
 
 ### Logo
-The logo is common on both pages of the online game. The logo consists of an icon and matching text and is a link to return to the game page. The logo also provides feedback to the user, changing colour when the user mouses over it. At mobile sizes the icon is removed from the logo. 
+The logo is common on both pages of the online game. The logo consists of an icon and matching text and is a link to return to the game page. The logo also provides feedback to the user, changing colour when the user mouses over it. 
 
 ![Image of the logo](/documentation/features/logo.png)
 
@@ -193,15 +195,15 @@ The background image is a high quality textured image that is used on both game 
 
 
 ## Game page
-The game page is the page that contains the game, all of its functionality and interactivity. It consists of a background image (discussed above) which covers the entire page, a header containing a logo and a game rules pop up, a dealer section containing the dealer's information and cards, a game controls section containing the hit and stand buttons, a player section containing the player's information, cards and chip count and finally a betting section which contains the betting input and the place bet button. 
+The game page is the page that contains the game, all of its functionality and interactivity. It consists of a background image (discussed above) which covers the entire page, a header containing a logo, audio controls and a game rules pop up, a dealer section containing the dealer's information and cards, a game controls section containing the hit and stand buttons, a player section containing the player's information, cards and chip count and finally a betting section which contains the betting input and the place bet button. 
 
 The game page can also contain a play again button if the player runs out of chips and can no longer continue their game. This button is displayed in place of the betting section. 
 
-At times the game page may also contain pop up windows. The windows messages will change based on the information that needs to be displayed and will scale based on the device size.
+At times the game page may also contain a pop up window. The window messages will change based on the information that needs to be displayed and will scale based on the device size.
 
 
 ## Header
-The header of the online game consists of a logo and game rules text. The logo consist of an icon and matching text and is a link to return to the game page. The logo also provides feedback to the user, changing colour when the user mouses over it. At mobile sizes the icon is removed from the logo. The game rules text is clickable and when clicked it will display a game rules modal. The game rules text also provides feedback in the form of a colour change when the user mouses over it. 
+The header of the online game consists of a logo, audio controls and game rules text. The logo consist of an icon and matching text and is a link to return to the game page. The logo also provides feedback to the user, changing colour when the user mouses over it. The audio controls are in the form of a speaker icon. This icon will toggle the audio from on to off or vice versa when pressed. The audio icon also provides feedback to the user, changing colour when moused over and changing from an off speaker icon to an on speaker icon when pressed. The game rules text is clickable and when clicked it will display a game rules modal. The game rules text also provides feedback in the form of a colour change when the user mouses over it. 
 
 ![Image of header](/documentation/features/header.png)
 
@@ -244,7 +246,7 @@ Once the player places a bet and the cards are dealt these buttons will be made 
 
 ![Image of game controls enabled mobile](/documentation/features/game-controls-enabled-mobile.png)
 
-When the hit button is pressed the dealer will deal another card to the player and this will be added to the players hand and their total hand value will be updated. The user can choose to hit once their hand value does not exceed 21. 
+When the hit button is pressed the dealer will deal another card to the player,this will be added to the players hand and their total hand value will be updated. The user can choose to hit once their hand value does not exceed 21. 
 
 When the player presses the stand button it will signal that they do not wish to be dealt any more cards. At this point the hit and stand buttons will be disabled again and the game will continue.   
 
@@ -271,7 +273,7 @@ The betting section of the game consists of a betting input and a place bet butt
 
 ![Image of betting section mobile](/documentation/features/betting-section-mobile.png)
 
-When the games starts the player's focus will be drawn to the bet amount input. This input allows the player to enter an amount they wish to bet on the upcoming game. The amount they enter will be placed as a bet and cards will be dealt once they press enter or click the place bet button. The input will only accept bets in increments of 10, from 10 to the players chip count. If the user enters anything other than this a modal will be displayed informing them that their bet is invalid. If a player enters a bet amount larger than there chip count, the game will automatically reduce their bet to their max chip count and inform them of this via a modal pop up.
+When the games starts the player's focus will be drawn to the bet amount input. This input allows the player to enter an amount they wish to bet on the upcoming game. The amount they enter will be placed as a bet and cards will be dealt once they press enter or click the place bet button. The input will only accept bets in increments of 10, from 10 to the players chip count. If the player enters anything other than this a modal will be displayed informing them that their bet is invalid. If a player enters a valid bet amount that is larger than there chip count, the game will automatically reduce their bet to their max chip count and inform them of this via a modal pop up.
 
 ## Play again button 
 The play again button is only shown when a player's game has ended due to their chip count being too low to place a bet. The play again button will replace the betting input section and the player chip count. As the name suggests when the button is clicked a new game will start. Like all other buttons this one provides feedback via colour changes.
@@ -284,7 +286,7 @@ The play again button is only shown when a player's game has ended due to their 
 The game will provide the player with valuable information throughout the course of the game in the form of a pop up modal. This modal will have the same style regardless of the message but will scale to the message size. Below is a list of all the modal messages that can be displayed in the game.
 
 ### Game rules modal
-This modal has already been discussed [above](#Game-rules-modal). 
+This modal has already been discussed [above](#game-rules-modal). 
 
 ### Win
 This modal is displayed when the player wins. A win occurs when the players hand value is closer to 21 than the dealer and neither they nor the dealer bust (go above 21).
@@ -299,7 +301,7 @@ This modal is displayed when the player loses. A loss occurs when the player is 
 
 ![Image of loss modal mobile](/documentation/features/loss-mobile.png)
 ### Bust
-This modal is displayed when the player busts. A player is considered bust when there hand value exceeds 21.
+This modal is displayed when the player busts. A player is considered bust when their hand value exceeds 21.
 
 ![Image of bust modal](/documentation/features/bust.png)
 
@@ -317,7 +319,7 @@ This modal is displayed when there is a push. A push occurs when they player and
 
 ![Image of push modal mobile](/documentation/features/push-mobile.png)
 ### Dealer bust
-This modal is displayed when the dealer busts. A dealer is considered bust when there hand value exceeds 21. 
+This modal is displayed when the dealer busts. A dealer is considered bust when their hand value exceeds 21. 
 
 ![Image of dealer bust modal](/documentation/features/dealer-bust.png)
 
@@ -329,13 +331,13 @@ This modal is displayed when the player runs out of chips due to losing games.
 
 ![Image of no chips modal mobile](/documentation/features/no-chips-mobile.png)
 ### Invalid bet
-This modal is displayed when a player enters a non valid input into he betting input and places the bet (presses enter or clicks the place bet button). A valid bet is a number above 0 in increments of 10. Anything besides this (abc, ==-, 101 etc.) will trigger this modal.
+This modal is displayed when a player enters an invalid input into the betting input and places the bet (presses enter or clicks the place bet button). A valid bet is a number above 0 in increments of 10. Anything besides this will trigger this modal, for example, abc, ==-, 101 etc.
 
 ![Image of invalid bet modal](/documentation/features/invalid-bet.png)
 
 ![Image of invalid bet modal mobile](/documentation/features/invalid-bet-mobile.png)
 ### Bet exceeds chip count
-This modal is displayed when the player enter places a valid betting amount that exceeds their chip count in the betting input and places the bet. 
+This modal is displayed when the player places a valid betting amount that exceeds their chip count in the betting input and places the bet. 
 
 ![Image of bet exceeds chip count modal](/documentation/features/bet-exceeds-chip-count.png)
 
@@ -343,9 +345,9 @@ This modal is displayed when the player enter places a valid betting amount that
 
 ## Game audio
 One of my final additions to the game was the game audio. I did this, not only to add another element of feedback, but to add some fun and atmosphere. I added four types of audios to the game,
-* Background music - This is a traditional swing/jazz piece of music that when played loops. I did not want this to distract from the game, overwhelm the player or cover the other sounds in the game so the volume has been set to 10%.
-* Card flip sound - This was added to indicate when a card is being dealt or turned over. It was left at a default of 100% volume as I felt it was one of the most important sounds in the game and the audio was quite low.
-* Win sound - This sound was added to indicate to the winner they had won. It is light and exciting and add to a great user experience. This was added at a volume of 20%.
+* Background music - This is a traditional swing/jazz piece of music, that when played will loop. I did not want this to distract from the game, overwhelm the player or cover the other sounds in the game so the volume has been set to 10%.
+* Card flip sound - This was added to indicate when a card is being dealt or turned over. It was left at a default of 100% volume as I felt it was one of the most important sounds in the game and the audio clips volume was quite low.
+* Win sound - This sound was added to indicate to the player they had won. It is light and exciting and adds to a great user experience. This was added at a volume of 20%.
 * Loss sound - This sound was added to indicate that the player has lost. Again, to promote a good user experience I wanted to use a fun playful sound to ensure even when losing the player is having fun. I choose the "wha wha" trombone sound and set its volume at 20%.
 
 All the audio in the game is off by default to ensure a good user experience. A speaker icon was added to the header of the game, which allows the user to toggle the audio on and off. When the audio is toggled on and off the icon will change to provide feedback and indicate the audio status.
@@ -371,7 +373,7 @@ Please click the link below to be directed to the demo video of the game audio. 
 ## Card Animation
 The last feature I added to my code was a card animation. The animation occurs anytime the dealer deals a card to the player or themselves and also when the dealer shows their hole card. Its primary purpose was to add a feel of quality to the online game and improve the users experience. 
 
-The animation is added to the card image inside the function which creates and add the cards to the HTML. Due to this the card variable no longer exists after it is inserted into the HTML and the function ends, meaning it does not need to hold any of its values after the animation using fill mode forward etc.
+The animation is added to the card image inside the function which creates and adds the cards to the HTML. Due to this the card variable no longer exists after it is inserted into the HTML and the function ends, meaning it does not need to hold any of its values after the animation using fill mode forward etc.
 
 ### Link to video of animation 
 Please click the link below to be directed to the demo video of the animation. This opens a youtube video.
@@ -386,28 +388,28 @@ The 404 page is the page the user will be directed to if they try to visit a pag
 
 ![404 page mobile](/documentation/features/404-page-mobile.png)
 
-## Game functionality 
+## Game Mechanics 
 Below is a summary of the game functionality broken down into sections.
 
 ### Game startup
 Once the page has loaded the game will begin initialisation and start up. At this point the dealer and player's card will be face down, the hit and stand buttons will be disabled and the users focus will be placed on the betting input. 
 
 ### Placing a bet
-Once the player has the minimum amount needed (10) to place a bet they can play the game, if not they will be given the option to play again via an onscreen button and be given 1000 chips. The player can then enter their bet into the betting input field and press the place bet button (or press enter). 
+Once the player has the minimum amount needed (10) to place a bet they can play the game, if not they will be given the option to play again via an onscreen button. If play again button is pressed a new game will be started and the players chip count will be set to 1000. The player can then enter their bet into the betting input field and press the place bet button (or press enter). 
 
-If the bet is invalid the user will receive a message indicating this and they can then enter a valid bet. A valid bet is a number from 10 up in increments of 10. If for any reason the user places a valid bet that is larger than their chip count the bet amount will be reduced to the players chip count and placed (the user will be informed of this). 
+If the bet is invalid the user will receive a message indicating this and they can then try to enter a valid bet again. A valid bet is a number from 10 up in increments of 10. If for any reason the user places a valid bet that is larger than their chip count the bet amount will be reduced to the players chip count and placed (the user will be informed of this). 
 
 ### Player play
-Once a bet has been placed the betting input and place bet button will be disabled. Cards will then be dealt to both the dealer and the player one by one with one second gaps between cards, the dealers first card will remain hidden.
+Once a bet amount has been entered into the betting input and placed (press place bet button or enter) the place bet button will be disabled. Cards will then be dealt to both the dealer and the player one by one with one second gaps between cards, the dealers first card will remain hidden.
 
-Once the dealer and player have been dealt two cards each, the hit and stand buttons will be enabled. The player then has two options hit or stand. 
+Once the dealer and player have been dealt two cards each, the hand values will be updated and the hit and stand buttons will be enabled. The player then has two options hit or stand. 
 
 If the player chooses the hit button the dealer will deal them another card and their hand value will be update. The player can continue to hit until they bust (hand value > 21) at which point all user interactivity will be disabled, the player will be notified they bust and a new game will start 3 seconds later.  
 
 The player can choose the stand option once they no longer want to be dealt any more cards. This will end the players play and disable the hit and stand buttons.
 
 ### Dealer play 
-Once the player stands the dealer play commences. The dealer will reveal their hold (hidden) card and their hand value will be updated to include this cards value. 
+Once the player stands the dealer play commences. The dealer will reveal their hole (hidden) card and their hand value will be updated to include this cards value. 
 
 If the dealers hand value is 17 they will stand and the game results will be evaluated.
 
@@ -423,30 +425,34 @@ Once the dealer busts or stands the game results will be evaluated to find the w
 * If the players hand value is lower than the dealer's at this point the player loses. 
 
 ### Display results and collect winnings
-Based upon the game results above the game will no display a message informing the player of the results. At this point if the player has won their chip count will update to include their winnings. Player winnings is based on how the player won,
-* Standard win 1:1 odds, player receives double the amount the bet.
+Based upon the game results above the game will now display a message informing the player of the results. At this point if the player has won, their chip count will update to include their winnings. Player winnings are based on how the player won,
+* Standard win 1:1 odds, player receives double the amount they bet.
 * Push (draw) player received their bet back.
 * Blackjack win 3:2 odds, player receives 2.5 times the amount they bet.
 
 3 seconds after this a new game is started. 
 
+### Note:
+During gameplay, if at any time the cards in the dealer's deck drop below 20, the dealer will create and shuffle a new deck which will be user from then on. This is background functionality hidden from the user.
+
 ## Future implementations
-In the future I would like to add the following features to the online game
+In the future I would like to add the following features to the online game,
 * Functionality for splitting a players hand.
 * Update the betting section so that it used images of chips for betting.
 * Add an option for the user to select the number of deck that are used in the game
 * Add local storage so that the player's game progress (chip count) could be saved.
 * Add a player scoring system that would show player's largest chip counts.
 * Update functionality so that upon player getting blackjack the dealers cards are checked for blackjack before the player wins.
+* Add a multiplayer mode to have more than one player. The game codebase was written using an object-oriented approach to allow for this. New players can be created and will all have the same properties and methods. 
 
 
 ## Accessibility
-I was conscious of accessibility throughout the entire game development process and took the following steps to ensure that the game would be as accessible as possible
+I was conscious of accessibility throughout the entire game development process and took the following steps to ensure that the game would be as accessible as possible.
 
 * Used as much semantic HTML as possible, where relevant.
 * Choose the game colours carefully ensuring I used colours that were compliant to the highest standards and provided excellent contrast.
 * Used alt attributes and aria labels where applicable.
-* Used titles where applicable to give the user hints as to what the element around the page mean and what functions they have
+* Used titles where applicable to give the user hints as to what the elements around the page mean and what functions they have.
 * Used placeholder text on input to ensure user knew what the purpose of the input was.  
 
 [Return to Table of Contents](#table-of-contents)
@@ -475,16 +481,17 @@ I was conscious of accessibility throughout the entire game development process 
 * [Font joy](https://fontjoy.com/) was used to compare various fonts.
 * [Font awesome](https://fontawesome.com/) was used to import font icons.
 * [Chat GPT](https://openai.com/blog/chatgpt) was used for game rules copy.
-* [Pixabay](https://pixabay.com) was used as a source for images used in the game.
+* [Pixabay](https://pixabay.com) was used as a source for images and audio used in the game.
 * [Adobe Stock](https://stock.adobe.com/ie) was used for a background image.
 * [Open Game Art](https://opengameart.org) was used as a source for card images.
 * [Favicon convertor](https://favicon.io/favicon-converter/) used to make an icon from an image.
 * [Birme](https://www.birme.net) was used to change image formats and resize images.
-* [Google](https://www.google.ie/), [Youtube](https://www.youtube.com/) and [wW3schools](https://www.w3schools.com) were used throughout the games development to help solve issues when stuck etc. 
+* [Google](https://www.google.ie/), [Youtube](https://www.youtube.com/) and [wW3schools](https://www.w3schools.com) were used throughout the games development to help solve issues when stuck etc. Youtube was also used to host video clips for this readme.
 * [Google Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/) used to test the games performance, accessibility etc.
 * [W3C CSS validator](https://jigsaw.w3.org/css-validator/) used to validate the CSS
 * [W3C HTML validator](https://validator.w3.org/nu/) used to validate the HTML
 * Google and firefox build in dev tools user to test and examine code.
+* Used this test editor from [W3schools](https://www.w3schools.com/css/tryit.asp?filename=trycss3_animation1) to test animation types and properties.
 
 [Return to Table of Contents](#table-of-contents)
 
@@ -532,7 +539,7 @@ The online games JavaScript was validated using the [JSHint tool](https://jshint
 
 ![JSHint test results](documentation/testing/javascript-validation-post-fixes.png)
 
-Initially the online tool gave warnings regarding my use of async functions as they are a feature only available in ES8. Due to the fact that the tool does not currently have the option to set it to include ES8 functionality, I needed to figure out how to do this myself. To do this I used the [options reference](https://jshint.com/docs/options/#esversion) for the tool and set my version to ES8. This then gave a warning stating that there would be a conflict if I configure the tool with ES8 and also leave the ESnext option on. I added a part to the comment to disable ESnext. This allows the tool to scan my code including scanning features availble in ES8. I have left the comment in my code (as advised by student support) who I spoke to after I solved the issue, so that if my code is copied and pasted into the validator it will apply the correct settings to the tool.
+Initially the online tool gave warnings regarding my use of async functions as they are a feature only available in ES8. Due to the fact that the tool does not currently have the option to set it to include ES8 functionality, I needed to figure out how to do this myself. To do this I used the [options reference](https://jshint.com/docs/options/#esversion) for the tool and set my version to ES8. This then gave a warning stating that there would be a conflict if I configure the tool with ES8 and also leave the ESnext option on. I added a part to the comment to disable ESnext. This allows the tool to scan my code including scanning features availble in ES8. I have left the comment in my code (as advised by student support, who I spoke to after I solved the issue) so that if my code is copied and pasted into the validator it will apply the correct settings to the tool.
 
 ## Manual testing
 The tests for this online game listed below were conducted on a number of browsers (google chrome, mozilla firefox, microsoft edge, samsung internet) across various devices (msi laptop with large screen attached, surface pro, Huawei P30 Pro). I also tested the games responsive design using the developer tools on chrome and firefox to ensure it responded as intended.
@@ -570,11 +577,11 @@ The tests for this online game listed below were conducted on a number of browse
 |1st game bet - invalid input                   |Only numbers in increments of 10 can be placed, all other entries trigger modal invalid message            |&#10004;|
 |1st game bet - valid input above chip count    |Bet amount will be reduced to chip count and modal will inform user                                        |&#10004;|
 |1st game player play - new deck                |If cards in deck drop below 20 a new deck is created and shuffled                                          |&#10004;|
-|1st game player play - dealing                 |Cards are dealt 1 by 1 with 1 sec delay, hold card is face down                                            |&#10004;|
-|1st game player play - card displays           |Cards are dealt 1 by 1 with 1 sec delay, hold card is face down                                            |&#10004;|
-|1st game player play - card overlap            |Cards are dealt 1 by 1 with 1 sec delay, hold card is face down                                            |&#10004;|
-|1st game player play - player hand count       |Cards are dealt 1 by 1 with 1 sec delay, hold card is face down                                            |&#10004;|
-|1st game player play - dealer hand count       |Cards are dealt 1 by 1 with 1 sec delay, hold card is face down                                            |&#10004;|
+|1st game player play - dealing                 |Cards are dealt 1 by 1 with 1 sec delay, hole card is face down                                            |&#10004;|
+|1st game player play - card displays           |Card images are correctly displayed for delaer and user                                                    |&#10004;|
+|1st game player play - card overlap            |Cards overlap correctly at lower screen sizes, card values are visable                                     |&#10004;|
+|1st game player play - player hand count       |Once the cards have been dealt, the player's hand value is updated with the correct value                  |&#10004;|
+|1st game player play - dealer hand count       |Once the cards have been dealt, the dealer's hand value shows the correct value (excludes hole cards value)|&#10004;|
 |1st game player play - hit button enabled      |After cards are dealt hit button is enabled                                                                |&#10004;|
 |1st game player play - stand button enabled    |After cards are dealt hit button is enabled                                                                |&#10004;|
 |1st game player play - hit button feedback     |Changes colour on mouse over                                                                               |&#10004;|
@@ -583,7 +590,7 @@ The tests for this online game listed below were conducted on a number of browse
 |1st game player play - hit button functionality|When pressed the player will receive another card, hand value is updated                                   |&#10004;|
 |1st game player play - hit btn functionality 2 |After 3rd card, if not bust player can take another                                                        |&#10004;|
 |1st game player play - hit btn functionality 3 |After 4th card, if not bust player can take another                                                        |&#10004;|
-|1st game player play - bust                    |When hit is selected if hand count goes above 21 bust modal is displayed, new game starts after 3 sec.     |&#10004;|
+|1st game player play - bust                    |When hit is selected if hand count goes above 21, bust modal is displayed, new game starts after 3 sec.    |&#10004;|
 |1st game player play - stand btn functionality |When pressed players gameplay ends, hit and stand buttons disabled                                         |&#10004;|
 |1st game dealer play - draw cards below 17     |Dealer will draw cards until they reach 17 or above                                                        |&#10004;|
 |1st game dealer play - draw cards above 17     |Dealer will take no more cards, game results will be evaluated                                             |&#10004;|
@@ -594,11 +601,11 @@ The tests for this online game listed below were conducted on a number of browse
 |Audio - Icon default image                     |Defaults to speaker off icon                                                                               |&#10004;|
 |Audio - Icon default feedback                  |Change colour on mouse over                                                                                |&#10004;|
 |Audio - Icon default functionality             |When clicked, music plays, icon changes to on icon                                                         |&#10004;|
-|Audio - Icon toggle                            |When clicked, music and icon toggle from on to off                                                         |&#10004;|
+|Audio - Icon toggle                            |When clicked, music and icon toggle from on to off and vice versa                                          |&#10004;|
 |Audio - Icon blocks all audio                  |When toggled off, no other audio sounds (card flip, win, lose) will play                                   |&#10004;|
 |Audio - Card flip sound                        |Ensure card flip sound is played when cards are dealt, player hits or dealer turns hole card               |&#10004;|
 |Audio - Win sound                              |Ensure win sound is played for all types of win (win, blackjack, push, dealer bust)                        |&#10004;|
-|Audio - Lose sound                             |Ensure lose sound is played for all types of lose (lose bust)                                              |&#10004;|
+|Audio - Lose sound                             |Ensure lose sound is played for all types of loss (lose, bust)                                             |&#10004;|
 |Animation - Card filp (deal)                   |Ensure card animation works for initial deal                                                               |&#10004;|
 |Animation - Card filp (hit)                    |Ensure card animation works when player hits                                                               |&#10004;|
 |Animation - Card filp (dealer hole card)       |Ensure card animation works when dealer reveals hole card                                                  |&#10004;|
@@ -630,11 +637,11 @@ The tests for this online game listed below were conducted on a number of browse
 |2nd game bet - invalid input                   |Only numbers in increments of 10 can be placed, all other entries trigger modal invalid message            |&#10004;|
 |2nd game bet - valid input above chip count    |Bet amount will be reduced to chip count and modal will inform user                                        |&#10004;|
 |2nd game player play - new deck                |If cards in deck drop below 20 a new deck is created and shuffled                                          |&#10004;|
-|2nd game player play - dealing                 |Cards are dealt 1 by 1 with 1 sec delay, hold card is face down                                            |&#10004;|
-|2nd game player play - card displays           |Cards are dealt 1 by 1 with 1 sec delay, hold card is face down                                            |&#10004;|
-|2nd game player play - card overlap            |Cards are dealt 1 by 1 with 1 sec delay, hold card is face down                                            |&#10004;|
-|2nd game player play - player hand count       |Cards are dealt 1 by 1 with 1 sec delay, hold card is face down                                            |&#10004;|
-|2nd game player play - dealer hand count       |Cards are dealt 1 by 1 with 1 sec delay, hold card is face down                                            |&#10004;|
+|2nd game player play - dealing                 |Cards are dealt 1 by 1 with 1 sec delay, hole card is face down                                            |&#10004;|
+|2nd game player play - card displays           |Card images are correctly displayed for delaer and user                                                    |&#10004;|
+|2nd game player play - card overlap            |Cards overlap correctly at lower screen sizes, card values are visable                                     |&#10004;|
+|2nd game player play - player hand count       |Once the cards have been dealt, the player's hand value is updated with the correct value                  |&#10004;|
+|2nd game player play - dealer hand count       |Once the cards have been dealt, the dealer's hand value shows the correct value (excludes hole cards value)|&#10004;|
 |2nd game player play - hit button enabled      |After cards are dealt hit button is enabled                                                                |&#10004;|
 |2nd game player play - stand button enabled    |After cards are dealt hit button is enabled                                                                |&#10004;|
 |2nd game player play - hit button feedback     |Changes colour on mouse over                                                                               |&#10004;|
@@ -643,7 +650,7 @@ The tests for this online game listed below were conducted on a number of browse
 |2nd game player play - hit button functionality|When pressed the player will receive another card, hand value is updated                                   |&#10004;|
 |2nd game player play - hit btn functionality 2 |After 3rd card, if not bust player can take another                                                        |&#10004;|
 |2nd game player play - hit btn functionality 3 |After 4th card, if not bust player can take another                                                        |&#10004;|
-|2nd game player play - bust                    |When hit is selected if hand count goes above 21 bust modal is displayed, new game starts after 3 sec.     |&#10004;|
+|2nd game player play - bust                    |When hit is selected if hand count goes above 21, bust modal is displayed, new game starts after 3 sec.     |&#10004;|
 |2nd game player play - stand btn functionality |When pressed players gameplay ends, hit and stand buttons disabled                                         |&#10004;|
 |2nd game dealer play - draw cards below 17     |Dealer will draw cards until they reach 17 or above                                                        |&#10004;|
 |2nd game dealer play - draw cards above 17     |Dealer will take no more cards, game results will be evaluated                                             |&#10004;|
@@ -654,11 +661,11 @@ The tests for this online game listed below were conducted on a number of browse
 |Audio - Icon default image                     |Defaults to speaker off icon                                                                               |&#10004;|
 |Audio - Icon default feedback                  |Change colour on mouse over                                                                                |&#10004;|
 |Audio - Icon default functionality             |When clicked, music plays, icon changes to on icon                                                         |&#10004;|
-|Audio - Icon toggle                            |When clicked, music and icon toggle from on to off                                                         |&#10004;|
+|Audio - Icon toggle                            |When clicked, music and icon toggle from on to off and vice versa                                          |&#10004;|
 |Audio - Icon blocks all audio                  |When toggled off, no other audio sounds (card flip, win, lose) will play                                   |&#10004;|
 |Audio - Card flip sound                        |Ensure card flip sound is played when cards are dealt, player hits or dealer turns hole card               |&#10004;|
 |Audio - Win sound                              |Ensure win sound is played for all types of win (win, blackjack, push, dealer bust)                        |&#10004;|
-|Audio - Lose sound                             |Ensure lose sound is played for all types of lose (lose bust)                                              |&#10004;|
+|Audio - Lose sound                             |Ensure lose sound is played for all types of loss (lose, bust)                                             |&#10004;|
 |Animation - Card filp (deal)                   |Ensure card animation works for initial deal                                                               |&#10004;|
 |Animation - Card filp (hit)                    |Ensure card animation works when player hits                                                               |&#10004;|
 |Animation - Card filp (dealer hole card)       |Ensure card animation works when dealer reveals hole card                                                  |&#10004;|
@@ -691,11 +698,11 @@ The tests for this online game listed below were conducted on a number of browse
 |nth game bet - invalid input                   |Only numbers in increments of 10 can be placed, all other entries trigger modal invalid message            |&#10004;|
 |nth game bet - valid input above chip count    |Bet amount will be reduced to chip count and modal will inform user                                        |&#10004;|
 |nth game player play - new deck                |If cards in deck drop below 20 a new deck is created and shuffled                                          |&#10004;|
-|nth game player play - dealing                 |Cards are dealt 1 by 1 with 1 sec delay, hold card is face down                                            |&#10004;|
-|nth game player play - card displays           |Cards are dealt 1 by 1 with 1 sec delay, hold card is face down                                            |&#10004;|
-|nth game player play - card overlap            |Cards are dealt 1 by 1 with 1 sec delay, hold card is face down                                            |&#10004;|
-|nth game player play - player hand count       |Cards are dealt 1 by 1 with 1 sec delay, hold card is face down                                            |&#10004;|
-|nth game player play - dealer hand count       |Cards are dealt 1 by 1 with 1 sec delay, hold card is face down                                            |&#10004;|
+|nth game player play - dealing                 |Cards are dealt 1 by 1 with 1 sec delay, hole card is face down                                            |&#10004;|
+|nth game player play - card displays           |Card images are correctly displayed for delaer and user                                                    |&#10004;|
+|nth game player play - card overlap            |Cards overlap correctly at lower screen sizes, card values are visable                                     |&#10004;|
+|nth game player play - player hand count       |Once the cards have been dealt, the player's hand value is updated with the correct value                  |&#10004;|
+|nth game player play - dealer hand count       |Once the cards have been dealt, the dealer's hand value shows the correct value (excludes hole cards value)|&#10004;|
 |nth game player play - hit button enabled      |After cards are dealt hit button is enabled                                                                |&#10004;|
 |nth game player play - stand button enabled    |After cards are dealt hit button is enabled                                                                |&#10004;|
 |nth game player play - hit button feedback     |Changes colour on mouse over                                                                               |&#10004;|
@@ -704,7 +711,7 @@ The tests for this online game listed below were conducted on a number of browse
 |nth game player play - hit button functionality|When pressed the player will receive another card, hand value is updated                                   |&#10004;|
 |nth game player play - hit btn functionality 2 |After 3rd card, if not bust player can take another                                                        |&#10004;|
 |nth game player play - hit btn functionality 3 |After 4th card, if not bust player can take another                                                        |&#10004;|
-|nth game player play - bust                    |When hit is selected if hand count goes above 21 bust modal is displayed, new game starts after 3 sec.     |&#10004;|
+|nth game player play - bust                    |When hit is selected if hand count goes above 21, bust modal is displayed, new game starts after 3 sec.     |&#10004;|
 |nth game player play - stand btn functionality |When pressed players gameplay ends, hit and stand buttons disabled                                         |&#10004;|
 |nth game dealer play - draw cards below 17     |Dealer will draw cards until they reach 17 or above                                                        |&#10004;|
 |nth game dealer play - draw cards above 17     |Dealer will take no more cards, game results will be evaluated                                             |&#10004;|
@@ -715,11 +722,11 @@ The tests for this online game listed below were conducted on a number of browse
 |Audio - Icon default image                     |Defaults to speaker off icon                                                                               |&#10004;|
 |Audio - Icon default feedback                  |Change colour on mouse over                                                                                |&#10004;|
 |Audio - Icon default functionality             |When clicked, music plays, icon changes to on icon                                                         |&#10004;|
-|Audio - Icon toggle                            |When clicked, music and icon toggle from on to off                                                         |&#10004;|
+|Audio - Icon toggle                            |When clicked, music and icon toggle from on to off and vice versa                                          |&#10004;|
 |Audio - Icon blocks all audio                  |When toggled off, no other audio sounds (card flip, win, lose) will play                                   |&#10004;|
 |Audio - Card flip sound                        |Ensure card flip sound is played when cards are dealt, player hits or dealer turns hole card               |&#10004;|
 |Audio - Win sound                              |Ensure win sound is played for all types of win (win, blackjack, push, dealer bust)                        |&#10004;|
-|Audio - Lose sound                             |Ensure lose sound is played for all types of lose (lose bust)                                              |&#10004;|
+|Audio - Lose sound                             |Ensure lose sound is played for all types of loss (lose, bust)                                             |&#10004;|
 |Animation - Card filp (deal)                   |Ensure card animation works for initial deal                                                               |&#10004;|
 |Animation - Card filp (hit)                    |Ensure card animation works when player hits                                                               |&#10004;|
 |Animation - Card filp (dealer hole card)       |Ensure card animation works when dealer reveals hole card                                                  |&#10004;|
@@ -758,20 +765,20 @@ The tests for this online game listed below were conducted on a number of browse
 |Game page media query height - 825px           |All media query rules are applied                                                                          |&#10004;|
 |Game modals - 825px                            |All game modals display correctly                                                                          |&#10004;|
 |Game functionality - 825px                     |Game functions correctly                                                                                   |&#10004;|
-|Game page media query height - 768px           |All media query rules are applied                                                                          |&#10004;|
-|Game modals - 768px                            |All game modals display correctly                                                                          |&#10004;|
-|Game functionality - 768px                     |Game functions correctly                                                                                   |&#10004;|
+|Game page media query height - 785px           |All media query rules are applied                                                                          |&#10004;|
+|Game modals - 785px                            |All game modals display correctly                                                                          |&#10004;|
+|Game functionality - 785px                     |Game functions correctly                                                                                   |&#10004;|
 |Play again button displayed  width - 710px     |All media query rules are applied                                                                          |&#10004;|
-|Game page media query height - 650px           |All media query rules are applied                                                                          |&#10004;|
-|Play again button displayed  height - 650px    |All media query rules are applied                                                                          |&#10004;|
-|Game modals - 650px                            |All game modals display correctly                                                                          |&#10004;|
-|Game functionality - 650px                     |Game functions correctly                                                                                   |&#10004;|
-|Game page media query height - 590px           |All media query rules are applied                                                                          |&#10004;|
-|Game modals - 590px                            |All game modals display correctly                                                                          |&#10004;|
-|Game functionality - 590px                     |Game functions correctly                                                                                   |&#10004;|
-|Game page media query height - 520px           |All media query rules are applied                                                                          |&#10004;|
-|Game modals - 520px                            |All game modals display correctly                                                                          |&#10004;|
-|Game functionality - 520px                     |Game functions correctly                                                                                   |&#10004;|
+|Game page media query height - 702px           |All media query rules are applied                                                                          |&#10004;|
+|Play again button displayed  height - 702px    |All media query rules are applied                                                                          |&#10004;|
+|Game modals - 702px                            |All game modals display correctly                                                                          |&#10004;|
+|Game functionality - 702px                     |Game functions correctly                                                                                   |&#10004;|
+|Game page media query height - 643px           |All media query rules are applied                                                                          |&#10004;|
+|Game modals - 643px                            |All game modals display correctly                                                                          |&#10004;|
+|Game functionality - 643px                     |Game functions correctly                                                                                   |&#10004;|
+|Game page media query height - 534px           |All media query rules are applied                                                                          |&#10004;|
+|Game modals - 534px                            |All game modals display correctly                                                                          |&#10004;|
+|Game functionality - 534px                     |Game functions correctly                                                                                   |&#10004;|
 |Game page media query height - 472px           |All media query rules are applied                                                                          |&#10004;|
 |Game modals - 472px                            |All game modals display correctly                                                                          |&#10004;|
 |Game functionality - 472px                     |Game functions correctly                                                                                   |&#10004;|
@@ -814,10 +821,10 @@ The google lighthouse chrome developer tool was used to test the games performan
 <summary style="font-size: 20px; font-weight: bold;">Index</summary>
 
 ### Desktop
-![Index lighthouse results](/documentation/lighthouse/index-desktop-lighthouse.png)
+![Index lighthouse results](/documentation/testing/lighthouse/index-desktop-lighthouse.png)
 
 ### Mobile
-![Index lighthouse results](/documentation/lighthouse/index-mobile-lighthouse.png)
+![Index lighthouse results](/documentation/testing/lighthouse/index-mobile-lighthouse.png)
 
 </details>
 
@@ -850,6 +857,9 @@ The google lighthouse chrome developer tool was used to test the games performan
 * I want to test that regardless of the users actions, they cannot cause any issues with the game.
     * The game was heavily tested at all stages of development to ensure 100% correct functionality. Game also has strong user input validation and limits player access to controls until they are meant to be used.
 
+* I want to test that the online game that encourages the user to relax, have fun and enjoy themselves, using colouring, imagery and light hearted and informal text.
+    * Game messaing reinforces that the object of the game is to have fun (game rules modal). Jazz/swing background music is relaxing. Audio clips for win and loss also reinforces the idea of having fun.
+
 * I want to ensure if anything goes wrong the user can navigate back to the home page.
 
     * There is a 404 page with clear instruction and home button should this occur.
@@ -862,9 +872,12 @@ The google lighthouse chrome developer tool was used to test the games performan
 * I want the game to be intuitive and easy to play.
     * The game is extremely intuitive and easy to play, with the support of tooltips, placeholder text, enabling / disabling of inputs, focus drawing to user inputs etc.
 * I want the game to provide me with feedback regarding actions I can take or actions I have taken. 
-    * The online game has a very high level of feedback such as colour changes for clickable item, modal messages regarding how the user places bets, modal messages regarding the results and player rewards etc. The players actions also have viewable effects such as cards being dealt.
+    * The online game has a very high level of feedback such as colour changes for clickable item, modal messages regarding how the user places bets, modal messages regarding the results and player rewards etc. The players actions also have viewable effects such as cards being dealt and audio icons changing.
 * I want the ability to place bets when playing.
-    * The game incorporates betting and applies different odd to the players winnings based on how they win. 
+    * The game incorporates betting and applies different odds to the players winnings based on how they win. 
+
+* I want to have fun.
+    * Besides the gameplay (which people enjoy) the background, win and loss audio add an element of fun to the game.
 
 ### Returning user
 * I want to play blackjack.
@@ -875,6 +888,9 @@ The google lighthouse chrome developer tool was used to test the games performan
     * Betting is incorporated into the game and player winnings are tracked until the player closes the game, restarts the game or loses all their chips.
 * I want the ability to play the online game on all my devices
     * The game is fully responsive and will scale from very large device down to the smallest mobile devices and everything in between.
+
+* I want to have fun.
+    * Besides the gameplay (which people enjoy) the background, win and loss audio add an element of fun to the game.
 ## Manual testing bugs
 During manual testing some bugs were found and fixed, these were,
 
@@ -886,7 +902,7 @@ During my online game development I ran into an issue with the modal display. My
 
 I figured out that this was due to the align-items center property of the modal. I tried to solve this using the align items stretch property but this made the smaller modals,  which were shown much more frequently stretch much larger than they needed to and look terrible.
 
-I then looked at ways to change from center to stretch using css media queries. I ran into an issue here as he style rules which I applied in the javaScript were overriding the css rules that I had placed in the css media query. I decided to use the !important keyword to give precedence to the css rule but again ran into issues where the small messages still stretched when below the 992px media query.
+I then looked at ways to change from center to stretch using css media queries. I ran into an issue here as the style rules which I applied in the javaScript were overriding the css rules that I had placed in the css media query. I decided to use the !important keyword to give precedence to the css rule but again ran into issues where the small messages still stretched when below the 992px media query. I did not want to use the !important statement if possible so I kept trying to develop alternative solutions.
 
 I finally came to a solution which I was happy with. I modified the modal code to call one of two helper function to style the modal. If the message was large it will call one function to stretch and if the message was small it would call another to center. 
 
@@ -927,7 +943,7 @@ Game rules copy was written by GPT. Copy was modified by myself.
 * [Lose audio](https://pixabay.com/sound-effects/wah-wah-sad-trombone-6347/) by [Pixabay](https://pixabay.com/users/pixabay-1/)
 
 ## Code
-For most cases the below code was only used as a learing tool and not directly used in my code, the exception to this is the fisher yates shuffle, which was used in my code.
+In most cases, the below code was only used as a learing tool and not directly used in my code. The exception to this is the fisher yates shuffle, which was used and credited in my code.
 * Learned how to implement favicons from [W3schools](https://www.w3schools.com/html/html_favicon.asp).
 * Learned about the fisher yates shuffle from [W3schools](https://www.w3schools.com/js/js_array_sort.asp).
 * Learned how to check for substrings in a string from [Stackoverflow](https://stackoverflow.com/questions/5582574/how-to-check-if-a-string-contains-text-from-an-array-of-substrings-in-javascript)
@@ -937,7 +953,7 @@ For most cases the below code was only used as a learing tool and not directly u
 * Learned to create animations from [W3schools](https://www.w3schools.com/css/css3_animations.asp)
 * Learned about 3d transforms from [W3schools](https://www.w3schools.com/css/css3_3dtransforms.asp)
 * Learned about the translate property from [W3schools](https://www.w3schools.com/cssref/css_pr_translate.php)
-* Used this test editor from [W3schools](https://www.w3schools.com/css/tryit.asp?filename=trycss3_animation1) to test animation types and properties.
+
 ## Acknowledgements
 I would like to acknowledge the following people for support and guidance during this project,
 * My Mentor Spencer Barriball for advice before and during this project.
