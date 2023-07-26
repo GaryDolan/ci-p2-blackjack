@@ -327,7 +327,7 @@ header {
 /* css class rule - add this to  */
 .card-animation {
     animation-name: cardAnimation;  /*name of keyframe where transition is defined*/
-    animation-duration: 1s;         /*how long it should take to complete the keyframe*/
+    animation-duration: 1.3s;         /*how long it should take to complete the keyframe*/
 }
 
 @keyframes cardAnimation {

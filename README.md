@@ -523,6 +523,8 @@ To clone this repository,
 5. Open the terminal in your editor (or of your choosing) and move to the directory which you want to clone to.
 6. Type git clone and paste the repository link, then press enter.
 
+[Return to Table of Contents](#table-of-contents)
+
 # Testing
 Testing of this online game was ongoing throughout the development process. I used the developer tools in chrome and firefox to test all aspect of the site including its responsiveness.  
 ## Automated testing
@@ -911,6 +913,10 @@ This still left the issue that at extremely large screen sizes the game rules mo
 ### 0 bet bug
 
 During testing I noticed that the player could play the game betting 0, once they had a chip count of 10 or above. I quickly fixed this by adding some logic to the input validation. 
+
+### Betting section moving
+
+During testing I noticed that when the initial cards were dealt by the dealer, for a brief moment (0.5sec) the player's card div was empty and this caused the betting section to shift up the page briefly. To combat this I increased the time that the animation took to complete to 1.3seconds. This fixed the issue due to the fact that the dealer only waits 1.1second between dealing the cards. 
 
 
 ## Automated testing bugs
