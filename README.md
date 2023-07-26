@@ -916,7 +916,7 @@ During testing I noticed that the player could play the game betting 0, once the
 
 ### Betting section moving
 
-During testing I noticed that when the initial cards were dealt by the dealer, for a brief moment (0.5sec) the player's card div was empty and this caused the betting section to shift up the page briefly. To combat this I increased the time that the animation took to complete to 1.3seconds. This fixed the issue due to the fact that the dealer only waits 1.1second between dealing the cards. 
+During testing I noticed that when the initial cards were dealt by the dealer, for a brief moment (0.5sec) the player's card div was empty and this caused the betting section to shift up the page noticeably. To combat this I increased the time that the animation took to complete to 1.3seconds. This fixed the issue due to the fact that the dealer only waits 1.1second between dealing the cards. I could further improve this by increasing the delay more but this takes from the user experience as the animation does not look as good at hight transition times. 
 
 
 ## Automated testing bugs
